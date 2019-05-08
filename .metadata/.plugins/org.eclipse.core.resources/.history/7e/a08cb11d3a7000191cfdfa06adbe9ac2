@@ -1,0 +1,14 @@
+package com.proyecto.controlador;
+
+import javafx.fxml.FXML;
+
+public class LogosController {
+@FXML
+public void cambio() {
+	System.out.println("hola");
+	
+	
+	
+}
+
+}

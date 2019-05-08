@@ -1,0 +1,20 @@
+package com.example.modelo;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+import javax.persistence.Entity;
+@Entity
+public class Usuario implements Serializable {
+
+	private String name;
+	private ArrayList<ListaEjercito> listasEjercito;
+	
+	
+	
+	
+	
+	
+	
+	
+}

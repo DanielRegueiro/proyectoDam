@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="PanelLogos" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #444444;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Fondo.jpg" />
+         </image>
+      </ImageView>
+      <ImageView accessibleRole="BUTTON" fitHeight="361.0" fitWidth="375.0" layoutX="55.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/lobos.png" />
+         </image>
+         <effect>
+            <DropShadow color="#408dbd" height="92.16" radius="33.225" width="42.74" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView accessibleRole="BUTTON" fitHeight="361.0" fitWidth="375.0" layoutX="440.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Angeles_Oscuros.png" />
+         </image>
+         <effect>
+            <DropShadow color="#1cc84a" height="24.96" radius="32.24" width="106.0" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView accessibleRole="MENU_BUTTON" fitHeight="361.0" fitWidth="375.0" layoutX="824.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/orkos.png" />
+         </image>
+         <effect>
+            <DropShadow color="#ff1c1c" height="40.77" radius="16.92" width="28.91" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="244.0" layoutY="34.0" prefHeight="117.0" prefWidth="711.0" text="Selecciona tu ejercito" textAlignment="CENTER" textFill="#fff9f9" textOverrun="CLIP">
+         <font>
+            <Font size="71.0" />
+         </font>
+         <effect>
+            <DropShadow height="22.98" radius="8.5175" spread="0.29" width="13.09" />
+         </effect>
+      </Label>
+   </children>
+</AnchorPane>

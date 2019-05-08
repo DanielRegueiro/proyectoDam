@@ -1,0 +1,25 @@
+package com.example.modelo;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class ListaEjercito implements Serializable {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	private Comandante comandante;
+	private ArrayList<Tropa> tropas;
+	private ArrayList<Vehiculos> vehiculo;
+	private int valorEnPuntos;
+	private int valorEnFuerzaDeCombate;
+	
+	
+	
+
+}

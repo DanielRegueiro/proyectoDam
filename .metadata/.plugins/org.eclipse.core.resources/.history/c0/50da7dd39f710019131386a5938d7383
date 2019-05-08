@@ -1,0 +1,15 @@
+package com.proyecto.controlador;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
+
+public class ControllerLista {
+
+	@FXML
+	private ListView<?> lista;
+
+	
+	
+	
+	
+}

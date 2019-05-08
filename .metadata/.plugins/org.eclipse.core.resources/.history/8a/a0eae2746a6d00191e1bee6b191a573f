@@ -1,0 +1,9 @@
+package com.proyecto.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.proyecto.modelo.Unidad;
+
+public interface TropaRepository extends CrudRepository<Unidad, Long> {
+
+}

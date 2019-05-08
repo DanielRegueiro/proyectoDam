@@ -1,0 +1,19 @@
+package com.proyecto.core;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.stage.Stage;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+@SpringBootApplication
+public class PruebaProyectoApplication extends Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(PruebaProyectoApplication.class, args);
+		launch(args);
+	}
+}
