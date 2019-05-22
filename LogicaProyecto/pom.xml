@@ -9,12 +9,12 @@
 		<version>2.1.4.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	
+
 	<groupId>com.proyecto</groupId>
 	<artifactId>ProyectoDam</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ProyectoDam</name>
-	<description>1º prueba proyecto dam</description>
+	<description>6º prueba proyecto dam</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -73,6 +73,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 
 </project>

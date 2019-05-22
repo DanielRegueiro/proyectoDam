@@ -1,38 +1,41 @@
 package com.proyecto.modelo;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.persistence.ManyToOne;
+
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 @Entity
-@Table(name = "arma")
-public class Arma implements Serializable {
+public class Arma {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@NotNull
-	@Column(name = "id_arma")
-	private Long idArma;
+	@Column(name="id_arma")
+	private Long id_arma;
+	@Column(name="descripcion")
 	private String descripcion;
+	
+	@ManyToOne
 	@JoinColumn(name = "id_tipo_arma")
 	private TipoArma tipoArma;
+	@Column(name="puntos")
 	private int puntos;
 
-	public Long getIdArma() {
-		return idArma;
+	
+	public Long getId_arma() {
+		return id_arma;
 	}
 
-	public void setIdArma(Long idArma) {
-		this.idArma = idArma;
+	public void setId_arma(Long id_arma) {
+		this.id_arma = id_arma;
 	}
 
 	public String getDescripcion() {

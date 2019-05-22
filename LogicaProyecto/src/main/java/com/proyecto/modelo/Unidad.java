@@ -1,21 +1,25 @@
 package com.proyecto.modelo;
 
-import java.io.Serializable;
+
 import java.util.List;
+
+import java.util.ArrayList;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
@@ -23,45 +27,64 @@ import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 @Entity
 @Table(name = "unidad")
-public class Unidad implements Serializable {
+public class Unidad {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@NotNull
-	@Column(name = "id_unidad")
-	private Long idUnidad;
+	@Column(name="id_unidad")
+	private Long id_unidad;
+	@Column(name="nombre")
 	private String nombre;
+	@Column(name="movimiento")
 	private int movimiento;
+	@Column(name="habilidad_ataque")
 	private int habilidad_ataque;
+	@Column(name="habilidad_proyectiles")
 	private int habilidad_proyectiles;
+	@Column(name="fuerza")
 	private int fuerza;
+	@Column(name="resistencia")
 	private int resistencia;
+	@Column(name="heridas")
 	private int heridas;
+	@Column(name="ataques")
 	private int ataques;
+	@Column(name="liderazgo")
 	private int liderazgo;
+	@Column(name="salvacion")
 	private int salvacion;
+	@Column(name="puntos")
 	private int puntos;
+	@Column(name="poder")
 	private int poder;
+
+	@ManyToOne
 	@JoinColumn(name = "id_tipo_unidad")
 	private TipoUnidad tipoUnidad;
-	@ManyToMany(cascade = { CascadeType.ALL })
-	@JoinTable(name = "armas_unidad", joinColumns = { @JoinColumn(name = "Id_unidad") }, inverseJoinColumns = {
-			@JoinColumn(name = "Id_arma") })
-	private List<Arma> armas;
-	@ManyToMany(cascade = { CascadeType.ALL })
-	@JoinTable(name = "habilidades_unidad", joinColumns = { @JoinColumn(name = "Id_unidad") }, inverseJoinColumns = {
-			@JoinColumn(name = "Id_habilidad") })
-	private List<Habilidad> habilidades;
-	@ManyToMany(cascade = { CascadeType.ALL })
-	@JoinTable(name = "reliquias_unidad", joinColumns = { @JoinColumn(name = "Id_unidad") }, inverseJoinColumns = {
-			@JoinColumn(name = "Id_reliquias") })
-	private List<Reliquia> reliquias;
 
-	public Long getIdUnidad() {
-		return idUnidad;
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "armas_unidad", joinColumns = @JoinColumn(name = "id_unidad_armas", referencedColumnName = "id_unidad"), 
+	inverseJoinColumns = @JoinColumn(name = "id_arma_armas", referencedColumnName = "id_arma"))
+	private List<Arma> listaArmas = new ArrayList<Arma> ();
+
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "habilidades_unidad", joinColumns = @JoinColumn(name = "id_unidad", referencedColumnName = "id_unidad"), 
+	inverseJoinColumns = @JoinColumn(name = "id_habilidad", referencedColumnName = "id_habilidad"))
+	private List<Habilidad> habilidades = new ArrayList<Habilidad>();
+
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "reliquias_unidad", joinColumns = @JoinColumn(name = "id_unidad", referencedColumnName = "id_unidad"), 
+	inverseJoinColumns = @JoinColumn(name = "id_reliquias", referencedColumnName = "id_reliquia"))
+	private List<Reliquia> reliquias=new ArrayList<Reliquia>();
+
+
+
+	public Long getId_unidad() {
+		return id_unidad;
 	}
 
-	public void setIdUnidad(Long idUnidad) {
-		this.idUnidad = idUnidad;
+	public void setId_unidad(Long id_unidad) {
+		this.id_unidad = id_unidad;
 	}
 
 	public String getNombre() {
@@ -80,20 +103,20 @@ public class Unidad implements Serializable {
 		this.movimiento = movimiento;
 	}
 
-	public int getHabilidadAtaque() {
+	public int getHabilidad_ataque() {
 		return habilidad_ataque;
 	}
 
-	public void setHabilidadAtaque(int habilidadAtaque) {
-		this.habilidad_ataque = habilidadAtaque;
+	public void setHabilidad_ataque(int habilidad_ataque) {
+		this.habilidad_ataque = habilidad_ataque;
 	}
 
-	public int getHabilidadProyectiles() {
+	public int getHabilidad_proyectiles() {
 		return habilidad_proyectiles;
 	}
 
-	public void setHabilidadProyectiles(int habilidadProyectiles) {
-		this.habilidad_proyectiles = habilidadProyectiles;
+	public void setHabilidad_proyectiles(int habilidad_proyectiles) {
+		this.habilidad_proyectiles = habilidad_proyectiles;
 	}
 
 	public int getFuerza() {
@@ -168,12 +191,12 @@ public class Unidad implements Serializable {
 		this.tipoUnidad = tipoUnidad;
 	}
 
-	public List<Arma> getArmas() {
-		return armas;
+	public List<Arma> getListaArmas() {
+		return listaArmas;
 	}
 
-	public void setArmas(List<Arma> armas) {
-		this.armas = armas;
+	public void setListaArmas(List<Arma> listaArmas) {
+		this.listaArmas = listaArmas;
 	}
 
 	public List<Habilidad> getHabilidades() {

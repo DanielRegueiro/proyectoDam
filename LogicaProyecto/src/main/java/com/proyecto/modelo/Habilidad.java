@@ -1,36 +1,36 @@
 package com.proyecto.modelo;
 
-import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 @Entity
-@Table(name = "habilidades")
-public class Habilidad implements Serializable {
+@Table(name="habilidades")
+public class Habilidad{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@NotNull
-	@Column(name = "id_habilidad")
-	private Long idHabilidad;
+	@Column(name="id_habilidad")
+	private Long id_habilidad;
+	@Column(name="descripcion")
 	private String descripcion;
 
-	public Long getIdHabilidad() {
-		return idHabilidad;
+
+	
+
+	public Long getId_habilidad() {
+		return id_habilidad;
 	}
 
-	public void setIdHabilidad(Long idHabilidad) {
-		this.idHabilidad = idHabilidad;
+	public void setId_habilidad(Long id_habilidad) {
+		this.id_habilidad = id_habilidad;
 	}
 
 	public String getDescripcion() {

@@ -1,14 +1,12 @@
 package com.proyecto.modelo;
 
-import java.io.Serializable;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -16,21 +14,24 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 @Entity
-@Table(name = "tipo_unidad")
-public class TipoUnidad implements Serializable {
+public class TipoUnidad {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@NotNull
 	@Column(name = "id_tipo_unidad")
-	private Long idTipoUnidad;
+	private Long idtipo;
+	@Column(name="descripcion")
 	private String descripcion;
 
-	public Long getIdTipoUnidad() {
-		return idTipoUnidad;
+	
+
+	public Long getIdtipo() {
+		return idtipo;
 	}
 
-	public void setIdTipoUnidad(Long idTipoUnidad) {
-		this.idTipoUnidad = idTipoUnidad;
+	public void setIdtipo(Long idtipo) {
+		this.idtipo = idtipo;
 	}
 
 	public String getDescripcion() {

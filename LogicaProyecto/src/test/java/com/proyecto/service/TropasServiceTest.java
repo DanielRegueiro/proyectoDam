@@ -19,7 +19,8 @@ public class TropasServiceTest {
 		int i=0;
 		for(Unidad unidad: unidades) {
 			
-			System.out.println(unidad.getNombre()+ i);
+			System.out.println(unidad.getNombre());
+		//	System.out.println(unidad.getArmas());
 			i++;
 		}
 	}

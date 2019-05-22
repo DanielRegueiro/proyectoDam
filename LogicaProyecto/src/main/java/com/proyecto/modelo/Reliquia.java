@@ -1,36 +1,35 @@
 package com.proyecto.modelo;
 
-import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 @Entity
-@Table(name = "reliquias")
-public class Reliquia implements Serializable {
+@Table(name="reliquias")
+public class Reliquia {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@NotNull
-	@Column(name = "id_reliquia")
-	private Long idReliquia;
+	@Column(name="id_reliquia")
+	private Long id_reliquia;
+	@Column(name="descripcion")
 	private String descripcion;
 
-	public Long getIdReliquia() {
-		return idReliquia;
+
+
+	public Long getId_reliquia() {
+		return id_reliquia;
 	}
 
-	public void setIdReliquia(Long idReliquia) {
-		this.idReliquia = idReliquia;
+	public void setId_reliquia(Long id_reliquia) {
+		this.id_reliquia = id_reliquia;
 	}
 
 	public String getDescripcion() {
