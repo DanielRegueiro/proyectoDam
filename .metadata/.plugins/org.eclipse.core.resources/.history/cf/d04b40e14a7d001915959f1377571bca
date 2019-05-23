@@ -1,0 +1,74 @@
+package controller;
+
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+public class ControllerRegistro {
+
+    @FXML
+    private ResourceBundle resources;
+
+    @FXML
+    private URL location;
+
+    @FXML
+    private PasswordField textContrasena;
+
+    @FXML
+    private TextField textUsuario;
+
+    @FXML
+    private Button buttonRegistrarse;
+
+    @FXML
+    private Button buttonVolver;
+    
+    
+    
+    @FXML
+    void volver(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void handleButtonAction(ActionEvent event) {
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/Pantallalogos.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+
+            stage.setScene(new Scene(root1));
+            stage.setResizable(false);
+            stage.show();
+            Stage stageRegistro = (Stage) buttonRegistrarse.getScene().getWindow();
+            stageRegistro.close();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLControllerLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    @FXML
+    void initialize() {
+        assert textContrasena != null : "fx:id=\"textContrasena\" was not injected: check your FXML file 'Registro.fxml'.";
+        assert textUsuario != null : "fx:id=\"textUsuario\" was not injected: check your FXML file 'Registro.fxml'.";
+        assert buttonRegistrarse != null : "fx:id=\"buttonRegistrarse\" was not injected: check your FXML file 'Registro.fxml'.";
+        assert buttonVolver != null : "fx:id=\"buttonVolver\" was not injected: check your FXML file 'Registro.fxml'.";
+
+    }
+
+}

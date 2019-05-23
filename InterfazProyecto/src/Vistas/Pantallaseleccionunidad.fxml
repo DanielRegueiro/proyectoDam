@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerGestionUnidades">
+   <children>
+      <ImageView fitHeight="638.0" fitWidth="1020.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/KYDGfd.jpg" />
+         </image>
+      </ImageView>
+      <Button id="botonContinuar" fx:id="botonContinuar" layoutX="836.0" layoutY="525.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" text="Button">
+         <effect>
+            <Reflection />
+         </effect>
+      </Button>
+      <Button id="botonAnadir" fx:id="botonAnadir" layoutX="705.0" layoutY="525.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" text="Button">
+         <effect>
+            <Reflection />
+         </effect>
+      </Button>
+      <Button id="botonAtras" layoutX="40.0" layoutY="506.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" text="Button">
+         <effect>
+            <Reflection />
+         </effect>
+      </Button>
+      <Pane layoutX="14.0" layoutY="14.0" prefHeight="479.0" prefWidth="383.0">
+         <children>
+            <ListView id="lista" opacity="0.4" prefHeight="478.0" prefWidth="383.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="416.0" layoutY="14.0" opacity="0.33" prefHeight="379.0" prefWidth="578.0" style="-fx-background-color: #ffffff;" />
+   </children>
+</AnchorPane>

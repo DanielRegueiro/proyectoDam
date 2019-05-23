@@ -58,9 +58,9 @@ public class DeserializadorArmas implements JsonDeserializer<Arma> {
         
              try {
                  
-                TipoArma tipoArma = jsonArma.getAsJsonObject("tipoArma");
-        
-            arma.setTipoArma( jsonArma.getAsJsonObject("tipoArma"));
+//                TipoArma tipoArma = jsonArma.getAsJsonObject("tipoArma");
+//        
+//            arma.setTipoArma( jsonArma.getAsJsonObject("tipoArma"));
 
         } catch (Exception e) {
             logger.log(Level.INFO, e.getMessage());
