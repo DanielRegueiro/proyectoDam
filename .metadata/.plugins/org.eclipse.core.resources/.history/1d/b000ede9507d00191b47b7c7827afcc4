@@ -76,7 +76,6 @@ public class FXMLControllerLogin implements Initializable {
 			Stage stage = new Stage();
 			stage.setScene(new Scene(root1));
 			stage.setResizable(false);
-			stage.initStyle( StageStyle.UNDECORATED );
 			stage.show();
 
 		} catch (IOException ex) {

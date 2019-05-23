@@ -22,7 +22,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  *
@@ -48,7 +47,7 @@ public class FXMLControllerLogin implements Initializable {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/Registro.fxml"));
 			Parent root1 = (Parent) fxmlLoader.load();
 			Stage stage = new Stage();
-			stage.initStyle( StageStyle.UNDECORATED );
+
 			stage.setScene(new Scene(root1));
 			stage.setResizable(false);
 			stage.show();
@@ -76,7 +75,6 @@ public class FXMLControllerLogin implements Initializable {
 			Stage stage = new Stage();
 			stage.setScene(new Scene(root1));
 			stage.setResizable(false);
-			stage.initStyle( StageStyle.UNDECORATED );
 			stage.show();
 
 		} catch (IOException ex) {
