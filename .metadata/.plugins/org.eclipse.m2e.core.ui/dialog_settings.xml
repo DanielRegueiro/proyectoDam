@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<section name="org.eclipse.m2e.core.pom.overview">
-	</section>
-	<section name="org.eclipse.m2e.core.pom.dependencies">
-	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
-			<item value="C:\Proyectos\spring-boot-crud"/>
+			<item value="C:\WORKSPACES\proyectoDam\LogicaProyecto"/>
+			<item value="C:\Users\dregueir\Desktop\LogicaProyecto"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

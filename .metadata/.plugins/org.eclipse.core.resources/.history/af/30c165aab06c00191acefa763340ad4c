@@ -1,9 +1,0 @@
-package com.proyecto.service;
-
-import com.example.modelo.Unidad;
-
-public interface TropasService {
-
-	Iterable<Unidad> listarUnidades();
-
-}

@@ -1,7 +1,0 @@
-package com.example.modelo;
-
-import java.io.Serializable;
-
-public class Vehiculos implements Serializable {
-
-}
