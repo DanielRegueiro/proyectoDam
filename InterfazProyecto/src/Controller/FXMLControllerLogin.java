@@ -47,8 +47,7 @@ public class FXMLControllerLogin implements Initializable {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/Registro.fxml"));
 			Parent root1 = (Parent) fxmlLoader.load();
-			Stage stage = new Stage();
-			stage.initStyle( StageStyle.UNDECORATED );
+			Stage stage = (Stage) buttonRegistro.getScene().getWindow();		
 			stage.setScene(new Scene(root1));
 			stage.setResizable(false);
 			stage.show();
@@ -56,9 +55,7 @@ public class FXMLControllerLogin implements Initializable {
 		} catch (IOException ex) {
 			Logger.getLogger(FXMLControllerLogin.class.getName()).log(Level.SEVERE, null, ex);
 		}
-		Stage stagePrincipal = (Stage) buttonRegistro.getScene().getWindow();
 
-		stagePrincipal.close();
 	}
 	
 	
@@ -77,6 +74,7 @@ public class FXMLControllerLogin implements Initializable {
 			stage.setScene(new Scene(root1));
 			stage.setResizable(false);
 			stage.initStyle( StageStyle.UNDECORATED );
+			stage.centerOnScreen();
 			stage.show();
 
 		} catch (IOException ex) {
