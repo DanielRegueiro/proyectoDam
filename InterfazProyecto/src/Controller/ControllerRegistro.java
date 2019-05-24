@@ -30,6 +30,14 @@ public class ControllerRegistro {
 
 	@FXML
 	private Button buttonVolver;
+	@FXML
+	private Button botonCerrar;
+
+	@FXML
+	void cerrar(ActionEvent event) {
+		Stage stage = (Stage) botonCerrar.getScene().getWindow();
+		stage.close();
+	}
 
 	@FXML
 	void cambioPantalla(ActionEvent event) {
@@ -38,7 +46,7 @@ public class ControllerRegistro {
 			Parent root1 = (Parent) fxmlLoader.load();
 			Stage stage = new Stage();
 			stage.setScene(new Scene(root1));
-			stage.initStyle( StageStyle.UNDECORATED );
+			stage.initStyle(StageStyle.UNDECORATED);
 			stage.setResizable(false);
 			stage.show();
 
@@ -48,7 +56,7 @@ public class ControllerRegistro {
 		Stage stage2 = (Stage) buttonRegistrarse.getScene().getWindow();
 
 		stage2.close();
-		
+
 	}
 
 	@FXML

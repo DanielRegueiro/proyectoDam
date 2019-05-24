@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class ControllerPantallaSeleccionListas {
 
@@ -35,17 +36,23 @@ public class ControllerPantallaSeleccionListas {
 
     @FXML
     void crearLista(ActionEvent event) {
-    	try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/PantallaSeleccionunidad.fxml"));
-			Parent root2 = (Parent) fxmlLoader.load();
-			Stage stage = (Stage) botonNueva.getScene().getWindow();
-			stage.setScene(new Scene(root2));
+try {
+			
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/VistaSeleccionTropasAUsar.fxml"));
+			Parent root1 = (Parent) fxmlLoader.load();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root1));
 			stage.setResizable(false);
-	
+			stage.initStyle(StageStyle.UNDECORATED );
+			stage.centerOnScreen();
+			stage.show();
 
 		} catch (IOException ex) {
-			Logger.getLogger(FXMLControllerSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(FXMLControllerLogin.class.getName()).log(Level.SEVERE, null, ex);
 		}
+		Stage stagePrincipal = (Stage) botonNueva.getScene().getWindow();
+
+		stagePrincipal.close();
     }
 
     @FXML

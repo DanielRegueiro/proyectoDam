@@ -29,7 +29,7 @@ public class SeleccionTropasUsuario {
     @FXML
     void abrirPropias(ActionEvent event) {
     	try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/PantallaSeleccionLista.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/PantallaSeleccionunidad.fxml"));
 			Parent root2 = (Parent) fxmlLoader.load();
 			Stage stage = (Stage) botonPropias.getScene().getWindow();
 			stage.setScene(new Scene(root2));
@@ -44,7 +44,7 @@ public class SeleccionTropasUsuario {
     @FXML
     void abrirTodas(ActionEvent event) {
     	try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/PantallaSeleccionLista.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/PantallaSeleccionunidad.fxml"));
 			Parent root2 = (Parent) fxmlLoader.load();
 			Stage stage = (Stage) botonPropias.getScene().getWindow();
 			stage.setScene(new Scene(root2));

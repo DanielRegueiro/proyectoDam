@@ -34,26 +34,27 @@ public class FXMLControllerSeleccionEjercito {
 	@FXML
 	private Button botonlobos;
 
+	   @FXML
+	    private Button botonCerrar;
 
+	    @FXML
+	    void cerrar(ActionEvent event) {
+	    	Stage stage = (Stage) botonlobos.getScene().getWindow();
+	    	stage.close();
+	    }
 
 	public void handleButtonAction(ActionEvent event) {
 		try {
-			
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/VistaSeleccionTropasAUsar.fxml"));
-			Parent root1 = (Parent) fxmlLoader.load();
-			Stage stage = new Stage();
-			stage.setScene(new Scene(root1));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/PantallaSeleccionLista.fxml"));
+			Parent root2 = (Parent) fxmlLoader.load();
+			Stage stage = (Stage) botonlobos.getScene().getWindow();
+			stage.setScene(new Scene(root2));
 			stage.setResizable(false);
-			stage.initStyle( StageStyle.UNDECORATED );
-			stage.centerOnScreen();
-			stage.show();
+	
 
 		} catch (IOException ex) {
-			Logger.getLogger(FXMLControllerLogin.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(FXMLControllerSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
 		}
-		Stage stagePrincipal = (Stage) botonlobos.getScene().getWindow();
-
-		stagePrincipal.close();
 	}
 
 	

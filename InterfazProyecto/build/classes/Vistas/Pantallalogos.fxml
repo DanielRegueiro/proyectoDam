@@ -24,9 +24,6 @@
          <effect>
             <DropShadow color="#408dbd" height="92.16" radius="33.225" width="42.74" />
          </effect>
-         <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-         </cursor>
       </ImageView>
       <ImageView accessibleRole="BUTTON" fitHeight="361.0" fitWidth="375.0" layoutX="341.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -35,9 +32,7 @@
          <effect>
             <DropShadow color="#1cc84a" height="24.96" radius="32.24" width="106.0" />
          </effect>
-         <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-         </cursor>
+
       </ImageView>
       <ImageView accessibleRole="MENU_BUTTON" fitHeight="342.0" fitWidth="298.0" layoutX="688.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -46,9 +41,7 @@
          <effect>
             <DropShadow color="#ff1c1c" height="40.77" radius="16.92" width="28.91" />
          </effect>
-         <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-         </cursor>
+
       </ImageView>
       <Label layoutX="144.0" layoutY="37.0" prefHeight="117.0" prefWidth="711.0" text="Selecciona tu ejercito" textAlignment="CENTER" textFill="#fff9f9" textOverrun="CLIP">
          <font>
@@ -58,9 +51,14 @@
             <DropShadow height="22.98" radius="8.5175" spread="0.29" width="13.09" />
          </effect>
       </Label>
-      <Button fx:id="botonlobos" layoutX="148.0" layoutY="542.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="33.0" prefWidth="93.0" text="Crear">
+      <Button fx:id="botonlobos" layoutX="148.0" layoutY="542.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="33.0" prefWidth="93.0" text="Space Wolves">
          <effect>
             <Reflection />
          </effect></Button>
+      <Button fx:id="botonCerrar" layoutX="939.0" layoutY="24.0" mnemonicParsing="false" onAction="#cerrar" prefHeight="25.0" prefWidth="25.0" text="X" textFill="#fc0000">
+         <font>
+            <Font name="System Bold" size="9.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -15,7 +15,7 @@
             <Image url="@../img/hielo.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="lobo" fitHeight="398.0" fitWidth="327.0" layoutX="42.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cabeza" fitHeight="398.0" fitWidth="327.0" layoutX="42.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/cabeza.png" />
          </image>

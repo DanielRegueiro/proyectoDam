@@ -23,7 +23,14 @@ public class PantallaImpresionListas {
     
     @FXML
     private ListView<?> listas;
+	@FXML
+	private Button botonCerrar;
 
+	@FXML
+	void cerrar(ActionEvent event) {
+		Stage stage = (Stage) botonCerrar.getScene().getWindow();
+		stage.close();
+	}
     @FXML
     void crearLista(ActionEvent event) {
 

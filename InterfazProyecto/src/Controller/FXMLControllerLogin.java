@@ -41,13 +41,21 @@ public class FXMLControllerLogin implements Initializable {
 
 	@FXML
 	private Button buttonRegistro;
+	@FXML
+	private Button botonCerrar;
+
+	@FXML
+	void cerrar(ActionEvent event) {
+		Stage stage = (Stage) botonCerrar.getScene().getWindow();
+		stage.close();
+	}
 
 	@FXML
 	void registrarse(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/Registro.fxml"));
 			Parent root1 = (Parent) fxmlLoader.load();
-			Stage stage = (Stage) buttonRegistro.getScene().getWindow();		
+			Stage stage = (Stage) buttonRegistro.getScene().getWindow();
 			stage.setScene(new Scene(root1));
 			stage.setResizable(false);
 			stage.show();
@@ -57,12 +65,11 @@ public class FXMLControllerLogin implements Initializable {
 		}
 
 	}
-	
-	
-	 @FXML
-	    void volver(ActionEvent event) {
 
-	    }
+	@FXML
+	void volver(ActionEvent event) {
+
+	}
 
 	@FXML
 	private void handleButtonAction(ActionEvent event) {
@@ -73,7 +80,7 @@ public class FXMLControllerLogin implements Initializable {
 			Stage stage = new Stage();
 			stage.setScene(new Scene(root1));
 			stage.setResizable(false);
-			stage.initStyle( StageStyle.UNDECORATED );
+			stage.initStyle(StageStyle.UNDECORATED);
 			stage.centerOnScreen();
 			stage.show();
 
