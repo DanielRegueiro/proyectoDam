@@ -1,20 +1,22 @@
 package modeloVista;
 
-import com.google.gson.annotations.SerializedName;
 
-import modelo.Arma;
-import modelo.Habilidad;
-import modelo.Reliquia;
-import modelo.TipoUnidad;
+
+import modeloVista.Arma;
+import modeloVista.Habilidad;
+import modeloVista.Reliquia;
+import modeloVista.TipoUnidad;
 
 import java.util.List;
+
+import com.google.gson.annotations.SerializedName;
 
 
 
 
 public class Unidad  {
-        @SerializedName("idUnidad")
-	private Long idUnidad;
+	@SerializedName("id_unidad")
+	private int idUnidad;
 	private String nombre;
 	private int movimiento;
 	private int habilidad_ataque;
@@ -29,18 +31,18 @@ public class Unidad  {
 	private int poder;
 
 	private TipoUnidad tipoUnidad;
-
+	@SerializedName("listaArmas")
 	private List<Arma> armas;
 
 	private List<Habilidad> habilidades;
 
 	private List<Reliquia> reliquias;
 
-	public Long getIdUnidad() {
+	public int getIdUnidad() {
 		return idUnidad;
 	}
 
-	public void setIdUnidad(Long idUnidad) {
+	public void setIdUnidad(int idUnidad) {
 		this.idUnidad = idUnidad;
 	}
 
@@ -173,6 +175,16 @@ public class Unidad  {
 	}
 
 	
+
+	@Override
+	public String toString() {
+		return "Unidad [idUnidad=" + idUnidad + ", nombre=" + nombre + ", movimiento=" + movimiento
+				+ ", habilidad_ataque=" + habilidad_ataque + ", habilidad_proyectiles=" + habilidad_proyectiles
+				+ ", fuerza=" + fuerza + ", resistencia=" + resistencia + ", heridas=" + heridas + ", ataques="
+				+ ataques + ", liderazgo=" + liderazgo + ", salvacion=" + salvacion + ", puntos=" + puntos + ", poder="
+				+ poder + ", tipoUnidad=" + tipoUnidad + ", armas=" + armas + ", habilidades=" + habilidades
+				+ ", reliquias=" + reliquias + "]";
+	}
 
 	public Unidad() {
 

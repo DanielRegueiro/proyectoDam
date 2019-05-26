@@ -1,0 +1,20 @@
+
+package data;
+
+import data.NetKeys;
+import java.util.List;
+import model.Unidad;
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Query;
+
+
+public interface RestClient {
+    
+    @GET(NetKeys.Paths.GET_ALL)
+    Call<List<Unidad>> getAllUnits();
+    
+    @GET(NetKeys.Paths.GET_UNIT)
+    Call<Unidad> getUnit(@Query(NetKeys.QueriesParams.ID) String idUnidad);
+    
+}

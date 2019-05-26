@@ -2,18 +2,20 @@ package modeloVista;
 
 import java.io.Serializable;
 
+import com.google.gson.annotations.SerializedName;
+
 
 
 public class Habilidad implements Serializable {
-
-	private Long idHabilidad;
+	@SerializedName("id_habilidad")
+	private int idHabilidad;
 	private String descripcion;
 
-	public Long getIdHabilidad() {
+	public int getIdHabilidad() {
 		return idHabilidad;
 	}
 
-	public void setIdHabilidad(Long idHabilidad) {
+	public void setIdHabilidad(int idHabilidad) {
 		this.idHabilidad = idHabilidad;
 	}
 
@@ -23,6 +25,11 @@ public class Habilidad implements Serializable {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	@Override
+	public String toString() {
+		return "Habilidad [idHabilidad=" + idHabilidad + ", descripcion=" + descripcion + "]";
 	}
 
 	public Habilidad() {

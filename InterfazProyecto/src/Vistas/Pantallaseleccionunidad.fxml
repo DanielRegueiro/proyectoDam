@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="638.0" fitWidth="1020.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/KYDGfd.jpg" />
+            <Image url="@../img/fondo2.jpg" />
          </image>
       </ImageView>
       <Button id="botonContinuar" fx:id="botonContinuar" layoutX="836.0" layoutY="525.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" text="Button">
@@ -25,7 +25,7 @@
             <Reflection />
          </effect>
       </Button>
-      <Button id="botonAtras" layoutX="40.0" layoutY="506.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" text="Button">
+      <Button id="botonAtras" fx:id="botonVolver" layoutX="40.0" layoutY="506.0" mnemonicParsing="false" onAction="#volver" prefHeight="37.0" prefWidth="113.0" text="Volver">
          <effect>
             <Reflection />
          </effect>
