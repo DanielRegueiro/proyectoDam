@@ -42,17 +42,22 @@ public class ControllerGestionUnidades {
     void abrirUnidad(MouseEvent event) {
     	if(stageIndividual==null) {
     	stageIndividual=new Stage();
-    	  Parent root;
+    	FXMLLoader root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/Vistas/VistaUnidadIndividual.fxml"));
-			   Scene sceneIndividual = new Scene(root);
+			root = new FXMLLoader(getClass().getResource("/Vistas/VistaUnidadIndividual.fxml"));
+			
+			   Scene sceneIndividual = new Scene(root.load());
 			   stageIndividual.initStyle( StageStyle.UNDECORATED );
 			   stageIndividual.setScene(sceneIndividual);
-		          
+			   UnidadIndividual controller = 
+					    root.< UnidadIndividual>getController();
+					  controller.initData(lista.getItems().get(1));
+
 			   stageIndividual.show();
+			  
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	
+			Logger.getLogger(FXMLControllerSeleccionEjercito.class.getName()).log(Level.SEVERE, null, e);
 		}
 		}else {
 			

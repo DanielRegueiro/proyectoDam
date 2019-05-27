@@ -6,9 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-import modeloVista.Arma;
-import modeloVista.Habilidad;
-import modeloVista.Reliquia;
 import modeloVista.Unidad;
 
 public class UnidadIndividual {
@@ -50,27 +47,23 @@ public class UnidadIndividual {
 	private Text textSalvacion;
 
 	@FXML
-	private ListView<Arma> listaArmas;
+	private ListView<?> listaArmas;
 
 	@FXML
-	private ListView<Habilidad> listaHabilidades;
+	private ListView<?> listaHabilidades;
 
 	@FXML
-	private ListView<Reliquia> listaReliquias;
+	private ListView<?> listaReliquias;
 
 	void initData(Unidad unidad) {
 		textMovimiento.setText(String.valueOf(unidad.getMovimiento()));
 		textHabilidadAtaque.setText(String.valueOf(unidad.getHabilidad_ataque()));
-		textHabilidadProyectiles.setText(String.valueOf(unidad.getHabilidad_proyectiles()));
-		textFuerza.setText(String.valueOf(unidad.getFuerza()));
-		textResistencia.setText(String.valueOf(unidad.getResistencia()));
-		textHeridas.setText(String.valueOf(unidad.getHeridas()));
-		textAtaques.setText(String.valueOf(unidad.getAtaques()));
-		textLiderazgo.setText(String.valueOf(unidad.getLiderazgo()));
-		textSalvacion.setText(String.valueOf(unidad.getSalvacion()));
-		listaArmas.getItems().addAll(unidad.getArmas());
-		listaHabilidades.getItems().addAll(unidad.getHabilidades());
-		listaReliquias.getItems().addAll(unidad.getReliquias());
+		
+		
+		
+		
+		
+		
 	}
 
 	@FXML

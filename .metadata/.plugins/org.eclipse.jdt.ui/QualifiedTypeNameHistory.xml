@@ -5,11 +5,8 @@
 <fullyQualifiedTypeName name="javafx.event.ActionEvent"/>
 <fullyQualifiedTypeName name="javafx.geometry.Rectangle2D"/>
 <fullyQualifiedTypeName name="javafx.stage.StageStyle"/>
-<fullyQualifiedTypeName name="modeloVista.Habilidad"/>
-<fullyQualifiedTypeName name="modeloVista.Reliquia"/>
 <fullyQualifiedTypeName name="modeloVista.TipoArma"/>
 <fullyQualifiedTypeName name="modeloVista.TipoUnidad"/>
-<fullyQualifiedTypeName name="modeloVista.Arma"/>
 <fullyQualifiedTypeName name="com.google.gson.annotations.SerializedName"/>
 <fullyQualifiedTypeName name="javafx.collections.ObservableList"/>
 <fullyQualifiedTypeName name="javafx.scene.control.ListView"/>
@@ -18,9 +15,12 @@
 <fullyQualifiedTypeName name="javafx.scene.text.Text"/>
 <fullyQualifiedTypeName name="javafx.scene.control.Label"/>
 <fullyQualifiedTypeName name="javafx.util.Callback"/>
-<fullyQualifiedTypeName name="modeloVista.Unidad"/>
 <fullyQualifiedTypeName name="javafx.collections.FXCollections"/>
 <fullyQualifiedTypeName name="javafx.scene.image.ImageView"/>
 <fullyQualifiedTypeName name="javafx.scene.input.MouseEvent"/>
 <fullyQualifiedTypeName name="javafx.scene.layout.VBox"/>
+<fullyQualifiedTypeName name="modeloVista.Unidad"/>
+<fullyQualifiedTypeName name="modeloVista.Arma"/>
+<fullyQualifiedTypeName name="modeloVista.Habilidad"/>
+<fullyQualifiedTypeName name="modeloVista.Reliquia"/>
 </qualifiedTypeNameHistroy>
