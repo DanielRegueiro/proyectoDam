@@ -17,10 +17,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 
 public class ControllerGestionUnidades {
@@ -34,8 +36,34 @@ public class ControllerGestionUnidades {
 	private Button botonAnadir;
 	@FXML
 	private Button botonVolver;
- 
+	Stage stageIndividual;
 
+    @FXML
+    void abrirUnidad(MouseEvent event) {
+    	if(stageIndividual==null) {
+    	stageIndividual=new Stage();
+    	  Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("/Vistas/VistaUnidadIndividual.fxml"));
+			   Scene sceneIndividual = new Scene(root);
+			   stageIndividual.initStyle( StageStyle.UNDECORATED );
+			   stageIndividual.setScene(sceneIndividual);
+		          
+			   stageIndividual.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}else {
+			
+			stageIndividual.close();
+			stageIndividual=null;
+		}
+
+    }
+    
+
+ 
 	@FXML
 	void volver(ActionEvent event) {
 		try {
@@ -62,6 +90,9 @@ public class ControllerGestionUnidades {
 
 			List<modeloVista.Unidad> unidades = restClient.getAllUnits();
 			for (modeloVista.Unidad ud : unidades) {
+				String imagen="/img/iconos/";
+				String extension=".png";
+				ud.setImagen(imagen+String.valueOf(ud.getIdUnidad())+extension);
 				data.add(ud);
 			
 			}
@@ -87,17 +118,17 @@ public class ControllerGestionUnidades {
 	        private Text name;
 	        private Text price;
 	        private Text tipo;
-	        private Text imagen;
+	        private ImageView imagen;
 	        public CustomListCell() {
 	            super();
 	            name = new Text();
 	            price = new Text();
 	            tipo=new Text();
-	            imagen=new Text();
+	            imagen=new ImageView();
 	            VBox vBox = new VBox(name, price, tipo);
-	           
-	            content = new HBox(new ImageView("/img/"+1+".png"), vBox);
-	            content.setSpacing(15);
+
+	            content = new HBox(imagen, vBox);
+	            content.setSpacing(20);
 	        }
 
 	        @Override
@@ -107,7 +138,8 @@ public class ControllerGestionUnidades {
 	                name.setText(item.getNombre());   
 	                tipo.setText(item.getTipoUnidad().getDescripcion());
 	                price.setText(String.format("%d Puntos", item.getPuntos()));
-	                imagen.setText(String.valueOf(item.getIdUnidad()));
+	                imagen= new ImageView(item.getImagen());
+	                content = new HBox(imagen,new VBox(name, price, tipo));
 	                setGraphic(content);
 	            } else {
 	                setGraphic(null);

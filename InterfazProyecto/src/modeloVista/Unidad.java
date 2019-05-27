@@ -29,6 +29,7 @@ public class Unidad  {
 	private int salvacion;
 	private int puntos;
 	private int poder;
+	private String imagen;
 
 	private TipoUnidad tipoUnidad;
 	@SerializedName("listaArmas")
@@ -52,6 +53,30 @@ public class Unidad  {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public int getHabilidad_ataque() {
+		return habilidad_ataque;
+	}
+
+	public void setHabilidad_ataque(int habilidad_ataque) {
+		this.habilidad_ataque = habilidad_ataque;
+	}
+
+	public int getHabilidad_proyectiles() {
+		return habilidad_proyectiles;
+	}
+
+	public void setHabilidad_proyectiles(int habilidad_proyectiles) {
+		this.habilidad_proyectiles = habilidad_proyectiles;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
 	public int getMovimiento() {
