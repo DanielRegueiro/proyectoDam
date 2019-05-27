@@ -4,6 +4,9 @@ package data;
 
 import data.RestClient;
 import data.RestClientImpl;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -26,10 +29,12 @@ public class ProyectoDamCliente {
             
             List<modeloVista.Unidad> unidades = restClient.getAllUnits();
            
-            for (modeloVista.Unidad ud : unidades) {
-                System.out.println(ud.toString());
-            }
+         
              
+            ObservableList<modeloVista.Unidad> data = FXCollections.observableArrayList();
+            for (modeloVista.Unidad ud : unidades) {
+                data.add(ud);
+            }
             
         } catch (IOException ex) {
             Logger.getLogger(ProyectoDamCliente.class.getName()).log(Level.SEVERE, null, ex);
