@@ -3,6 +3,8 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
@@ -63,6 +65,9 @@ public class UnidadIndividual {
 	private Text textSalvacion;
 
 	@FXML
+	private Button anadir;
+
+	@FXML
 	private ListView<Arma> listaArmas;
 
 	@FXML
@@ -71,7 +76,11 @@ public class UnidadIndividual {
 	@FXML
 	private ListView<Reliquia> listaReliquias;
 
-	void initData(Unidad unidad) {
+	private Unidad unidadLocal;
+	private ControllerGestionUnidades controllerLocal;
+	void initData(Unidad unidad, ControllerGestionUnidades controller) {
+		unidadLocal = unidad;
+		controllerLocal=controller;
 		textMovimiento.setText(String.valueOf(unidad.getMovimiento()));
 		textHabilidadAtaque.setText(String.valueOf(unidad.getHabilidad_ataque()));
 		textHabilidadProyectiles.setText(String.valueOf(unidad.getHabilidad_proyectiles()));
@@ -82,6 +91,7 @@ public class UnidadIndividual {
 		textLiderazgo.setText(String.valueOf(unidad.getLiderazgo()));
 		textSalvacion.setText(String.valueOf(unidad.getSalvacion()));
 		listaArmas.getItems().addAll(unidad.getArmas());
+
 		listaArmas.setCellFactory(new Callback<ListView<modeloVista.Arma>, ListCell<modeloVista.Arma>>() {
 			@Override
 			public ListCell<modeloVista.Arma> call(ListView<modeloVista.Arma> listView) {
@@ -97,16 +107,23 @@ public class UnidadIndividual {
 					}
 				});
 		listaReliquias.getItems().addAll(unidad.getReliquias());
-		listaReliquias
-		.setCellFactory(new Callback<ListView<modeloVista.Reliquia>, ListCell<modeloVista.Reliquia>>() {
+		listaReliquias.setCellFactory(new Callback<ListView<modeloVista.Reliquia>, ListCell<modeloVista.Reliquia>>() {
 			@Override
 			public ListCell<modeloVista.Reliquia> call(ListView<modeloVista.Reliquia> listView) {
 				return new CustomListCellReliquia();
 			}
 		});
-		fotoUnidad = new ImageView("img/unidad/1.png");
-	}
+		fotoUnidad.setImage(new ImageView("img/unidad/"+unidad.getIdUnidad()+".png").getImage());
 
+	}
+	@FXML
+	void anadirUnidad(ActionEvent event) {
+		System.out.println(unidadLocal.getNombre());
+		System.out.println(controllerLocal);
+		
+		controllerLocal.anadirUnidadLista(unidadLocal);
+		
+	}
 	@FXML
 	void initialize() {
 		assert panelDatos != null : "fx:id=\"panelDatos\" was not injected: check your FXML file 'VistaUnidadIndividual.fxml'.";
@@ -140,6 +157,8 @@ public class UnidadIndividual {
 			content.setSpacing(20);
 		}
 
+	
+
 		@Override
 		protected void updateItem(modeloVista.Arma item, boolean empty) {
 			super.updateItem(item, empty);
@@ -153,6 +172,14 @@ public class UnidadIndividual {
 				Text espacio1 = new Text();
 				espacio1.setText("      ");
 				content = new HBox(new VBox(name, price, tipo), new VBox(espacio), new VBox(espacio1, botonEliminar));
+				botonEliminar.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						listaArmas.getItems().remove(item);
+						unidadLocal.getArmas().remove(item);
+					}
+				});
+
 				setGraphic(content);
 			} else {
 				setGraphic(null);
@@ -175,7 +202,7 @@ public class UnidadIndividual {
 		@Override
 		protected void updateItem(modeloVista.Habilidad item, boolean empty) {
 			super.updateItem(item, empty);
-			if (item != null && !empty) { 
+			if (item != null && !empty) {
 				name.setText(item.getDescripcion());
 				content = new HBox(new VBox(name));
 				setGraphic(content);
@@ -184,7 +211,7 @@ public class UnidadIndividual {
 			}
 		}
 	}
-	
+
 	private class CustomListCellReliquia extends ListCell<modeloVista.Reliquia> {
 		private HBox content;
 		private Text name;
@@ -199,7 +226,7 @@ public class UnidadIndividual {
 		@Override
 		protected void updateItem(modeloVista.Reliquia item, boolean empty) {
 			super.updateItem(item, empty);
-			if (item != null && !empty) { 
+			if (item != null && !empty) {
 				name.setText(item.getDescripcion());
 				content = new HBox(new VBox(name));
 				setGraphic(content);

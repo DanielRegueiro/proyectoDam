@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import modeloVista.Lista;
 
 public class ControllerPantallaSeleccionListas {
 
@@ -32,7 +33,7 @@ public class ControllerPantallaSeleccionListas {
     private Button botonImprimir; // Value injected by FXMLLoader
 
     @FXML // fx:id="listas"
-    private ListView<?> listas; // Value injected by FXMLLoader
+    private ListView<Lista> listas; // Value injected by FXMLLoader
 
     @FXML
     void crearLista(ActionEvent event) {

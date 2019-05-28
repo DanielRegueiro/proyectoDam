@@ -6,7 +6,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerGestionUnidades">
    <children>
@@ -30,11 +29,7 @@
             <Reflection />
          </effect>
       </Button>
-      <Pane layoutX="14.0" layoutY="14.0" onMouseClicked="#abrirUnidad" prefHeight="479.0" prefWidth="383.0">
-         <children>
-            <ListView fx:id="lista" onMouseClicked="#abrirUnidad" opacity="0.74" prefHeight="478.0" prefWidth="383.0" />
-         </children>
-      </Pane>
-      <Pane layoutX="416.0" layoutY="14.0" opacity="0.33" prefHeight="379.0" prefWidth="578.0" style="-fx-background-color: #ffffff;" />
+      <ListView fx:id="lista" layoutX="14.0" layoutY="14.0" onMouseClicked="#abrirUnidad" opacity="0.85" prefHeight="478.0" prefWidth="383.0" />
+      <ListView fx:id="listaUnidadesSeleccionadas" layoutX="410.0" layoutY="14.0" opacity="0.85" prefHeight="478.0" prefWidth="579.0" />
    </children>
 </AnchorPane>

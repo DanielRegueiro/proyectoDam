@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import modeloVista.Lista;
 
 public class PantallaImpresionListas {
 
@@ -22,7 +23,7 @@ public class PantallaImpresionListas {
     private Button botonVolver;
     
     @FXML
-    private ListView<?> listas;
+    private ListView<Lista> listas;
 	@FXML
 	private Button botonCerrar;
 
