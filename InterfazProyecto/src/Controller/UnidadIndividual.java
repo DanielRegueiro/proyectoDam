@@ -119,11 +119,10 @@ public class UnidadIndividual {
 	@FXML
 	void anadirUnidad(ActionEvent event) {
 		System.out.println(unidadLocal.getNombre());
-		System.out.println(controllerLocal);
-		
-		controllerLocal.anadirUnidadLista(unidadLocal);
-		
+		System.out.println(controllerLocal);	
+		controllerLocal.anadirUnidadLista(unidadLocal);	
 	}
+	
 	@FXML
 	void initialize() {
 		assert panelDatos != null : "fx:id=\"panelDatos\" was not injected: check your FXML file 'VistaUnidadIndividual.fxml'.";

@@ -16,7 +16,6 @@
 <fullyQualifiedTypeName name="javafx.collections.FXCollections"/>
 <fullyQualifiedTypeName name="javafx.scene.input.MouseEvent"/>
 <fullyQualifiedTypeName name="javafx.scene.layout.VBox"/>
-<fullyQualifiedTypeName name="modeloVista.Unidad"/>
 <fullyQualifiedTypeName name="modeloVista.Arma"/>
 <fullyQualifiedTypeName name="modeloVista.Habilidad"/>
 <fullyQualifiedTypeName name="modeloVista.Reliquia"/>
@@ -24,4 +23,9 @@
 <fullyQualifiedTypeName name="javafx.scene.control.Button"/>
 <fullyQualifiedTypeName name="javafx.event.EventHandler"/>
 <fullyQualifiedTypeName name="javafx.event.ActionEvent"/>
+<fullyQualifiedTypeName name="modeloVista.Lista"/>
+<fullyQualifiedTypeName name="controller.UnidadIndividual"/>
+<fullyQualifiedTypeName name="modeloVista.Unidad"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="javafx.scene.text.Font"/>
 </qualifiedTypeNameHistroy>

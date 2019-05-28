@@ -20,9 +20,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import modeloVista.Unidad;
 
@@ -43,7 +43,7 @@ public class ControllerGestionUnidades {
 	private Button botonVolver;
 	private Stage stageIndividual;
 	private UnidadIndividual controller;
-	private ObservableList<modeloVista.Unidad> data2;
+
 	@FXML
 	void abrirUnidad(MouseEvent event) {
 		if (stageIndividual == null) {
@@ -72,9 +72,9 @@ public class ControllerGestionUnidades {
 	}
 
 	public void anadirUnidadLista(Unidad unidad) {
-		data2.add(unidad);
-		listaUnidadesSeleccionadas.getItems().addAll(data2);
-		System.out.println(listaUnidadesSeleccionadas.getItems().get(0));
+		
+		listaUnidadesSeleccionadas.getItems().add(unidad);
+	
 		listaUnidadesSeleccionadas.refresh();
 		
 	}
@@ -100,15 +100,13 @@ public class ControllerGestionUnidades {
 		assert botonVolver != null : "fx:id=\"botonVolver\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
 		RestClientImpl restClient = new RestClientImpl();
 		ObservableList<modeloVista.Unidad> data = FXCollections.observableArrayList();
-		data2 = FXCollections.observableArrayList();
-		listaUnidadesSeleccionadas=new ListView<Unidad>();
 		try {
 
 			List<modeloVista.Unidad> unidades = restClient.getAllUnits();
 			for (modeloVista.Unidad ud : unidades) {
 				String imagen = "/img/iconos/";
 				String extension = ".png";
-				ud.setImagen(imagen + String.valueOf(ud.getIdUnidad()) + extension);
+				ud.setImagen(imagen + String.valueOf(ud.getTipoUnidad().getIdTipoUnidad()) + extension);
 				data.add(ud);
 
 			}
@@ -118,13 +116,14 @@ public class ControllerGestionUnidades {
 		}
 
 		lista.getItems().addAll(data);
-		listaUnidadesSeleccionadas.getItems().addAll(data2);
+		
 		listaUnidadesSeleccionadas.setCellFactory(new Callback<ListView<modeloVista.Unidad>, ListCell<modeloVista.Unidad>>() {
 			@Override
 			public ListCell<modeloVista.Unidad> call(ListView<modeloVista.Unidad> listView) {
 				return new CustomListCell();
 			}
 		});
+		
 		lista.setCellFactory(new Callback<ListView<modeloVista.Unidad>, ListCell<modeloVista.Unidad>>() {
 			@Override
 			public ListCell<modeloVista.Unidad> call(ListView<modeloVista.Unidad> listView) {
@@ -140,17 +139,19 @@ public class ControllerGestionUnidades {
 		private Text price;
 		private Text tipo;
 		private ImageView imagen;
-
+		private Text separador;
 		public CustomListCell() {
 			super();
 			name = new Text();
 			price = new Text();
 			tipo = new Text();
+			separador=new Text("      ");
+			
 			imagen = new ImageView();
 			VBox vBox = new VBox(name, price, tipo);
-
-			content = new HBox(imagen, vBox);
-			content.setSpacing(20);
+			VBox vbox2=new VBox(separador);
+			content = new HBox(imagen, vbox2,vBox);
+			content.setSpacing(100);
 		}
 
 		@Override
@@ -161,7 +162,7 @@ public class ControllerGestionUnidades {
 				tipo.setText(item.getTipoUnidad().getDescripcion());
 				price.setText(String.format("%d Puntos", item.getPuntos()));
 				imagen = new ImageView(item.getImagen());
-				content = new HBox(imagen, new VBox(name, price, tipo));
+				content = new HBox(imagen,separador, new VBox(name, price, tipo));
 				setGraphic(content);
 			} else {
 				setGraphic(null);
