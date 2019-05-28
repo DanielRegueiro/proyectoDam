@@ -30,6 +30,8 @@ public class Unidad  {
 	private int puntos;
 	private int poder;
 	private String imagen;
+	private String imagenUnidad;
+	
 
 	private TipoUnidad tipoUnidad;
 	@SerializedName("listaArmas")
@@ -38,6 +40,14 @@ public class Unidad  {
 	private List<Habilidad> habilidades;
 
 	private List<Reliquia> reliquias;
+	
+	public String getImagenUnidad() {
+		return imagenUnidad;
+	}
+
+	public void setImagenUnidad(String imagenUnidad) {
+		this.imagenUnidad = imagenUnidad;
+	}
 
 	public int getIdUnidad() {
 		return idUnidad;

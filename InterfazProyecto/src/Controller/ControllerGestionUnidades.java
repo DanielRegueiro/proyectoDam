@@ -29,6 +29,9 @@ public class ControllerGestionUnidades {
 
 	@FXML
 	private Button botonContinuar;
+	
+
+	
 	@FXML
 	private ListView<modeloVista.Unidad> lista;
 
@@ -47,12 +50,11 @@ public class ControllerGestionUnidades {
 			root = new FXMLLoader(getClass().getResource("/Vistas/VistaUnidadIndividual.fxml"));
 			
 			   Scene sceneIndividual = new Scene(root.load());
-			   stageIndividual.initStyle( StageStyle.UNDECORATED );
+			 
 			   stageIndividual.setScene(sceneIndividual);
 			   UnidadIndividual controller = 
 					    root.< UnidadIndividual>getController();
-					  controller.initData(lista.getItems().get(1));
-
+					  controller.initData(lista.getItems().get( lista.getSelectionModel().getSelectedIndex()));
 			   stageIndividual.show();
 			  
 		} catch (IOException e) {
