@@ -14,6 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import modeloVista.Arma;
 import modeloVista.Habilidad;
@@ -118,9 +119,10 @@ public class UnidadIndividual {
 	}
 	@FXML
 	void anadirUnidad(ActionEvent event) {
-		System.out.println(unidadLocal.getNombre());
-		System.out.println(controllerLocal);	
+	
 		controllerLocal.anadirUnidadLista(unidadLocal);	
+		Stage stage = (Stage) anadir.getScene().getWindow();
+		stage.close();
 	}
 	
 	@FXML

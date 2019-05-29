@@ -46,7 +46,7 @@ public class ControllerGestionUnidades {
 
 	@FXML
 	void abrirUnidad(MouseEvent event) {
-		if (stageIndividual == null) {
+		
 			stageIndividual = new Stage();
 			FXMLLoader root;
 			try {
@@ -63,11 +63,7 @@ public class ControllerGestionUnidades {
 
 				Logger.getLogger(FXMLControllerSeleccionEjercito.class.getName()).log(Level.SEVERE, null, e);
 			}
-		} else {
-
-			stageIndividual.close();
-			stageIndividual = null;
-		}
+		
 
 	}
 
@@ -117,13 +113,9 @@ public class ControllerGestionUnidades {
 
 		lista.getItems().addAll(data);
 		
-		listaUnidadesSeleccionadas.setCellFactory(new Callback<ListView<modeloVista.Unidad>, ListCell<modeloVista.Unidad>>() {
-			@Override
-			public ListCell<modeloVista.Unidad> call(ListView<modeloVista.Unidad> listView) {
-				return new CustomListCell();
-			}
-		});
-		
+		//asignacion de customCell con metodo lamda
+		listaUnidadesSeleccionadas.setCellFactory(unidadesListView -> new ControllerCustomCellUnidad());
+		//asignacion de customCell a la manera clasica
 		lista.setCellFactory(new Callback<ListView<modeloVista.Unidad>, ListCell<modeloVista.Unidad>>() {
 			@Override
 			public ListCell<modeloVista.Unidad> call(ListView<modeloVista.Unidad> listView) {
@@ -169,4 +161,5 @@ public class ControllerGestionUnidades {
 			}
 		}
 	}
+	
 }

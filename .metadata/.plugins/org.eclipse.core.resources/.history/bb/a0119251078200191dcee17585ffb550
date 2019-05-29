@@ -1,0 +1,133 @@
+package controller;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ListCell;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
+
+public class ControllerCustomCellUnidad extends ListCell<modeloVista.Unidad> {
+
+	@FXML
+	private ResourceBundle resources;
+
+	@FXML
+	private URL location;
+
+	@FXML
+	private ImageView imagen;
+
+	@FXML
+	private Text nombreUnidad;
+
+	@FXML
+	private AnchorPane panel;
+
+	@FXML
+	private GridPane panelDatos;
+
+	@FXML
+	private Text textMovimiento;
+
+	@FXML
+	private Text textHabilidadAtaque;
+
+	@FXML
+	private Text textHabilidadProyectiles;
+
+	@FXML
+	private Text textFuerza;
+
+	@FXML
+	private Text textResistencia;
+
+	@FXML
+	private Text textHeridas;
+
+	@FXML
+	private Text textAtaques;
+
+	@FXML
+	private Text textLiderazgo;
+
+	@FXML
+	private Text textSalvacion;
+
+	@FXML
+	private Text puntos;
+	
+	private FXMLLoader mLLoader;
+
+
+
+	public ControllerCustomCellUnidad() {
+		super();
+		
+		
+		this.nombreUnidad = new Text();
+		this.panel =new AnchorPane();
+		this.panelDatos = new GridPane();
+		this.textMovimiento = new Text();
+		this.textHabilidadAtaque = new Text();
+		this.textHabilidadProyectiles = new Text();
+		this.textFuerza = new Text();
+		this.textResistencia = new Text();
+		this.textHeridas = new Text();
+		this.textAtaques = new Text();
+		this.textLiderazgo = new Text();
+		this.textSalvacion = new Text();
+		this.puntos = new Text();
+	}
+
+
+
+	@Override
+	protected void updateItem(modeloVista.Unidad item, boolean empty) {
+		super.updateItem(item, empty);
+		if (item != null && !empty) {
+			
+			if (mLLoader == null) {
+				 mLLoader = new FXMLLoader(getClass().getResource("/Vistas/CustomCellUnidades.fxml"));
+				 mLLoader.setController(this);
+
+				try {
+					
+					mLLoader.load();
+				
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				
+				imagen = new ImageView(item.getImagen());
+				nombreUnidad=new Text(item.getNombre());
+				
+				System.out.println(nombreUnidad.getText());
+				
+				textMovimiento=new Text(String.valueOf(item.getMovimiento()));
+				textHabilidadAtaque=new Text(String.valueOf(item.getHabilidad_ataque()));
+				textHabilidadProyectiles=new Text(String.valueOf(item.getHabilidad_proyectiles()));
+				textFuerza=new Text(String.valueOf(item.getFuerza()));
+				textResistencia=new Text(String.valueOf(item.getResistencia()));
+				textHeridas=new Text(String.valueOf(item.getHeridas()));
+				textAtaques=new Text(String.valueOf(item.getAtaques()));
+				textLiderazgo=new Text(String.valueOf(item.getLiderazgo()));
+				textSalvacion=new Text(String.valueOf(item.getSalvacion()));
+				puntos=new Text(String.valueOf(item.getPuntos()));
+				setText(null);
+				setGraphic(panel);
+				mLLoader = null;
+				
+			} else {
+				setText(null);
+				setGraphic(null);
+			}
+		}
+	}
+}
