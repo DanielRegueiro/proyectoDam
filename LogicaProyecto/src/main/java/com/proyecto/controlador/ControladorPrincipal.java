@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.exceptionscontrol.UnidadNotFoundException;
 import com.proyecto.modelo.Unidad;
+import com.proyecto.modelo.usuario.Usuario;
 import com.proyecto.service.TropasService;
+import com.proyecto.service.UsuarioService;
 
 @RestController
 @RequestMapping(value = "/principal", produces = "application/json")
@@ -19,6 +21,9 @@ public class ControladorPrincipal {
 
 	@Autowired
 	private TropasService servicio;
+	
+	@Autowired
+	private UsuarioService servicioUsuarios;
 
 	@GetMapping(value = "/getall")
 	public List<Unidad> getAll() {
@@ -26,6 +31,7 @@ public class ControladorPrincipal {
 		return servicio.listarUnidades();
 	}
 
+	
 	@PostMapping(value = "/buscar")
 	public Unidad getUnidad(@RequestParam("idUnidad") String idUnidad) {
 		try {
@@ -37,5 +43,15 @@ public class ControladorPrincipal {
 		}
 		
 	}
-
+	@PostMapping(value = "/buscarusuario")
+	public Usuario getUsuario(@RequestParam("nombre") String nombre) {
+		try {
+		
+			return servicioUsuarios.findByNombre(nombre);
+		}catch(UnidadNotFoundException e) {
+			e.getMessage();
+			return null;
+		}
+		
+	}
 }

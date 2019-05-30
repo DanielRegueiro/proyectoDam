@@ -1,0 +1,22 @@
+package com.proyecto.modelo.usuario;
+
+public class Usuario {
+	
+private String nombre;
+private String contasena;
+public String getNombre() {
+	return nombre;
+}
+public void setNombre(String nombre) {
+	this.nombre = nombre;
+}
+public String getContasena() {
+	return contasena;
+}
+public void setContasena(String contasena) {
+	this.contasena = contasena;
+}
+
+
+
+}

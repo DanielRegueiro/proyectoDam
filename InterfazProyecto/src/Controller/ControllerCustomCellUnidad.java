@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.ListCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -34,12 +35,15 @@ public class ControllerCustomCellUnidad extends ListCell<modeloVista.Unidad> {
 			
 			VBox v=new VBox(nombreUnidad,tipoUnidad);
 			v.setSpacing(10);
-			HBox p=new HBox(v,puntos);
-			p.getChildren().
-			p.setSpacing(120);			
-			HBox h=new HBox(imagen,p);
-			h.setSpacing(20);
+			HBox p=new HBox(v);
+			p.setSpacing(10);
 			
+			HBox r=new HBox(puntos);
+		
+			HBox h=new HBox(imagen,p,r);
+
+			h.setSpacing(20);
+		
 			
 			setText(null);
 			setGraphic(h);
