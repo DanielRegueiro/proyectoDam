@@ -114,7 +114,7 @@ public class ControllerGestionUnidades {
 		lista.getItems().addAll(data);
 		
 		//asignacion de customCell con metodo lamda
-		listaUnidadesSeleccionadas.setCellFactory(unidadesListView -> new ControllerCustomCellUnidad(listaUnidadesSeleccionadas));
+		listaUnidadesSeleccionadas.setCellFactory(unidadesListView -> new ControllerCustomCellUnidad());
 		//asignacion de customCell a la manera clasica
 		lista.setCellFactory(new Callback<ListView<modeloVista.Unidad>, ListCell<modeloVista.Unidad>>() {
 			@Override

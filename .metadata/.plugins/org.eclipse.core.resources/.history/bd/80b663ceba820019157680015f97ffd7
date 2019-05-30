@@ -19,7 +19,4 @@ public interface RestClient {
     @GET(NetKeys.Paths.GET_UNIT)
     Call<Unidad> getUnit(@Query(NetKeys.QueriesParams.ID) String idUnidad);
     
-    
-    
-    
 }
