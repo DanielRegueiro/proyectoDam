@@ -1,0 +1,12 @@
+package com.proyecto.modelo.usuario;
+
+import java.util.ArrayList;
+
+public class Lista {
+	
+String nombre;
+
+
+	
+	
+}

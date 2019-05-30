@@ -32,7 +32,7 @@ public class ControladorPrincipal {
 	}
 
 	
-	@PostMapping(value = "/buscar")
+	@GetMapping(value = "/buscar")
 	public Unidad getUnidad(@RequestParam("idUnidad") String idUnidad) {
 		try {
 			
@@ -43,10 +43,11 @@ public class ControladorPrincipal {
 		}
 		
 	}
-	@PostMapping(value = "/buscarusuario")
+	@GetMapping(value = "/buscarusuario")
 	public Usuario getUsuario(@RequestParam("nombre") String nombre) {
+		System.out.println("dentro del controlador de la api");
 		try {
-		
+			
 			return servicioUsuarios.findByNombre(nombre);
 		}catch(UnidadNotFoundException e) {
 			e.getMessage();

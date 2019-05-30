@@ -12,6 +12,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import controller.FXMLControllerLogin;
+import data.RestClient;
+import data.RestClientImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +25,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import modeloVista.Unidad;
+import modeloVista.Usuario;
 
 /**
  *
@@ -73,7 +77,19 @@ public class FXMLControllerLogin implements Initializable {
 
 	@FXML
 	private void handleButtonAction(ActionEvent event) {
-
+		RestClientImpl restClient = new RestClientImpl();
+		
+		try {
+		System.out.println("antes de la llamada a retrofit");
+		Usuario usuario=	restClient.getUsuario(textUsuario.getText());
+			System.out.println(usuario.getNombre());
+			System.out.println(usuario.getContasena());
+			System.out.println(usuario.getListas().get(0).getNombre());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/Pantallalogos.fxml"));
 			Parent root1 = (Parent) fxmlLoader.load();
