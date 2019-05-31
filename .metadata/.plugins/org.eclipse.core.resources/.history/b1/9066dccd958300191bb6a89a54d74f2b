@@ -1,0 +1,58 @@
+package com.proyecto.modelo.usuario;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.proyecto.modelo.Arma;
+
+@Entity
+@Table(name = "unidadessel")
+public class UnidadesSel {
+	@Id
+	@Column(name = "id")
+	private long id;
+	
+	private long idUnidad;
+	
+	@OneToMany (cascade = {CascadeType.ALL})
+	private List<Arma> armasSel;
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public long getIdUnidad() {
+		return idUnidad;
+	}
+
+	public void setIdUnidad(long idUnidad) {
+		this.idUnidad = idUnidad;
+	}
+
+	public List<Arma> getArmasSel() {
+		return armasSel;
+	}
+
+	public void setArmasSel(List<Arma> armasSel) {
+		this.armasSel = armasSel;
+	}
+	
+	
+	
+	
+	
+	
+	
+}

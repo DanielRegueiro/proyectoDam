@@ -1,0 +1,15 @@
+package com.proyecto.modelo.usuario;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "unidadessel")
+public class UnidadesSel {
+
+	
+	
+	
+	
+	
+}

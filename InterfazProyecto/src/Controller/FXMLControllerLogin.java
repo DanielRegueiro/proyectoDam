@@ -85,6 +85,7 @@ public class FXMLControllerLogin implements Initializable {
 			System.out.println(usuario.getNombre());
 			System.out.println(usuario.getContasena());
 			System.out.println(usuario.getListas().get(0).getNombre());
+			System.out.println(usuario.getListas().get(1).getUnidadesSel().get(0).getIdUnidad());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

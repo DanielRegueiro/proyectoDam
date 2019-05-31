@@ -23,7 +23,6 @@
 <fullyQualifiedTypeName name="javafx.event.ActionEvent"/>
 <fullyQualifiedTypeName name="modeloVista.Lista"/>
 <fullyQualifiedTypeName name="controller.UnidadIndividual"/>
-<fullyQualifiedTypeName name="modeloVista.Unidad"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="javafx.fxml.FXMLLoader"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
@@ -32,4 +31,22 @@
 <fullyQualifiedTypeName name="javafx.scene.layout.VBox"/>
 <fullyQualifiedTypeName name="javafx.scene.text.Font"/>
 <fullyQualifiedTypeName name="javafx.scene.layout.HBox"/>
+<fullyQualifiedTypeName name="javafx.geometry.Pos"/>
+<fullyQualifiedTypeName name="com.proyecto.repository.UsuarioRepository"/>
+<fullyQualifiedTypeName name="org.springframework.data.repository.CrudRepository"/>
+<fullyQualifiedTypeName name="com.proyecto.service.UsuarioService"/>
+<fullyQualifiedTypeName name="com.proyecto.modelo.usuario.Usuario"/>
+<fullyQualifiedTypeName name="data.RestClient"/>
+<fullyQualifiedTypeName name="modeloVista.Usuario"/>
+<fullyQualifiedTypeName name="retrofit2.http.POST"/>
+<fullyQualifiedTypeName name="modeloVista.Unidad"/>
+<fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
+<fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
+<fullyQualifiedTypeName name="com.google.gson.annotations.Expose"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
+<fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
+<fullyQualifiedTypeName name="org.springframework.http.MediaType"/>
+<fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
+<fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>

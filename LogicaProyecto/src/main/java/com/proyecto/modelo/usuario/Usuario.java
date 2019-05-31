@@ -2,6 +2,7 @@ package com.proyecto.modelo.usuario;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,9 +24,8 @@ public class Usuario {
 	@Column(name = "contasena")
 	private String contasena;
 	
-	@OneToMany 
-	@JoinColumn(name="id_lista") 
-	private List<Lista> listas;
+	@OneToMany (cascade = {CascadeType.ALL})
+	private List<Lista> lista;
 
 	public String getNombre() {
 		return nombre;
@@ -52,11 +52,11 @@ public class Usuario {
 	}
 
 	public List<Lista> getListas() {
-		return listas;
+		return lista;
 	}
 
 	public void setListas(List<Lista> listas) {
-		this.listas = listas;
+		this.lista = listas;
 	}
 
 	

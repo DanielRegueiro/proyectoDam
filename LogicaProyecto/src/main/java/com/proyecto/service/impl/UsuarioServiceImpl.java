@@ -31,7 +31,7 @@ public UsuarioServiceImpl(UsuarioRepository usuarioRepository) {
 
 	@Override
 	public Usuario findByNombre(String nombre) {
-		 System.out.println("dentro del metodo de busqueda en la api");
+		 
 			final Usuario updated;
 			final Optional<Usuario> result = usuarioRepository.findByNombre(nombre);
 			
@@ -40,6 +40,12 @@ public UsuarioServiceImpl(UsuarioRepository usuarioRepository) {
 			}
 			updated = result.get();
 			return updated;
+	}
+
+	@Override
+	public void setUsuario(Usuario usuario) {
+		usuarioRepository.save(usuario);
+		
 	}
 
 }
