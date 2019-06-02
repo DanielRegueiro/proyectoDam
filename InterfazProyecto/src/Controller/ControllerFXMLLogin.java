@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import controller.ControllerFXMLLogin;
+import data.LogicaPrincipal;
 import data.RestClient;
 import data.RestClientImpl;
 import javafx.event.ActionEvent;
@@ -82,24 +83,13 @@ public class ControllerFXMLLogin implements Initializable {
 	@FXML
 	private void handleButtonAction(ActionEvent event) {
 
-		RestClientImpl restClient = new RestClientImpl();
+		LogicaPrincipal.getInstance().recuperarUsuario(textUsuario.getText());
+		usuario = LogicaPrincipal.getInstance().getUser();
 
-		try {
-
-			//usuario = restClient.getUsuario(textUsuario.getText());
-				
-			Usuario usuario=new Usuario();
-			usuario.setNombre(textUsuario.getText());
-			usuario.setContasena(textContrasena.getText());
-			restClient.postUsuario(usuario);
-
-		} catch (IOException e) {
-			// TODO Implementar registro nuevo usuario
-			Logger.getLogger(ControllerFXMLLogin.class.getName()).log(Level.SEVERE, null, e);
-		}
-		if (usuario != null) {
+		if (usuario.getNombre().equals(textUsuario.getText())
+				&& usuario.getContasena().equals(textContrasena.getText())) {
 			try {
-				System.out.println(usuario.getNombre());
+
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/Pantallalogos.fxml"));
 				Parent root1 = (Parent) fxmlLoader.load();
 				Stage stage = new Stage();
@@ -113,8 +103,26 @@ public class ControllerFXMLLogin implements Initializable {
 				Logger.getLogger(ControllerFXMLLogin.class.getName()).log(Level.SEVERE, null, ex);
 			}
 			Stage stagePrincipal = (Stage) buttonLogin.getScene().getWindow();
-
 			stagePrincipal.close();
+		} else {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/VistaDialogoAlerta.fxml"));
+
+			try {
+				Parent root1 = (Parent) fxmlLoader.load();
+				Stage stage = new Stage();
+				ControllerDialogoAlerta controller = fxmlLoader.<ControllerDialogoAlerta>getController();
+				controller.cambiarTexto("La contraseña no es correcta");
+				stage.setScene(new Scene(root1));
+				stage.setResizable(false);
+				stage.initStyle(StageStyle.UNDECORATED);
+				stage.centerOnScreen();
+				stage.show();
+
+			} catch (IOException e) {
+
+				e.printStackTrace();
+			}
+
 		}
 	}
 

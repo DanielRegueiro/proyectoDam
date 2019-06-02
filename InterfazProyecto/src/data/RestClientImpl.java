@@ -47,10 +47,10 @@ public class RestClientImpl {
         Call<Unidad> call = this.restClient.getUnit(idUnidad);
         return call.execute().body();
     }
+    
+    
     public Usuario getUsuario(String nombre) throws IOException {
-    	System.out.println("dentro de retrofit, antes de hacer la llamada");
         Call<Usuario> call = this.restClient.getUsuario(nombre);
-        System.out.println("dentro de retrofit, despues de hacer la llamada");
         return call.execute().body();
     }
     

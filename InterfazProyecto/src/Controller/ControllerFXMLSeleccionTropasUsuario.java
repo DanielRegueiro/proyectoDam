@@ -10,6 +10,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -25,6 +27,12 @@ public class ControllerFXMLSeleccionTropasUsuario {
 
     @FXML
     private Button botonTodas;
+
+    @FXML
+    private TextField textoNombre;
+
+    @FXML
+    private ComboBox<?> comboDestacamento;
 
     @FXML
     void abrirPropias(ActionEvent event) {

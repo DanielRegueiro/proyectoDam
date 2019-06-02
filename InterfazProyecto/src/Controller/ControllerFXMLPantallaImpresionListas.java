@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,6 +15,7 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import modeloVista.Lista;
 
+
 public class ControllerFXMLPantallaImpresionListas {
 
     @FXML
@@ -21,7 +23,11 @@ public class ControllerFXMLPantallaImpresionListas {
     
     @FXML
     private Button botonVolver;
-    
+
+    @FXML
+    private Button botonNueva;
+
+   
     @FXML
     private ListView<Lista> listas;
 	@FXML
@@ -32,6 +38,9 @@ public class ControllerFXMLPantallaImpresionListas {
 		Stage stage = (Stage) botonCerrar.getScene().getWindow();
 		stage.close();
 	}
+	
+	
+	
     @FXML
     void crearLista(ActionEvent event) {
 
@@ -51,5 +60,5 @@ public class ControllerFXMLPantallaImpresionListas {
 			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
 		}
     }
-
+  
 }

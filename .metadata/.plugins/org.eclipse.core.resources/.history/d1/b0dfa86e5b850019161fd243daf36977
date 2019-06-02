@@ -1,0 +1,51 @@
+package data;
+
+import java.io.IOException;
+
+import modeloVista.Usuario;
+
+public class LogicaPrincipal {
+	  private static LogicaPrincipal gestor;
+	  private Usuario usuario;
+	private RestClientImpl restClient;
+	  
+	  
+	  
+	private LogicaPrincipal() {
+		restClient = new RestClientImpl();
+		this.usuario=new Usuario();
+    	
+	    }
+
+	    private synchronized static void createInstance() {
+	        if (gestor == null) {
+	            gestor = new LogicaPrincipal(); //creauna instance para llamar solo a un objeto de esta clase desde cualquier jdialog
+	        }
+	    }
+
+	    public static LogicaPrincipal getInstance() {
+	        if (gestor == null) {
+	            createInstance();
+	        }
+	        return gestor;
+	    }
+	    
+	    
+	    public void recuperarUsuario(String nombre) { 
+	  
+
+	    		try {
+					this.usuario=restClient.getUsuario(nombre);
+				} catch (IOException e) {
+	System.out.println("no se a recuperado ningun usuario");
+				}
+
+	    }
+	    
+	    public Usuario getUser() {
+	    	
+	    	return usuario;
+	    }
+	    
+	    
+}

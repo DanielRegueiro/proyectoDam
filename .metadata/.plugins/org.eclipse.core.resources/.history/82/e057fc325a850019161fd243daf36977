@@ -1,0 +1,49 @@
+package data;
+
+import modeloVista.Usuario;
+
+public class LogicaPrincipal {
+	  private static LogicaPrincipal gestor;
+	  private Usuario usuario;
+	private RestClientImpl restClient;
+	  
+	  
+	  
+	private LogicaPrincipal() {
+		restClient = new RestClientImpl();
+    	
+	    }
+
+	    private synchronized static void createInstance() {
+	        if (gestor == null) {
+	            gestor = new LogicaPrincipal(); //creauna instance para llamar solo a un objeto de esta clase desde cualquier jdialog
+	        }
+	    }
+
+	    public static LogicaPrincipal getInstance() {
+	        if (gestor == null) {
+	            createInstance();
+	        }
+	        return gestor;
+	    }
+	    
+	    
+	    public boolean recuperarUsuario(String nombre) { 
+	    	try {
+	    		System.out.println("nombre de la variable"+nombre);
+	    		this.usuario=restClient.getUsuario(nombre);
+	    		System.out.println("nombre del usuario"+usuario.getNombre());
+	    		return true;
+	    		
+	    	}catch (Exception e) {
+				return false;
+			}
+	    }
+	    
+	    public Usuario getUser() {
+	    	
+	    	return usuario;
+	    }
+	    
+	    
+}

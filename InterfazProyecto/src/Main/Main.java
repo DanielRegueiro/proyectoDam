@@ -5,6 +5,7 @@
  */
 package Main;
 
+import data.LogicaPrincipal;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,7 +19,7 @@ import javafx.stage.StageStyle;
  * @author daniel
  */
 public class Main extends Application {
-    
+   
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/Vistas/VistaLogin.fxml"));
