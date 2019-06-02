@@ -51,7 +51,7 @@ public class ControllerRegistro {
 			stage.show();
 
 		} catch (IOException ex) {
-			Logger.getLogger(FXMLControllerLogin.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ControllerFXMLLogin.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		Stage stage2 = (Stage) buttonRegistrarse.getScene().getWindow();
 

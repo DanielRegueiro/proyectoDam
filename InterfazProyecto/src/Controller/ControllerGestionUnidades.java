@@ -42,7 +42,7 @@ public class ControllerGestionUnidades {
 	@FXML
 	private Button botonVolver;
 	private Stage stageIndividual;
-	private UnidadIndividual controller;
+	private ControllerFXMLUnidadIndividual controller;
 
 	@FXML
 	void abrirUnidad(MouseEvent event) {
@@ -55,13 +55,13 @@ public class ControllerGestionUnidades {
 				Scene sceneIndividual = new Scene(root.load());
 				
 				stageIndividual.setScene(sceneIndividual);
-				controller = root.<UnidadIndividual>getController();
+				controller = root.<ControllerFXMLUnidadIndividual>getController();
 				controller.initData(lista.getItems().get(lista.getSelectionModel().getSelectedIndex()),this);
 				stageIndividual.show();
 
 			} catch (IOException e) {
 
-				Logger.getLogger(FXMLControllerSeleccionEjercito.class.getName()).log(Level.SEVERE, null, e);
+				Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, e);
 			}
 		
 
@@ -84,7 +84,7 @@ public class ControllerGestionUnidades {
 			stage.setScene(new Scene(root3));
 			stage.setResizable(false);
 		} catch (IOException ex) {
-			Logger.getLogger(FXMLControllerSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
 		}
 
 	}

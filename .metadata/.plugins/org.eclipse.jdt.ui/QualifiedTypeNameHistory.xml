@@ -21,9 +21,7 @@
 <fullyQualifiedTypeName name="javafx.scene.control.Button"/>
 <fullyQualifiedTypeName name="javafx.event.EventHandler"/>
 <fullyQualifiedTypeName name="javafx.event.ActionEvent"/>
-<fullyQualifiedTypeName name="modeloVista.Lista"/>
 <fullyQualifiedTypeName name="controller.UnidadIndividual"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="javafx.fxml.FXMLLoader"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="javafx.scene.layout.GridPane"/>
@@ -49,4 +47,12 @@
 <fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
 <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
 <fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.proyecto.modelo.Unidad"/>
+<fullyQualifiedTypeName name="com.proyecto.modelo.Arma"/>
+<fullyQualifiedTypeName name="retrofit2.http.Body"/>
+<fullyQualifiedTypeName name="modeloVista.Lista"/>
+<fullyQualifiedTypeName name="modeloVista.UnidadesSel"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="retrofit2.http.Field"/>
+<fullyQualifiedTypeName name="retrofit2.http.PUT"/>
 </qualifiedTypeNameHistroy>

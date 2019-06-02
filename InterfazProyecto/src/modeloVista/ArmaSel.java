@@ -1,15 +1,20 @@
 package modeloVista;
 
 public class ArmaSel {
-	private long id;
+	private String id;
 	
 	private int numeroIdArma;
 
-	public long getId() {
+	public ArmaSel(long id) {
+		
+		this.id = "";
+	}
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

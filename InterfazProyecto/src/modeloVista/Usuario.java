@@ -1,11 +1,13 @@
 package modeloVista;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Usuario {
+	private String id;
 	@SerializedName("nombre")
 	@Expose
 	private String nombre;
@@ -13,6 +15,19 @@ public class Usuario {
 	@Expose
 	private String contasena;
 	private List<Lista> listas;
+
+	public Usuario() {
+	this.id="";
+	this.listas=new ArrayList<Lista>();
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public List<Lista> getListas() {
 		return listas;

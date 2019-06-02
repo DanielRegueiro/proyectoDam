@@ -63,6 +63,7 @@ public class ControladorPrincipal {
 	public String grabar(@RequestBody Usuario usuario) {
 
 		servicioUsuarios.setUsuario(usuario);
+	
 		return "OK";
 	}
 }

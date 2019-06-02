@@ -49,7 +49,7 @@ try {
 			stage.show();
 
 		} catch (IOException ex) {
-			Logger.getLogger(FXMLControllerLogin.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ControllerFXMLLogin.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		Stage stagePrincipal = (Stage) botonNueva.getScene().getWindow();
 
@@ -67,7 +67,7 @@ try {
 	
 
 		} catch (IOException ex) {
-			Logger.getLogger(FXMLControllerSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
 		}
     }
 
@@ -82,7 +82,7 @@ try {
     	
 
     		} catch (IOException ex) {
-    			Logger.getLogger(FXMLControllerSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
+    			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
     		}
     }
 

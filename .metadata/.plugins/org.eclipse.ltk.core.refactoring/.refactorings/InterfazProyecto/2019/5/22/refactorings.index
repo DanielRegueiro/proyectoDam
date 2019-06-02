@@ -1,3 +1,9 @@
 1558964437825	Delete element
 1559141392540	Delete element
 1559225086762	Copy compilation unit
+1559304412201	Rename type 'UnidadIndividual'
+1559304528426	Rename type 'FXMLControllerLogin'
+1559304583003	Rename type 'FXMLControllerSeleccionEjercito'
+1559304700173	Rename type 'PantallaImpresionListas'
+1559304723488	Rename type 'SeleccionTropasUsuario'
+1559304917106	Rename resource 'Login.fxml'

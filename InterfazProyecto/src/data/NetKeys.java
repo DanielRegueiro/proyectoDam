@@ -19,6 +19,7 @@ public class NetKeys {
         public static final String GET_ALL = "getall";
         public static final String GET_UNIT = "buscar";
         public static final String GET_USUARIO = "buscarusuario";
+        public static final String POST_USUARIO = "grabar/usuario";
     }
 
     public static final class QueriesParams {
