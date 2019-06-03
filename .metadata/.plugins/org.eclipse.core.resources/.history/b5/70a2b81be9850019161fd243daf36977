@@ -90,79 +90,41 @@ public class ControllerFXMLPantallaImpresionListas {
 		private Text textAtaquesInicial;
 		private Text textLiderazgoInicial;
 		private Text textSalvacionInicial;
-		private ImageView imagen;
-
 		public CustomListCell() {
 			super();
-
 			name = new Text();
-			name.setFont(Font.font(20));
+			name.setFont(Font.font(20));	
 			price = new Text();
-			price.setFont(Font.font(20));
+			price.setFont(Font.font(20));	
 			tipo = new Text();
-			tipo.setFont(Font.font(18));
-			textMovimiento = new Text();
-			textMovimiento.setFont(Font.font(16));
-			textHabilidadAtaque = new Text();
-			textHabilidadAtaque.setFont(Font.font(16));
-			textHabilidadProyectiles = new Text();
-			textHabilidadProyectiles.setFont(Font.font(16));
-			textFuerza = new Text();
-			textFuerza.setFont(Font.font(16));
-			textResistencia = new Text();
-			textResistencia.setFont(Font.font(16));
-			textHeridas = new Text();
-			textHeridas.setFont(Font.font(16));
-			textAtaques = new Text();
-			textAtaques.setFont(Font.font(16));
-			textLiderazgo = new Text();
-			textLiderazgo.setFont(Font.font(16));
-			textSalvacion = new Text();
-			textSalvacion.setFont(Font.font(16));
+			tipo.setFont(Font.font(18));	
 			separador = new Text("      ");
-			textMovimientoInicial = new Text("M");
-			textMovimientoInicial.setFont(Font.font(16));
-			textHabilidadAtaqueInicial = new Text("HA");
-			textHabilidadAtaqueInicial.setFont(Font.font(16));
-			textHabilidadProyectilesInicial = new Text("HP");
-			textHabilidadProyectilesInicial.setFont(Font.font(16));
-			textFuerzaInicial = new Text("F");
-			textFuerzaInicial.setFont(Font.font(16));
-			textResistenciaInicial = new Text("R");
-			textResistenciaInicial.setFont(Font.font(16));
-			textHeridasInicial = new Text("H");
-			textHeridasInicial.setFont(Font.font(16));
-			textAtaquesInicial = new Text("A");
-			textAtaquesInicial.setFont(Font.font(16));
-			textLiderazgoInicial = new Text("L");
-			textLiderazgoInicial.setFont(Font.font(16));
-			textSalvacionInicial = new Text("S");
-			textSalvacionInicial.setFont(Font.font(16));
-
-			HBox hBoxIniciales = new HBox(new VBox(textMovimientoInicial, textMovimiento),
-					new VBox(textHabilidadAtaqueInicial, textHabilidadAtaque),
-					new VBox(textHabilidadProyectilesInicial, textHabilidadProyectiles),
-					new VBox(textFuerzaInicial, textFuerza), new VBox(textResistenciaInicial, textResistencia),
-					new VBox(textHeridasInicial, textHeridas), new VBox(textAtaquesInicial, textAtaques),
-					new VBox(textLiderazgoInicial, textLiderazgo), new VBox(textSalvacionInicial, textSalvacion));
-			hBoxIniciales.setSpacing(10);
+			textMovimiento = new Text("M");
+			textHabilidadAtaque = new Text("HA");
+			textHabilidadProyectiles = new Text("HP");
+			textFuerza = new Text("F");
+			textResistencia = new Text("R");
+			textHeridas = new Text("H");
+			textAtaques = new Text("A");
+			textLiderazgo = new Text("L");
+			textSalvacion = new Text("S");
+			
+			HBox hBoxIniciales = new HBox(textMovimientoInicial, textHabilidadAtaqueInicial, textHabilidadProyectilesInicial,textFuerzaInicial,textResistenciaInicial,textHeridasInicial,textAtaquesInicial,textLiderazgoInicial ,textSalvacionInicial  );
+			HBox hBoxDatos = new HBox(textMovimiento, textHabilidadAtaque, textHabilidadProyectiles,textFuerza,textResistencia,textHeridas,textAtaques,textLiderazgo ,textSalvacion  );
 			VBox vBox = new VBox(name, tipo);
-
-			content = new HBox(vBox, hBoxIniciales, price);
-			content.setSpacing(30);
+			VBox vbox2 = new VBox(,hBoxIniciales,hBoxDatos);
+			content = new HBox(vBox,vbox2,price);
+			content.setSpacing(100);
 		}
 
 		@Override
 		protected void updateItem(modeloVista.Unidad item, boolean empty) {
 			super.updateItem(item, empty);
 			if (item != null && !empty) { // <== test for null item and empty parameter
-				String rutaImagen = "/img/iconos/";
-				String extension = ".png";
-				item.setImagen(rutaImagen + String.valueOf(item.getTipoUnidad().getIdTipoUnidad()) + extension);
-				imagen = new ImageView(item.getImagen());
 				name.setText(item.getNombre());
 				tipo.setText(item.getTipoUnidad().getDescripcion());
 				price.setText(String.format("%d Puntos", item.getPuntos()));
+
 				textMovimiento.setText(String.valueOf(item.getMovimiento()));
 				textHabilidadAtaque.setText(String.valueOf(item.getHabilidad_ataque()));
 				textHabilidadProyectiles.setText(String.valueOf(item.getHabilidad_proyectiles()));
@@ -172,9 +134,8 @@ public class ControllerFXMLPantallaImpresionListas {
 				textAtaques.setText(String.valueOf(item.getAtaques()));
 				textLiderazgo.setText(String.valueOf(item.getLiderazgo()));
 				textSalvacion.setText(String.valueOf(item.getSalvacion()));
-				HBox celda = new HBox(imagen, content);
-				celda.setSpacing(5);
-				setGraphic(celda);
+				
+				setGraphic(content);
 			} else {
 				setGraphic(null);
 			}
