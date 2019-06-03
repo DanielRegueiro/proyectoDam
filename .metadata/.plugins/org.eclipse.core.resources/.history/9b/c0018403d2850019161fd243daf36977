@@ -22,7 +22,6 @@ public class LogicaPrincipal {
 	private Usuario usuario;
 	private RestClientImpl restClient;
 	private List<modeloVista.Unidad> unidades;
-	private ArrayList<Unidad> unidadesMostrar;
 
 	private LogicaPrincipal() {
 		restClient = new RestClientImpl();
@@ -88,7 +87,7 @@ public class LogicaPrincipal {
 
 	public List<Unidad> listaToUnidades(Lista lista) {
 		listaTropas();
-		 unidadesMostrar = new ArrayList<Unidad>();
+		List<Unidad> unidadesMostrar = new ArrayList<Unidad>();
 		for (UnidadesSel uni : lista.getUnidadesSel()) {
 			for (modeloVista.Unidad ud : unidades) {
 				if (ud.getIdUnidad() == uni.getIdUnidad()) {

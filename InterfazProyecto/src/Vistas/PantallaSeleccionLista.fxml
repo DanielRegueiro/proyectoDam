@@ -20,11 +20,6 @@
             <Reflection />
          </effect>
       </Button>
-      <Button id="botonAnadir" fx:id="botonImprimir" layoutX="705.0" layoutY="525.0" mnemonicParsing="false" onAction="#imprimirLista" prefHeight="37.0" prefWidth="113.0" text="Imprimir">
-         <effect>
-            <Reflection />
-         </effect>
-      </Button>
       <Button id="botonAtras" layoutX="41.0" layoutY="525.0" mnemonicParsing="false" onAction="#volver" prefHeight="37.0" prefWidth="113.0" text="Volver">
          <effect>
             <Reflection />
@@ -32,7 +27,7 @@
       </Button>
       <Pane layoutX="41.0" layoutY="37.0" prefHeight="466.0" prefWidth="907.0">
          <children>
-            <ListView id="lista" fx:id="listas" opacity="0.4" prefHeight="466.0" prefWidth="907.0" />
+            <ListView id="lista" fx:id="listas" onMouseClicked="#imprimirLista" opacity="0.4" prefHeight="466.0" prefWidth="907.0" />
          </children>
       </Pane>
    </children>

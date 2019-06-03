@@ -76,7 +76,7 @@ public class ControllerPantallaSeleccionListas {
 			Stage stage = (Stage) botonNueva.getScene().getWindow();
 			stage.setScene(new Scene(root2));
 			controller = fxmlLoader2.<ControllerFXMLPantallaImpresionListas>getController();
-			controller.initData(listas.getItems().get(listas.getSelectionModel().getSelectedIndex()));
+			controller.initData(listas.getItems().get(listas.getSelectionModel().getSelectedIndex());
 			stage.setResizable(false);
 		
 		} catch (IOException ex) {

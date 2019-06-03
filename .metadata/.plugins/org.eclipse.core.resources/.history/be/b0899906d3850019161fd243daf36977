@@ -76,9 +76,9 @@ public class ControllerPantallaSeleccionListas {
 			Stage stage = (Stage) botonNueva.getScene().getWindow();
 			stage.setScene(new Scene(root2));
 			controller = fxmlLoader2.<ControllerFXMLPantallaImpresionListas>getController();
-			controller.initData(listas.getItems().get(listas.getSelectionModel().getSelectedIndex()));
+			controller.initData();
 			stage.setResizable(false);
-		
+
 		} catch (IOException ex) {
 			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
 		}
@@ -110,6 +110,8 @@ public class ControllerPantallaSeleccionListas {
 		for (modeloVista.Lista ud : listasUsuario) {
 			data.add(ud);
 		}
+		System.out.println(usuario.getListas().get(0).getNombre());
+		System.out.println(data.get(0).getNombre());
 		listas.getItems().addAll(data);
 		listas.setCellFactory(unidadesListView -> new CeldaListas());
 
