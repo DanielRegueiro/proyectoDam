@@ -74,6 +74,7 @@ public class ControllerFXMLPantallaImpresionListas {
 		private Text name;
 		private Text price;
 		private Text tipo;
+		private ImageView imagen;
 		private Text separador;
 		public CustomListCell() {
 			super();
@@ -82,10 +83,10 @@ public class ControllerFXMLPantallaImpresionListas {
 			tipo = new Text();
 			separador=new Text("      ");
 			
-			
+			imagen = new ImageView();
 			VBox vBox = new VBox(name, price, tipo);
 			VBox vbox2=new VBox(separador);
-			content = new HBox( vbox2,vBox);
+			content = new HBox(imagen, vbox2,vBox);
 			content.setSpacing(100);
 		}
 
@@ -96,8 +97,8 @@ public class ControllerFXMLPantallaImpresionListas {
 				name.setText(item.getNombre());
 				tipo.setText(item.getTipoUnidad().getDescripcion());
 				price.setText(String.format("%d Puntos", item.getPuntos()));
-				
-				content = new HBox(separador, new VBox(name, price, tipo));
+				imagen = new ImageView(item.getImagen());
+				content = new HBox(imagen,separador, new VBox(name, price, tipo));
 				setGraphic(content);
 			} else {
 				setGraphic(null);

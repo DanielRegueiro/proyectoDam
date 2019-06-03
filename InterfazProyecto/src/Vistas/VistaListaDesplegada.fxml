@@ -27,7 +27,7 @@
       </Button>
       <Pane layoutX="41.0" layoutY="37.0" prefHeight="466.0" prefWidth="907.0">
          <children>
-            <ListView id="lista" fx:id="listas" opacity="0.4" prefHeight="466.0" prefWidth="907.0" />
+            <ListView id="lista" fx:id="listas" layoutX="115.0" opacity="0.4" prefHeight="466.0" prefWidth="661.0" />
          </children>
       </Pane>
    </children>

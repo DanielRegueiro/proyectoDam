@@ -37,10 +37,6 @@ public class ControllerFXMLPantallaImpresionListas {
     
     void initData(List<modeloVista.Unidad> lista) {
     listaUnidades=lista;
-	ObservableList<modeloVista.Unidad> data = FXCollections.observableArrayList();
-	data.addAll(listaUnidades);
-	listas.getItems().addAll(data);
-	listas.setCellFactory(unidadesListView -> new CustomListCell());
     }
 
 
@@ -67,13 +63,20 @@ public class ControllerFXMLPantallaImpresionListas {
     void initialize() {
         assert botonPdf != null : "fx:id=\"botonPdf\" was not injected: check your FXML file 'VistaListaDesplegada.fxml'.";
         assert listas != null : "fx:id=\"listas\" was not injected: check your FXML file 'VistaListaDesplegada.fxml'.";
-    
+    	ObservableList<modeloVista.Unidad> data = FXCollections.observableArrayList();
+    	listaUnidades=new ArrayList<modeloVista.Unidad>();
+    	System.out.println(listaUnidades.isEmpty());
+    	data.addAll(listaUnidades);
+    	System.out.println(data.get(0).getNombre());
+    	listas.getItems().addAll(data);
+    	listas.setCellFactory(unidadesListView -> new CustomListCell());
     }
     private class CustomListCell extends ListCell<modeloVista.Unidad> {
 		private HBox content;
 		private Text name;
 		private Text price;
 		private Text tipo;
+		private ImageView imagen;
 		private Text separador;
 		public CustomListCell() {
 			super();
@@ -82,10 +85,10 @@ public class ControllerFXMLPantallaImpresionListas {
 			tipo = new Text();
 			separador=new Text("      ");
 			
-			
+			imagen = new ImageView();
 			VBox vBox = new VBox(name, price, tipo);
 			VBox vbox2=new VBox(separador);
-			content = new HBox( vbox2,vBox);
+			content = new HBox(imagen, vbox2,vBox);
 			content.setSpacing(100);
 		}
 
@@ -96,8 +99,8 @@ public class ControllerFXMLPantallaImpresionListas {
 				name.setText(item.getNombre());
 				tipo.setText(item.getTipoUnidad().getDescripcion());
 				price.setText(String.format("%d Puntos", item.getPuntos()));
-				
-				content = new HBox(separador, new VBox(name, price, tipo));
+				imagen = new ImageView(item.getImagen());
+				content = new HBox(imagen,separador, new VBox(name, price, tipo));
 				setGraphic(content);
 			} else {
 				setGraphic(null);

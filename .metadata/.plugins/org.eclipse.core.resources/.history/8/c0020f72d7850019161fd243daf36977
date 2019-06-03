@@ -87,9 +87,7 @@ public class LogicaPrincipal {
 	}
 
 	public List<Unidad> listaToUnidades(Lista lista) {
-		System.out.println("lista de unidadesSEl que entra para convertir en unidades "+lista.getNombre()+" n tropas "+lista.getUnidadesSel().size());
 		listaTropas();
-		
 		 unidadesMostrar = new ArrayList<Unidad>();
 		for (UnidadesSel uni : lista.getUnidadesSel()) {
 			for (modeloVista.Unidad ud : unidades) {
