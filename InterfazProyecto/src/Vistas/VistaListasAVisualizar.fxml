@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="412.0" style="-fx-background-color: #666699;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerSeleccionListasAMostrar">
+   <children>
+      <ImageView fx:id="hachas" fitHeight="565.0" fitWidth="620.0" layoutX="-97.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/hacha.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="131.0" layoutY="371.0" prefHeight="81.0" prefWidth="163.0" text="Listas:" textAlignment="CENTER" textFill="#3b75ca" textOverrun="CLIP">
+         <font>
+            <Font name="Calibri Light" size="57.0" />
+         </font>
+         <effect>
+            <DropShadow height="0.0" offsetX="2.0" offsetY="2.0" radius="2.2775" width="11.11" />
+         </effect>
+      </Label>
+      <Button fx:id="botonTodas" layoutX="28.0" layoutY="466.0" mnemonicParsing="false" onAction="#abrirTodas" prefHeight="57.0" prefWidth="141.0" text="Todas">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <effect>
+            <DropShadow color="#00000083" height="19.02" offsetX="5.0" offsetY="5.0" radius="7.035" width="11.12" />
+         </effect>
+      </Button>
+      <Button fx:id="botonPropias" layoutX="244.0" layoutY="466.0" mnemonicParsing="false" onAction="#abrirPropias" prefHeight="57.0" prefWidth="141.0" text="Propias">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <effect>
+            <DropShadow color="#000000d0" height="30.88" offsetX="5.0" offsetY="5.0" radius="15.434999999999999" width="32.86" />
+         </effect>
+      </Button>
+   </children>
+</AnchorPane>

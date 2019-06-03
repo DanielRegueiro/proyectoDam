@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +14,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Labeled;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
@@ -24,16 +22,20 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import modeloVista.Lista;
 
 public class ControllerFXMLPantallaImpresionListas {
-
+	private ControllerPantallaSeleccionListas controller;
 	@FXML
 	private Button botonPdf;
 	@FXML
 	private ListView<modeloVista.Unidad> listas;
 	private List<modeloVista.Unidad> listaUnidades;
-
-	void initData(List<modeloVista.Unidad> lista) {
+	List<modeloVista.Lista> listaUsuario;
+	
+	void initData(List<Lista>listasUsuarioEntrante,List<modeloVista.Unidad> lista) {
+		
+		listaUsuario=listasUsuarioEntrante;
 		listaUnidades = lista;
 		ObservableList<modeloVista.Unidad> data = FXCollections.observableArrayList();
 		data.addAll(listaUnidades);
@@ -48,11 +50,14 @@ public class ControllerFXMLPantallaImpresionListas {
 
 	@FXML
 	void volver(ActionEvent event) {
+	
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/PantallaSeleccionLista.fxml"));
 			Parent root3 = (Parent) fxmlLoader.load();
 			Stage stage = (Stage) botonPdf.getScene().getWindow();
 			stage.setScene(new Scene(root3));
+			controller = fxmlLoader.<ControllerPantallaSeleccionListas>getController();
+			controller.initData(listaUsuario,null);
 			stage.setResizable(false);
 		} catch (IOException ex) {
 			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
@@ -71,7 +76,6 @@ public class ControllerFXMLPantallaImpresionListas {
 		private Text name;
 		private Text price;
 		private Text tipo;
-		private Text separador;
 		private Text textMovimiento;
 		private Text textHabilidadAtaque;
 		private Text textHabilidadProyectiles;
@@ -119,7 +123,6 @@ public class ControllerFXMLPantallaImpresionListas {
 			textLiderazgo.setFont(Font.font(16));
 			textSalvacion = new Text();
 			textSalvacion.setFont(Font.font(16));
-			separador = new Text("      ");
 			textMovimientoInicial = new Text("M");
 			textMovimientoInicial.setFont(Font.font(16));
 			textHabilidadAtaqueInicial = new Text("HA");

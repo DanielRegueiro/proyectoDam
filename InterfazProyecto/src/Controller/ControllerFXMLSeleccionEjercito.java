@@ -45,7 +45,7 @@ public class ControllerFXMLSeleccionEjercito {
 
 	public void handleButtonAction(ActionEvent event) {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/PantallaSeleccionLista.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/VistaListasAVisualizar.fxml"));
 			Parent root2 = (Parent) fxmlLoader.load();
 			Stage stage = (Stage) botonlobos.getScene().getWindow();
 			stage.setScene(new Scene(root2));

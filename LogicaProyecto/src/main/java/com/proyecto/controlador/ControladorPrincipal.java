@@ -14,13 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.exceptionscontrol.UnidadNotFoundException;
 import com.proyecto.modelo.Unidad;
+import com.proyecto.modelo.usuario.Lista;
 import com.proyecto.modelo.usuario.Usuario;
+import com.proyecto.service.ListasService;
 import com.proyecto.service.TropasService;
 import com.proyecto.service.UsuarioService;
 
 @RestController
 @RequestMapping(value = "/principal", produces = "application/json")
 public class ControladorPrincipal {
+	@Autowired
+	private ListasService servicioListas;
 
 	@Autowired
 	private TropasService servicio;
@@ -32,6 +36,12 @@ public class ControladorPrincipal {
 	public List<Unidad> getAll() {
 
 		return servicio.listarUnidades();
+	}
+	
+	@GetMapping(value = "/getlistas")
+	public List<Lista> getListas() {
+
+		return servicioListas.listarListasUsuario();
 	}
 
 	@GetMapping(value = "/buscar")

@@ -4,6 +4,7 @@ package data;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import modeloVista.Lista;
 import modeloVista.Unidad;
 import modeloVista.Usuario;
 
@@ -42,7 +43,12 @@ public class RestClientImpl {
         Call<List<Unidad>> call = this.restClient.getAllUnits();
         return call.execute().body();
     }
-
+    
+    public List<Lista> getListas() throws IOException {
+        Call<List<Lista>> call = this.restClient.getlistas();
+        return call.execute().body();
+    }
+    
     public Unidad getUnit(String idUnidad) throws IOException {
         Call<Unidad> call = this.restClient.getUnit(idUnidad);
         return call.execute().body();

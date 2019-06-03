@@ -2,6 +2,7 @@
 package data;
 
 import data.NetKeys;
+import modeloVista.Lista;
 import modeloVista.Unidad;
 import modeloVista.Usuario;
 
@@ -20,6 +21,9 @@ public interface RestClient {
     
     @GET(NetKeys.Paths.GET_ALL)
     Call<List<Unidad>> getAllUnits();
+    
+    @GET(NetKeys.Paths.GET_LISTAS)
+    Call<List<Lista>> getlistas();
     
     @GET(NetKeys.Paths.GET_UNIT)
     Call<Unidad> getUnit(@Query(NetKeys.QueriesParams.ID) String idUnidad);

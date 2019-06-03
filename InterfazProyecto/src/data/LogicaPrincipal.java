@@ -23,6 +23,7 @@ public class LogicaPrincipal {
 	private RestClientImpl restClient;
 	private List<modeloVista.Unidad> unidades;
 	private ArrayList<Unidad> unidadesMostrar;
+	private List<Lista>listas;
 
 	private LogicaPrincipal() {
 		restClient = new RestClientImpl();
@@ -87,7 +88,6 @@ public class LogicaPrincipal {
 	}
 
 	public List<Unidad> listaToUnidades(Lista lista) {
-		System.out.println("lista de unidadesSEl que entra para convertir en unidades "+lista.getNombre()+" n tropas "+lista.getUnidadesSel().size());
 		listaTropas();
 		
 		 unidadesMostrar = new ArrayList<Unidad>();
@@ -100,5 +100,17 @@ public class LogicaPrincipal {
 		}
 		return unidadesMostrar;
 	}
+	public List<Lista>recuperarListas(){
+		try {
+			listas=restClient.getListas();
+			return listas;
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+
 
 }

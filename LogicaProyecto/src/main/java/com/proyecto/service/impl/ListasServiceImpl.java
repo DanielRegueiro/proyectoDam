@@ -1,0 +1,27 @@
+package com.proyecto.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.proyecto.modelo.usuario.Lista;
+import com.proyecto.repository.ListasRepository;
+import com.proyecto.repository.TropaRepository;
+import com.proyecto.service.ListasService;
+
+@Service
+public class ListasServiceImpl implements ListasService {
+@Autowired
+ListasRepository listasRepository;
+
+public ListasServiceImpl(ListasRepository listasRepository) {
+	this.listasRepository = listasRepository;
+}
+	@Override
+	public List<Lista> listarListasUsuario() {
+		final List<Lista> listas= listasRepository.findAll();
+		return listas;
+	}
+
+}

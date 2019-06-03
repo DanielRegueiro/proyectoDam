@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 import data.LogicaPrincipal;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,12 +39,16 @@ public class ControllerPantallaSeleccionListas {
 	@FXML // fx:id="botonNueva"
 	private Button botonNueva; // Value injected by FXMLLoader
 
-
 	@FXML // fx:id="listas"
 	private ListView<Lista> listas; // Value injected by FXMLLoader
 	private Usuario usuario;
-
+	private List<modeloVista.Lista> listasUsuario;
 	private ControllerFXMLPantallaImpresionListas controller;
+
+	public void cargarListas(List<Lista> listas) {
+		this.listasUsuario = listas;
+
+	}
 
 	@FXML
 	void crearLista(ActionEvent event) {
@@ -71,14 +74,16 @@ public class ControllerPantallaSeleccionListas {
 	@FXML
 	void imprimirLista(MouseEvent event) {
 		try {
+			
 			FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("/Vistas/VistaListaDesplegada.fxml"));
 			Parent root2 = (Parent) fxmlLoader2.load();
 			Stage stage = (Stage) botonNueva.getScene().getWindow();
 			stage.setScene(new Scene(root2));
 			controller = fxmlLoader2.<ControllerFXMLPantallaImpresionListas>getController();
-			controller.initData(LogicaPrincipal.getInstance().listaToUnidades(listas.getItems().get(listas.getSelectionModel().getSelectedIndex())));
+			controller.initData(listasUsuario,LogicaPrincipal.getInstance()
+					.listaToUnidades(listas.getItems().get(listas.getSelectionModel().getSelectedIndex())));
 			stage.setResizable(false);
-		
+
 		} catch (IOException ex) {
 			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
 		}
@@ -98,20 +103,36 @@ public class ControllerPantallaSeleccionListas {
 		}
 	}
 
+	void initData(List<modeloVista.Lista> listasEntrantes, List<modeloVista.Lista> listasRecuperadas) {
+		if (listasEntrantes != null) {
+			this.usuario = LogicaPrincipal.getInstance().getUser();
+			ObservableList<modeloVista.Lista> data = FXCollections.observableArrayList();
+			listasUsuario = listasEntrantes;
+
+			for (modeloVista.Lista ud : listasUsuario) {
+				data.add(ud);
+			}
+			listas.getItems().addAll(data);
+			listas.setCellFactory(unidadesListView -> new CeldaListas());
+		} else {
+			ObservableList<modeloVista.Lista> data = FXCollections.observableArrayList();
+			listasUsuario = listasRecuperadas;
+
+			for (modeloVista.Lista ud : listasUsuario) {
+				data.add(ud);
+			}
+			listas.getItems().addAll(data);
+			listas.setCellFactory(unidadesListView -> new CeldaListas());
+		}
+		
+	}
+
 	@FXML
 	void initialize() {
 
 		assert botonNueva != null : "fx:id=\"botonNueva\" was not injected: check your FXML file 'PantallaSeleccionLista.fxml'.";
 		assert listas != null : "fx:id=\"listas\" was not injected: check your FXML file 'PantallaSeleccionLista.fxml'.";
 		this.usuario = LogicaPrincipal.getInstance().getUser();
-		ObservableList<modeloVista.Lista> data = FXCollections.observableArrayList();
-		List<modeloVista.Lista> listasUsuario = usuario.getListas();
-
-		for (modeloVista.Lista ud : listasUsuario) {
-			data.add(ud);
-		}
-		listas.getItems().addAll(data);
-		listas.setCellFactory(unidadesListView -> new CeldaListas());
 
 	}
 
@@ -124,9 +145,9 @@ public class ControllerPantallaSeleccionListas {
 		public CeldaListas() {
 			super();
 			name = new Text();
-			name.setFont(Font.font(25));	
+			name.setFont(Font.font(25));
 			price = new Text();
-			price.setFont(Font.font(25));	
+			price.setFont(Font.font(20));
 			separador = new Text("      ");
 			VBox vBox = new VBox(name, price);
 			VBox vbox2 = new VBox(separador);
@@ -141,7 +162,7 @@ public class ControllerPantallaSeleccionListas {
 				name.setText(item.getNombre());
 
 				price.setText(String.format("%d Puntos", item.getCoste()));
-				content = new HBox(new HBox(name,separador,  price));
+				content = new HBox(new HBox(name, separador, price));
 				setGraphic(content);
 			} else {
 				setGraphic(null);
