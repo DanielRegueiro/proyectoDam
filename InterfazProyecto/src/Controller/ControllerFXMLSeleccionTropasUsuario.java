@@ -28,11 +28,7 @@ public class ControllerFXMLSeleccionTropasUsuario {
     @FXML
     private Button botonTodas;
 
-    @FXML
-    private TextField textoNombre;
-
-    @FXML
-    private ComboBox<?> comboDestacamento;
+ 
 
     @FXML
     void abrirPropias(ActionEvent event) {

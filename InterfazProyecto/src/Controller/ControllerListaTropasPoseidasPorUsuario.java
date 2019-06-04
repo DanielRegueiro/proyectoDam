@@ -27,7 +27,6 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import modeloVista.Unidad;
@@ -131,8 +130,8 @@ public class ControllerListaTropasPoseidasPorUsuario {
 				caja2.setAlignment(Pos.BASELINE_RIGHT);
 				content = new HBox(caja1, caja2);
 				content.setSpacing(30);
-				
-				check.selectedProperty().addListener(new ChangeListener<Boolean>() {
+
+				this.selectedProperty().addListener(new ChangeListener<Boolean>() {
 					@Override
 					public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue,
 							Boolean newValue) {
@@ -145,24 +144,19 @@ public class ControllerListaTropasPoseidasPorUsuario {
 					public void handle(ActionEvent event) {
 						if (event.getSource() instanceof CheckBox) {
 							CheckBox chk = (CheckBox) event.getSource();
-							System.out.println("Action performed on checkbox " + chk.getText());
 							if ("Seleccionar".equals(chk.getText())) {
-								tropasSeleccionadas.add(listaTropasPoseidas.getItems()
-										.get(listaTropasPoseidas.getSelectionModel().getSelectedIndex() ));
-								System.out.println("Dentro del lisener del chack, añadida la unidad.."
-										+ listaTropasPoseidas.getItems()
-												.get(listaTropasPoseidas.getSelectionModel().getSelectedIndex())
-												.getNombre());
-							} else {
-								tropasSeleccionadas.remove((listaTropasPoseidas.getItems()
-										.get(listaTropasPoseidas.getSelectionModel().getSelectedIndex() )));
+								if (tropasSeleccionadas.contains(item)) {
+									tropasSeleccionadas.remove(item);
+								} else {
+									tropasSeleccionadas.add(item);
+								}
+
 							}
 						}
 					}
 				};
 
 				check.setOnAction(eh);
-
 
 				setGraphic(content);
 			} else {

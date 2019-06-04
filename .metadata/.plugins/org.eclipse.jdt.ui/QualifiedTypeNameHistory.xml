@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.google.gson.annotations.SerializedName"/>
-<fullyQualifiedTypeName name="javafx.collections.ObservableList"/>
-<fullyQualifiedTypeName name="javafx.scene.control.ListView"/>
-<fullyQualifiedTypeName name="javafx.scene.control.ListCell"/>
 <fullyQualifiedTypeName name="javafx.scene.text.Text"/>
 <fullyQualifiedTypeName name="javafx.scene.control.Label"/>
 <fullyQualifiedTypeName name="javafx.util.Callback"/>
 <fullyQualifiedTypeName name="javafx.collections.FXCollections"/>
 <fullyQualifiedTypeName name="javafx.scene.input.MouseEvent"/>
-<fullyQualifiedTypeName name="modeloVista.Arma"/>
 <fullyQualifiedTypeName name="modeloVista.Habilidad"/>
 <fullyQualifiedTypeName name="modeloVista.Reliquia"/>
 <fullyQualifiedTypeName name="javafx.scene.image.ImageView"/>
@@ -23,7 +18,6 @@
 <fullyQualifiedTypeName name="javafx.scene.layout.VBox"/>
 <fullyQualifiedTypeName name="javafx.scene.text.Font"/>
 <fullyQualifiedTypeName name="javafx.scene.layout.HBox"/>
-<fullyQualifiedTypeName name="javafx.geometry.Pos"/>
 <fullyQualifiedTypeName name="com.proyecto.repository.UsuarioRepository"/>
 <fullyQualifiedTypeName name="org.springframework.data.repository.CrudRepository"/>
 <fullyQualifiedTypeName name="com.proyecto.service.UsuarioService"/>
@@ -43,11 +37,7 @@
 <fullyQualifiedTypeName name="retrofit2.http.Body"/>
 <fullyQualifiedTypeName name="retrofit2.http.Field"/>
 <fullyQualifiedTypeName name="retrofit2.http.PUT"/>
-<fullyQualifiedTypeName name="javafx.scene.control.TextField"/>
-<fullyQualifiedTypeName name="javafx.scene.control.ComboBox"/>
-<fullyQualifiedTypeName name="modeloVista.Unidad"/>
 <fullyQualifiedTypeName name="modeloVista.UnidadesSel"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.proyecto.repository.ListasRepository.ListaRepository"/>
 <fullyQualifiedTypeName name="com.proyecto.repository.ListasRepository"/>
 <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
@@ -60,4 +50,14 @@
 <fullyQualifiedTypeName name="controller.ControllerSeleccionListasAMostrar"/>
 <fullyQualifiedTypeName name="data.LogicaPrincipal"/>
 <fullyQualifiedTypeName name="modeloVista.Lista"/>
+<fullyQualifiedTypeName name="modeloVista.Unidad"/>
+<fullyQualifiedTypeName name="javafx.scene.control.CheckBox"/>
+<fullyQualifiedTypeName name="javafx.geometry.Pos"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="javafx.beans.value.ChangeListener"/>
+<fullyQualifiedTypeName name="javafx.beans.value.ObservableValue"/>
+<fullyQualifiedTypeName name="javafx.scene.control.SelectionMode"/>
+<fullyQualifiedTypeName name="javafx.scene.control.ComboBox"/>
+<fullyQualifiedTypeName name="javafx.scene.control.TextField"/>
+<fullyQualifiedTypeName name="modeloVista.Arma"/>
 </qualifiedTypeNameHistroy>

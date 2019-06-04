@@ -14,8 +14,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -24,12 +26,12 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import modeloVista.Arma;
 import modeloVista.Unidad;
 
 public class ControllerGestionUnidades {
 
-	@FXML
-	private Button botonContinuar;
+
 
 	@FXML
 	private ListView<modeloVista.Unidad> listaUnidadesSeleccionadas;
@@ -38,9 +40,75 @@ public class ControllerGestionUnidades {
 	private ListView<modeloVista.Unidad> lista;
 
 	@FXML
-	private Button botonAnadir;
+	private Button botonContinuar;
 	@FXML
 	private Button botonVolver;
+	 @FXML
+	    private ImageView fotoDestacamento;
+
+	    @FXML
+	    private ComboBox<?> comboDestacamento;
+
+	    @FXML
+	    private TextField textNombreLista;
+
+	    @FXML
+	    private Text textPuntosCosteLista;
+
+	    @FXML
+	    private Text textCgMin;
+
+	    @FXML
+	    private Text textEliteMin;
+
+	    @FXML
+	    private Text textTropaMin;
+
+	    @FXML
+	    private Text textCgMax;
+
+	    @FXML
+	    private Text textEliteMax;
+
+	    @FXML
+	    private Text TextTropaMax;
+
+	    @FXML
+	    private Text textCgDentro;
+
+	    @FXML
+	    private Text textEliteDentro;
+
+	    @FXML
+	    private Text textTropaDentro;
+
+	    @FXML
+	    private Text textAtaqueRapidoMin;
+
+	    @FXML
+	    private Text textApoyoMin;
+
+	    @FXML
+	    private Text textVoladorasMin;
+
+	    @FXML
+	    private Text textAtaqueRapidoMax;
+
+	    @FXML
+	    private Text textApoyoMax;
+
+	    @FXML
+	    private Text textVoladorasMax;
+
+	    @FXML
+	    private Text textAtaqueRapidoDentro;
+
+	    @FXML
+	    private Text textApoyoDentro;
+
+	    @FXML
+	    private Text textVoladorasDentro;
+	    private int costeLista;
 	private Stage stageIndividual;
 	private ControllerFXMLUnidadIndividual controller;
 
@@ -71,7 +139,17 @@ public class ControllerGestionUnidades {
 		listaUnidadesSeleccionadas.getItems().add(unidad);
 
 		listaUnidadesSeleccionadas.refresh();
-
+		costeLista=costeLista+unidad.getPuntos();
+		for (Arma i : unidad.getArmas()) {
+			costeLista+=i.getPuntos();
+		}
+		textPuntosCosteLista.setText(String.valueOf(costeLista));
+		textPuntosCosteLista.setVisible(false);
+		textPuntosCosteLista.setVisible(true);
+		//TODO actualizar la pantalla en este punto
+		
+		
+		
 	}
 
 	@FXML
@@ -108,9 +186,33 @@ public class ControllerGestionUnidades {
 
 	@FXML
 	void initialize() {
-		assert botonContinuar != null : "fx:id=\"botonContinuar\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
-		assert botonAnadir != null : "fx:id=\"botonAnadir\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
-		assert botonVolver != null : "fx:id=\"botonVolver\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+	    assert botonContinuar != null : "fx:id=\"botonContinuar\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert botonVolver != null : "fx:id=\"botonVolver\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert lista != null : "fx:id=\"lista\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert listaUnidadesSeleccionadas != null : "fx:id=\"listaUnidadesSeleccionadas\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert fotoDestacamento != null : "fx:id=\"fotoDestacamento\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert comboDestacamento != null : "fx:id=\"comboDestacamento\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert textNombreLista != null : "fx:id=\"textNombreLista\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert textPuntosCosteLista != null : "fx:id=\"TextPuntosCosteLista\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert textCgMin != null : "fx:id=\"textCgMin\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert textEliteMin != null : "fx:id=\"textEliteMin\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert textTropaMin != null : "fx:id=\"textTropaMin\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert textCgMax != null : "fx:id=\"textCgMax\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert textEliteMax != null : "fx:id=\"textEliteMax\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert TextTropaMax != null : "fx:id=\"TextTropaMax\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert textCgDentro != null : "fx:id=\"textCgDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert textEliteDentro != null : "fx:id=\"textEliteDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert textTropaDentro != null : "fx:id=\"TextTropaDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert textAtaqueRapidoMin != null : "fx:id=\"textAtaqueRapidoMin\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert textApoyoMin != null : "fx:id=\"TextApoyoMin\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert textVoladorasMin != null : "fx:id=\"TextVoladorasMin\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert textAtaqueRapidoMax != null : "fx:id=\"textAtaqueRapidoMax\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert textApoyoMax != null : "fx:id=\"textApoyoMax\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert textVoladorasMax != null : "fx:id=\"textVoladorasMax\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert textAtaqueRapidoDentro != null : "fx:id=\"TextAtaqueRapidoDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert textApoyoDentro != null : "fx:id=\"textApoyoDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        assert textVoladorasDentro != null : "fx:id=\"textVoladorasDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+        textPuntosCosteLista= new Text("0");
 		RestClientImpl restClient = new RestClientImpl();
 		ObservableList<modeloVista.Unidad> data = FXCollections.observableArrayList();
 		try {

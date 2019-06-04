@@ -1,35 +1,255 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerGestionUnidades">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerGestionUnidades">
    <children>
-      <ImageView fitHeight="638.0" fitWidth="1020.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="707.0" fitWidth="1129.0" layoutX="-109.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/fondo2.jpg" />
          </image>
       </ImageView>
-      <Button id="botonContinuar" fx:id="botonContinuar" layoutX="836.0" layoutY="525.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" text="Button">
+      <Button id="botonContinuar" fx:id="botonContinuar" layoutX="872.0" layoutY="611.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" text="Continuar">
          <effect>
             <Reflection />
          </effect>
+         <font>
+            <Font size="15.0" />
+         </font>
       </Button>
-      <Button id="botonAnadir" fx:id="botonAnadir" layoutX="705.0" layoutY="525.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" text="Button">
+      <Button id="botonAtras" fx:id="botonVolver" layoutX="13.0" layoutY="611.0" mnemonicParsing="false" onAction="#volver" prefHeight="37.0" prefWidth="113.0" text="Volver">
          <effect>
             <Reflection />
          </effect>
+         <font>
+            <Font size="15.0" />
+         </font>
       </Button>
-      <Button id="botonAtras" fx:id="botonVolver" layoutX="40.0" layoutY="506.0" mnemonicParsing="false" onAction="#volver" prefHeight="37.0" prefWidth="113.0" text="Volver">
+      <ListView fx:id="lista" layoutX="13.0" layoutY="257.0" onMouseClicked="#abrirUnidad" opacity="0.85" prefHeight="340.0" prefWidth="383.0" />
+      <ListView fx:id="listaUnidadesSeleccionadas" layoutX="406.0" layoutY="257.0" opacity="0.85" prefHeight="340.0" prefWidth="579.0" />
+      <Text fill="#fcfafa" layoutX="43.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Destacamento:" wrappingWidth="212.9921875">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="fotoDestacamento" fitHeight="172.0" fitWidth="383.0" layoutX="13.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/batallon.jpg" />
+         </image>
          <effect>
-            <Reflection />
+            <DropShadow color="#561818" height="17.04" offsetX="3.0" offsetY="3.0" radius="8.02" spread="0.13" width="17.04" />
          </effect>
-      </Button>
-      <ListView fx:id="lista" layoutX="14.0" layoutY="14.0" onMouseClicked="#abrirUnidad" opacity="0.85" prefHeight="478.0" prefWidth="383.0" />
-      <ListView fx:id="listaUnidadesSeleccionadas" layoutX="410.0" layoutY="14.0" opacity="0.85" prefHeight="478.0" prefWidth="579.0" />
+      </ImageView>
+      <ComboBox fx:id="comboDestacamento" layoutX="223.0" layoutY="26.0" opacity="0.8" prefHeight="33.0" prefWidth="150.0" />
+      <Text fill="#fcfafa" layoutX="455.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="120.32550048828125">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <TextField fx:id="textNombreLista" layoutX="571.0" layoutY="24.0" opacity="0.79" prefHeight="44.0" prefWidth="297.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <Text fill="#fcfafa" layoutX="891.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Puntos" wrappingWidth="84.32550048828125">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text fx:id="textPuntosCosteLista" fill="RED" layoutX="868.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="113.33333333333326">
+         <font>
+            <Font size="43.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfafa" layoutX="421.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Uds C.G min:" wrappingWidth="150.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfafa" layoutX="421.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Uds Elite min:" wrappingWidth="150.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfafa" layoutX="421.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Uds Ataque Rapido min:" wrappingWidth="242.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfafa" layoutX="421.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Uds Apoyo pesado min:" wrappingWidth="212.99218750000006">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfafa" layoutX="421.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Uds Voladoras min:" wrappingWidth="212.9921875">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfafa" layoutX="421.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Uds Tropa min:" wrappingWidth="150.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfafa" layoutX="634.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="max:" wrappingWidth="62.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfafa" layoutX="634.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="max:" wrappingWidth="62.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfafa" layoutX="634.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="max:" wrappingWidth="62.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfafa" layoutX="696.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="max:" wrappingWidth="62.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfafa" layoutX="696.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="max:" wrappingWidth="62.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfafa" layoutX="696.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="max:" wrappingWidth="62.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfafa" layoutX="744.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dentro:" wrappingWidth="76.6666259765625">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfafa" layoutX="744.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dentro:" wrappingWidth="76.6666259765625">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfafa" layoutX="744.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dentro:" wrappingWidth="76.6666259765625">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfafa" layoutX="802.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dentro:" wrappingWidth="76.6666259765625">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfafa" layoutX="802.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dentro:" wrappingWidth="76.6666259765625">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfafa" layoutX="802.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dentro:" wrappingWidth="76.6666259765625">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="textCgMin" fill="#f70505" layoutX="575.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="textEliteMin" fill="#f70505" layoutX="575.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="textTropaMin" fill="#f70505" layoutX="575.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="textCgMax" fill="#f70505" layoutX="691.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="textEliteMax" fill="#f70505" layoutX="691.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="textTropaMax" fill="#f70505" layoutX="691.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="textCgDentro" fill="#0bf507" layoutX="822.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="textEliteDentro" fill="#0bf507" layoutX="822.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="textTropaDentro" fill="#0bf507" layoutX="822.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="textAtaqueRapidoMin" fill="#f70505" layoutX="647.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="textApoyoMin" fill="#f70505" layoutX="647.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="textVoladorasMin" fill="#f70505" layoutX="647.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="textAtaqueRapidoMax" fill="#f70505" layoutX="746.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="textApoyoMax" fill="#f70505" layoutX="746.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="textVoladorasMax" fill="#f70505" layoutX="746.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="textAtaqueRapidoDentro" fill="#0bf507" layoutX="873.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="textApoyoDentro" fill="#0bf507" layoutX="873.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="textVoladorasDentro" fill="#0bf507" layoutX="873.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
