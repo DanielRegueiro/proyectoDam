@@ -1,0 +1,101 @@
+package controller;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import modeloVista.Unidad;
+
+public class ControllerSeleccionTropasUsuario {
+	@FXML
+	private CheckBox check;
+	
+	@FXML
+	private ResourceBundle resources;
+
+	@FXML
+	private URL location;
+
+	@FXML
+	private ImageView hielo;
+
+	@FXML
+	private Button botonTodas;
+
+	@FXML
+	private Button botonSeleccionar;
+
+	@FXML
+	private ListView<Unidad> listaTropasPoseidas;
+
+	@FXML
+	void Volver(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/PantallaSeleccionLista.fxml"));
+			Parent root3 = (Parent) fxmlLoader.load();
+			Stage stage = (Stage) botonTodas.getScene().getWindow();
+			stage.setScene(new Scene(root3));
+			stage.setResizable(false);
+		} catch (IOException ex) {
+			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
+
+	@FXML
+	void abrirGeneradorListas(ActionEvent event) {
+
+	}
+
+	@FXML
+	void initialize() {
+		assert hielo != null : "fx:id=\"hielo\" was not injected: check your FXML file 'VistaSeleccionTropasUsuario.fxml'.";
+		assert botonTodas != null : "fx:id=\"botonTodas\" was not injected: check your FXML file 'VistaSeleccionTropasUsuario.fxml'.";
+		assert botonSeleccionar != null : "fx:id=\"botonSeleccionar\" was not injected: check your FXML file 'VistaSeleccionTropasUsuario.fxml'.";
+		assert listaTropasPoseidas != null : "fx:id=\"listaTropasPoseidas\" was not injected: check your FXML file 'VistaSeleccionTropasUsuario.fxml'.";
+
+	}
+
+	private class CustomListCell extends ListCell<modeloVista.Unidad> {
+		private HBox content;
+		private Text name;
+
+		public CustomListCell() {
+			super();
+			name = new Text();
+
+			VBox vBox = new VBox(name);
+
+			content.setSpacing(100);
+		}
+
+		@Override
+		protected void updateItem(modeloVista.Unidad item, boolean empty) {
+			super.updateItem(item, empty);
+			if (item != null && !empty) { // <== test for null item and empty parameter
+				name.setText(item.getNombre());
+				check = new CheckBox();
+				
+				content = new HBox(name,check);
+				setGraphic(content);
+			} else {
+				setGraphic(null);
+			}
+		}
+	}
+}

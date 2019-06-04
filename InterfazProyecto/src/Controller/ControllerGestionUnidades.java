@@ -46,39 +46,38 @@ public class ControllerGestionUnidades {
 
 	@FXML
 	void abrirUnidad(MouseEvent event) {
-		
-			stageIndividual = new Stage();
-			FXMLLoader root;
-			try {
-				root = new FXMLLoader(getClass().getResource("/Vistas/VistaUnidadIndividual.fxml"));
 
-				Scene sceneIndividual = new Scene(root.load());
-				
-				stageIndividual.setScene(sceneIndividual);
-				controller = root.<ControllerFXMLUnidadIndividual>getController();
-				controller.initData(lista.getItems().get(lista.getSelectionModel().getSelectedIndex()),this);
-				stageIndividual.show();
+		stageIndividual = new Stage();
+		FXMLLoader root;
+		try {
+			root = new FXMLLoader(getClass().getResource("/Vistas/VistaUnidadIndividual.fxml"));
 
-			} catch (IOException e) {
+			Scene sceneIndividual = new Scene(root.load());
 
-				Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, e);
-			}
-		
+			stageIndividual.setScene(sceneIndividual);
+			controller = root.<ControllerFXMLUnidadIndividual>getController();
+			controller.initData(lista.getItems().get(lista.getSelectionModel().getSelectedIndex()), this);
+			stageIndividual.show();
+
+		} catch (IOException e) {
+
+			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, e);
+		}
 
 	}
 
 	public void anadirUnidadLista(Unidad unidad) {
-		
+
 		listaUnidadesSeleccionadas.getItems().add(unidad);
-	
+
 		listaUnidadesSeleccionadas.refresh();
-		
+
 	}
 
 	@FXML
 	void volver(ActionEvent event) {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/PantallaSeleccionLista.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/VistaListasAVisualizar.fxml"));
 			Parent root3 = (Parent) fxmlLoader.load();
 			Stage stage = (Stage) botonVolver.getScene().getWindow();
 			stage.setScene(new Scene(root3));
@@ -87,6 +86,24 @@ public class ControllerGestionUnidades {
 			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
 		}
 
+	}
+
+	void initData(List unidadesUsuario) {
+		
+		if (unidadesUsuario.size() > 0) {
+			System.out.println("dentro del init data");
+			lista.getItems().clear();
+			ObservableList<modeloVista.Unidad> data = FXCollections.observableArrayList();
+			List<modeloVista.Unidad> unidades = unidadesUsuario;
+			for (modeloVista.Unidad ud : unidades) {
+				String imagen = "/img/iconos/";
+				String extension = ".png";
+				ud.setImagen(imagen + String.valueOf(ud.getTipoUnidad().getIdTipoUnidad()) + extension);
+				data.add(ud);
+
+			}
+			lista.getItems().addAll(data);
+		}
 	}
 
 	@FXML
@@ -112,10 +129,11 @@ public class ControllerGestionUnidades {
 		}
 
 		lista.getItems().addAll(data);
-		
-		//asignacion de customCell con metodo lamda
-		listaUnidadesSeleccionadas.setCellFactory(unidadesListView -> new ControllerCustomCellUnidad(listaUnidadesSeleccionadas));
-		//asignacion de customCell a la manera clasica
+
+		// asignacion de customCell con metodo lamda
+		listaUnidadesSeleccionadas
+				.setCellFactory(unidadesListView -> new ControllerCustomCellUnidad(listaUnidadesSeleccionadas));
+		// asignacion de customCell a la manera clasica
 		lista.setCellFactory(new Callback<ListView<modeloVista.Unidad>, ListCell<modeloVista.Unidad>>() {
 			@Override
 			public ListCell<modeloVista.Unidad> call(ListView<modeloVista.Unidad> listView) {
@@ -132,17 +150,18 @@ public class ControllerGestionUnidades {
 		private Text tipo;
 		private ImageView imagen;
 		private Text separador;
+
 		public CustomListCell() {
 			super();
 			name = new Text();
 			price = new Text();
 			tipo = new Text();
-			separador=new Text("      ");
-			
+			separador = new Text("      ");
+
 			imagen = new ImageView();
 			VBox vBox = new VBox(name, price, tipo);
-			VBox vbox2=new VBox(separador);
-			content = new HBox(imagen, vbox2,vBox);
+			VBox vbox2 = new VBox(separador);
+			content = new HBox(imagen, vbox2, vBox);
 			content.setSpacing(100);
 		}
 
@@ -154,12 +173,12 @@ public class ControllerGestionUnidades {
 				tipo.setText(item.getTipoUnidad().getDescripcion());
 				price.setText(String.format("%d Puntos", item.getPuntos()));
 				imagen = new ImageView(item.getImagen());
-				content = new HBox(imagen,separador, new VBox(name, price, tipo));
+				content = new HBox(imagen, separador, new VBox(name, price, tipo));
 				setGraphic(content);
 			} else {
 				setGraphic(null);
 			}
 		}
 	}
-	
+
 }
