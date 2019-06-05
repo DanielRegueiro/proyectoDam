@@ -46,7 +46,7 @@ public class ControllerFXMLSeleccionTropasUsuario {
 	private Button botonTodas;
 
 	@FXML
-	private ComboBox<String> comboDestacamento;
+	private ComboBox comboDestacamento;
 
 	@FXML
 	void abrirPropias(ActionEvent event) {
@@ -119,6 +119,6 @@ public class ControllerFXMLSeleccionTropasUsuario {
 		assert comboDestacamento != null : "fx:id=\"comboDestacamento\" was not injected: check your FXML file 'VistaSeleccionTropasAUsar.fxml'.";
 		ObservableList<String> data = FXCollections.observableArrayList("Batallon", "Vanguardia", "Punta de lanza");
 		comboDestacamento.setItems(data);
-		comboDestacamento.getSelectionModel().selectFirst();
+
 	}
 }

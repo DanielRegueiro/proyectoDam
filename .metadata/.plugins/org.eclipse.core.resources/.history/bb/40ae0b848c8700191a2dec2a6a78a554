@@ -48,7 +48,6 @@ public class ControllerRegistro {
 			stage.setScene(new Scene(root1));
 			stage.initStyle(StageStyle.UNDECORATED);
 			stage.setResizable(false);
-			stage.centerOnScreen();
 			stage.show();
 
 		} catch (IOException ex) {

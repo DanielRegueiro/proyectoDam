@@ -9841,3 +9841,495 @@ java.lang.InterruptedException
 	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:133)
 	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
 	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:169)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:11.300
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.GwADGETn
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:11.305
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.GwADGETn
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:11.309
+!MESSAGE subsribers = null
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:11.312
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.GwADGETn => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.421
+!MESSAGE Boot LS startup time from start to initialized: 2970ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.439
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.gCbXdkhH
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.442
+!MESSAGE subscribing to classpath changes: sts4.classpath.gCbXdkhH
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.443
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.444
+!MESSAGE subsribers = [sts4.classpath.gCbXdkhH]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.445
+!MESSAGE Sending initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.446
+!MESSAGE project InterfazProyecto ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.447
+!MESSAGE Preparing classpath changed notification InterfazProyecto
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.448
+!MESSAGE project LogicaProyecto ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.449
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.449
+!MESSAGE Sending initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.450
+!MESSAGE classpath=95 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.451
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.gCbXdkhH => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.452
+!MESSAGE executing callback sts4.classpath.gCbXdkhH InterfazProyecto false 95
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.492
+!MESSAGE executing callback sts4.classpath.gCbXdkhH SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.493
+!MESSAGE Preparing classpath changed notification LogicaProyecto
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.494
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.518
+!MESSAGE classpath=101 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.519
+!MESSAGE executing callback sts4.classpath.gCbXdkhH LogicaProyecto false 101
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:26.956
+!MESSAGE executing callback sts4.classpath.gCbXdkhH SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:46.079
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.gCbXdkhH
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:46.080
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.gCbXdkhH
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:46.081
+!MESSAGE subsribers = null
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:46.082
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.gCbXdkhH => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:50.515
+!MESSAGE Boot LS startup time from start to initialized: 3069ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:50.535
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.YARnfxmz
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:50.539
+!MESSAGE subscribing to classpath changes: sts4.classpath.YARnfxmz
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:50.542
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:50.543
+!MESSAGE subsribers = [sts4.classpath.YARnfxmz]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:50.544
+!MESSAGE Sending initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:50.545
+!MESSAGE project InterfazProyecto ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:50.546
+!MESSAGE Preparing classpath changed notification InterfazProyecto
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:50.547
+!MESSAGE project LogicaProyecto ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:50.548
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:50.548
+!MESSAGE Sending initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:50.549
+!MESSAGE classpath=95 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:50.550
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.YARnfxmz => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:50.550
+!MESSAGE executing callback sts4.classpath.YARnfxmz InterfazProyecto false 95
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:50.593
+!MESSAGE executing callback sts4.classpath.YARnfxmz SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:50.594
+!MESSAGE Preparing classpath changed notification LogicaProyecto
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:50.595
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:50.603
+!MESSAGE classpath=101 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:50.603
+!MESSAGE executing callback sts4.classpath.YARnfxmz LogicaProyecto false 101
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:21:51.119
+!MESSAGE executing callback sts4.classpath.YARnfxmz SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:00.712
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.YARnfxmz
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:00.718
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.YARnfxmz
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:00.724
+!MESSAGE subsribers = null
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:00.726
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.YARnfxmz => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.085
+!MESSAGE Boot LS startup time from start to initialized: 2962ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.097
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.KoDDwwGv
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.101
+!MESSAGE subscribing to classpath changes: sts4.classpath.KoDDwwGv
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.102
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.103
+!MESSAGE subsribers = [sts4.classpath.KoDDwwGv]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.105
+!MESSAGE Sending initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.106
+!MESSAGE project InterfazProyecto ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.107
+!MESSAGE Preparing classpath changed notification InterfazProyecto
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.108
+!MESSAGE project LogicaProyecto ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.109
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.110
+!MESSAGE Sending initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.110
+!MESSAGE classpath=95 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.111
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.KoDDwwGv => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.112
+!MESSAGE executing callback sts4.classpath.KoDDwwGv InterfazProyecto false 95
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.155
+!MESSAGE executing callback sts4.classpath.KoDDwwGv SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.156
+!MESSAGE Preparing classpath changed notification LogicaProyecto
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.157
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.166
+!MESSAGE classpath=101 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.167
+!MESSAGE executing callback sts4.classpath.KoDDwwGv LogicaProyecto false 101
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:05.612
+!MESSAGE executing callback sts4.classpath.KoDDwwGv SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:15.260
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.KoDDwwGv
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:15.261
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.KoDDwwGv
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:15.263
+!MESSAGE subsribers = null
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:15.265
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.KoDDwwGv => OK
+
+!ENTRY org.eclipse.lsp4e 4 0 2019-06-05 14:22:18.951
+!MESSAGE 
+!STACK 0
+java.util.concurrent.TimeoutException
+	at java.util.concurrent.CompletableFuture.timedGet(Unknown Source)
+	at java.util.concurrent.CompletableFuture.get(Unknown Source)
+	at org.eclipse.lsp4e.operations.hover.LSBasedHover.getHoverInfo(LSBasedHover.java:108)
+	at org.springframework.tooling.boot.ls.jdt.SpringBootJavaHoverProvider.getHoverInfo2(SpringBootJavaHoverProvider.java:43)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:167)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:133)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:169)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:21.470
+!MESSAGE Boot LS startup time from start to initialized: 4261ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:21.497
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.rXFTsWJp
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:21.501
+!MESSAGE subscribing to classpath changes: sts4.classpath.rXFTsWJp
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:21.505
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:21.506
+!MESSAGE subsribers = [sts4.classpath.rXFTsWJp]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:21.507
+!MESSAGE Sending initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:21.508
+!MESSAGE project InterfazProyecto ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:21.509
+!MESSAGE Preparing classpath changed notification InterfazProyecto
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:21.510
+!MESSAGE project LogicaProyecto ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:21.511
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:21.512
+!MESSAGE Sending initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:21.512
+!MESSAGE classpath=95 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:21.513
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.rXFTsWJp => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:21.514
+!MESSAGE executing callback sts4.classpath.rXFTsWJp InterfazProyecto false 95
+
+!ENTRY org.eclipse.lsp4e 4 0 2019-06-05 14:22:21.515
+!MESSAGE org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	at java.util.concurrent.CompletableFuture.reportGet(Unknown Source)
+	at java.util.concurrent.CompletableFuture.get(Unknown Source)
+	at org.eclipse.lsp4e.operations.hover.LSBasedHover.lambda$11(LSBasedHover.java:236)
+	at java.util.stream.ReferencePipeline$3$1.accept(Unknown Source)
+	at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(Unknown Source)
+	at java.util.stream.AbstractPipeline.copyInto(Unknown Source)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(Unknown Source)
+	at java.util.stream.ReduceOps$ReduceOp.evaluateSequential(Unknown Source)
+	at java.util.stream.AbstractPipeline.evaluate(Unknown Source)
+	at java.util.stream.ReferencePipeline.collect(Unknown Source)
+	at org.eclipse.lsp4e.operations.hover.LSBasedHover.lambda$10(LSBasedHover.java:245)
+	at java.util.concurrent.CompletableFuture.uniApply(Unknown Source)
+	at java.util.concurrent.CompletableFuture$UniApply.tryFire(Unknown Source)
+	at java.util.concurrent.CompletableFuture$Completion.exec(Unknown Source)
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(Unknown Source)
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+Caused by: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleResponse(RemoteEndpoint.java:209)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:193)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$1(LanguageServerWrapper.java:213)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:192)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:21.572
+!MESSAGE executing callback sts4.classpath.rXFTsWJp SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:21.573
+!MESSAGE Preparing classpath changed notification LogicaProyecto
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:21.574
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:21.585
+!MESSAGE classpath=101 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:21.586
+!MESSAGE executing callback sts4.classpath.rXFTsWJp LogicaProyecto false 101
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:22.101
+!MESSAGE executing callback sts4.classpath.rXFTsWJp SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:29.407
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.rXFTsWJp
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:29.408
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.rXFTsWJp
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:29.409
+!MESSAGE subsribers = null
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:29.410
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.rXFTsWJp => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.181
+!MESSAGE Boot LS startup time from start to initialized: 3598ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.197
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.XEcBxGgw
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.200
+!MESSAGE subscribing to classpath changes: sts4.classpath.XEcBxGgw
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.201
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.202
+!MESSAGE subsribers = [sts4.classpath.XEcBxGgw]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.203
+!MESSAGE Sending initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.204
+!MESSAGE project InterfazProyecto ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.205
+!MESSAGE Preparing classpath changed notification InterfazProyecto
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.206
+!MESSAGE project LogicaProyecto ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.207
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.207
+!MESSAGE Sending initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.209
+!MESSAGE classpath=95 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.210
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.XEcBxGgw => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.211
+!MESSAGE executing callback sts4.classpath.XEcBxGgw InterfazProyecto false 95
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.257
+!MESSAGE executing callback sts4.classpath.XEcBxGgw SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.258
+!MESSAGE Preparing classpath changed notification LogicaProyecto
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.259
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.268
+!MESSAGE classpath=101 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.269
+!MESSAGE executing callback sts4.classpath.XEcBxGgw LogicaProyecto false 101
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:22:34.809
+!MESSAGE executing callback sts4.classpath.XEcBxGgw SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:25.314
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.XEcBxGgw
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:25.315
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.XEcBxGgw
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:25.315
+!MESSAGE subsribers = null
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:25.316
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.XEcBxGgw => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:29.903
+!MESSAGE Boot LS startup time from start to initialized: 3107ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:29.923
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.PhoGngsC
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:29.927
+!MESSAGE subscribing to classpath changes: sts4.classpath.PhoGngsC
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:29.928
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:29.929
+!MESSAGE subsribers = [sts4.classpath.PhoGngsC]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:29.930
+!MESSAGE Sending initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:29.931
+!MESSAGE project InterfazProyecto ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:29.932
+!MESSAGE Preparing classpath changed notification InterfazProyecto
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:29.933
+!MESSAGE project LogicaProyecto ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:29.933
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:29.934
+!MESSAGE Sending initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:29.935
+!MESSAGE classpath=95 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:29.936
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.PhoGngsC => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:29.937
+!MESSAGE executing callback sts4.classpath.PhoGngsC InterfazProyecto false 95
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:29.990
+!MESSAGE executing callback sts4.classpath.PhoGngsC SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:29.991
+!MESSAGE Preparing classpath changed notification LogicaProyecto
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:29.992
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:30.004
+!MESSAGE classpath=101 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:30.005
+!MESSAGE executing callback sts4.classpath.PhoGngsC LogicaProyecto false 101
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:23:30.487
+!MESSAGE executing callback sts4.classpath.PhoGngsC SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:24:33.346
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.PhoGngsC
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:24:33.352
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.PhoGngsC
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:24:33.355
+!MESSAGE subsribers = null
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:24:33.356
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.PhoGngsC => OK

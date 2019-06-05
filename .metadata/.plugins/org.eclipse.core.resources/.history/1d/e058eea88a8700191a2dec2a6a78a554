@@ -46,7 +46,7 @@ public class ControllerFXMLSeleccionTropasUsuario {
 	private Button botonTodas;
 
 	@FXML
-	private ComboBox<String> comboDestacamento;
+	private ComboBox comboDestacamento;
 
 	@FXML
 	void abrirPropias(ActionEvent event) {
@@ -57,8 +57,7 @@ public class ControllerFXMLSeleccionTropasUsuario {
 			stage.setScene(new Scene(root2));
 			stage.setResizable(false);
 			stage.centerOnScreen();
-			ControllerListaTropasPoseidasPorUsuario controller = fxmlLoader
-					.<ControllerListaTropasPoseidasPorUsuario>getController();
+			ControllerListaTropasPoseidasPorUsuario controller = fxmlLoader.<ControllerListaTropasPoseidasPorUsuario>getController();
 
 			controller.initData(generarDestacamento());
 		} catch (IOException ex) {
@@ -84,26 +83,27 @@ public class ControllerFXMLSeleccionTropasUsuario {
 	}
 
 	private DestacamentoInterface generarDestacamento() {
-
-		String str = comboDestacamento.getSelectionModel().getSelectedItem().toString();
-		switch (str) {
-		case "Batallon":
-			BatallonDestacamento destacamento1 = new BatallonDestacamento();
-
-			return destacamento1;
-
-		case "Vanguardia":
-			VanguardiaDestacamento destacamento2 = new VanguardiaDestacamento();
-
-			return destacamento2;
-		case "Punta de lanza":
-			PuntaDeLanzaDestacamento destacamento3 = new PuntaDeLanzaDestacamento();
-
-			return destacamento3;
-		default:
-
-		}
-
+		
+		  String str = comboDestacamento.getSelectionModel().getSelectedItem().toString(); 
+	        switch(str) 
+	        { 
+	            case "Batallon": 
+	            	BatallonDestacamento destacamento1 = new BatallonDestacamento();
+	        		
+	    			return destacamento1;
+	              
+	            case "Vanguardia": 
+	        		VanguardiaDestacamento destacamento2 = new VanguardiaDestacamento();
+	    			
+	    			return destacamento2;
+	            case "Punta de lanza": 
+	            	PuntaDeLanzaDestacamento destacamento3 = new PuntaDeLanzaDestacamento();
+	    			
+	    			return destacamento3;
+	            default: 
+	                
+	        } 
+		
 //	
 
 		return null;
@@ -119,6 +119,6 @@ public class ControllerFXMLSeleccionTropasUsuario {
 		assert comboDestacamento != null : "fx:id=\"comboDestacamento\" was not injected: check your FXML file 'VistaSeleccionTropasAUsar.fxml'.";
 		ObservableList<String> data = FXCollections.observableArrayList("Batallon", "Vanguardia", "Punta de lanza");
 		comboDestacamento.setItems(data);
-		comboDestacamento.getSelectionModel().selectFirst();
+
 	}
 }

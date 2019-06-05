@@ -83,7 +83,7 @@ public class ControllerPantallaSeleccionListas {
 			controller.initData(listasUsuario,LogicaPrincipal.getInstance()
 					.listaToUnidades(listas.getItems().get(listas.getSelectionModel().getSelectedIndex())));
 			stage.setResizable(false);
-			stage.centerOnScreen();
+
 		} catch (IOException ex) {
 			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
 		}

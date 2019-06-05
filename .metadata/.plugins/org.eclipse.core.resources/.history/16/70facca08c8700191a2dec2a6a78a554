@@ -129,7 +129,6 @@ public class ControllerGestionUnidades {
 			stageIndividual.setScene(sceneIndividual);
 			controller = root.<ControllerFXMLUnidadIndividual>getController();
 			controller.initData(lista.getItems().get(lista.getSelectionModel().getSelectedIndex()), this);
-			stageIndividual.centerOnScreen();
 			stageIndividual.show();
 
 		} catch (IOException e) {

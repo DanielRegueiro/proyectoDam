@@ -43,7 +43,6 @@ public class ControllerSeleccionListasAMostrar {
 			controller = fxmlLoader.<ControllerPantallaSeleccionListas>getController();
 			controller.initData(usuario.getListas(),null);
 			stage.setResizable(false);
-			stage.centerOnScreen();
 
 		} catch (IOException ex) {
 			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
@@ -61,7 +60,6 @@ public class ControllerSeleccionListasAMostrar {
 			controller = fxmlLoader.<ControllerPantallaSeleccionListas>getController();
 			controller.initData(listas,null);
 			stage.setResizable(false);
-			stage.centerOnScreen();
 
 		} catch (IOException ex) {
 			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);

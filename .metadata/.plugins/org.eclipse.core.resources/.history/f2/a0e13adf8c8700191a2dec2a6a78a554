@@ -50,7 +50,7 @@ public class ControllerFXMLSeleccionEjercito {
 			Stage stage = (Stage) botonlobos.getScene().getWindow();
 			stage.setScene(new Scene(root2));
 			stage.setResizable(false);
-			stage.centerOnScreen();
+	
 
 		} catch (IOException ex) {
 			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);

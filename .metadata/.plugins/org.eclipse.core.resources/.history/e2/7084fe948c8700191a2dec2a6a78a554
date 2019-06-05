@@ -65,7 +65,6 @@ public class ControllerListaTropasPoseidasPorUsuario {
 			Stage stage = (Stage) botonTodas.getScene().getWindow();
 			stage.setScene(new Scene(root3));
 			stage.setResizable(false);
-			stage.centerOnScreen();
 		} catch (IOException ex) {
 			Logger.getLogger(ControllerListaTropasPoseidasPorUsuario.class.getName()).log(Level.SEVERE, null, ex);
 		}
