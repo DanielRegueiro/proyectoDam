@@ -5,21 +5,19 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import data.PlatformHelper;
+import com.proyecto.destacamento.DestacamentoInterface;
+
 import data.RestClientImpl;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -71,7 +69,7 @@ public class ControllerGestionUnidades {
 	private Text textEliteMax;
 
 	@FXML
-	private Text TextTropaMax;
+	private Text textTropaMax;
 
 	@FXML
 	private Text textCgDentro;
@@ -115,7 +113,8 @@ public class ControllerGestionUnidades {
 	private Stage stageIndividual;
 	private ControllerFXMLUnidadIndividual controller;
 	
-	private StringProperty prueba = new SimpleStringProperty("0");
+	private StringProperty observableTextoCosteLista = new SimpleStringProperty("0");
+	
 
 	@FXML
 	void abrirUnidad(MouseEvent event) {
@@ -144,7 +143,7 @@ public class ControllerGestionUnidades {
 		listaUnidadesSeleccionadas.getItems().add(unidad);
 
 		listaUnidadesSeleccionadas.refresh();
-		costeLista=Integer.parseInt(prueba.getValue());
+		costeLista=Integer.parseInt(observableTextoCosteLista.getValue());
 	
 		
 		costeLista = costeLista + unidad.getPuntos();
@@ -156,7 +155,7 @@ public class ControllerGestionUnidades {
 		}
 		
 		textPuntosCosteLista.setText(String.valueOf(costeLista));
-		prueba.setValue(textPuntosCosteLista.getText());
+		observableTextoCosteLista.setValue(textPuntosCosteLista.getText());
 		
 	}
 
@@ -174,9 +173,9 @@ public class ControllerGestionUnidades {
 
 	}
 
-	void initData(List unidadesUsuario) {
+	void initData(List unidadesUsuario,DestacamentoInterface destacamento) {
 
-		if (unidadesUsuario.size() > 0) {
+		if (unidadesUsuario!=null) {
 			lista.getItems().clear();
 			ObservableList<modeloVista.Unidad> data = FXCollections.observableArrayList();
 			List<modeloVista.Unidad> unidades = unidadesUsuario;
@@ -189,6 +188,19 @@ public class ControllerGestionUnidades {
 			}
 			lista.getItems().addAll(data);
 		}
+		textApoyoMax.setText(destacamento.devolverMaximoApoyoPesado());
+		textApoyoMin.setText(destacamento.devolverMinimoApoyoPesado());
+		textCgMax.setText(destacamento.devolverMaximoCG());
+		textCgMin.setText(destacamento.devolverMinimoCG());
+		textAtaqueRapidoMax.setText(destacamento.devolverMaximoAtaqueRapido());
+		textAtaqueRapidoMin.setText(destacamento.devolverMinimoAtaqueRapido());
+		textTropaMax.setText(destacamento.devolverMaximoTropas());
+		textTropaMin.setText(destacamento.devolverMinimoTropas());
+		textEliteMax.setText(destacamento.devolverMaximoElite());
+		textEliteMin.setText(destacamento.devolverMinimoElite());
+		textVoladorasMax.setText(destacamento.devolverMaximoVoladores());
+		textVoladorasMin.setText(destacamento.devolverMinimoVoladores());
+		fotoDestacamento.setImage(new ImageView("img/"+destacamento.foto()+".jpg").getImage());
 	}
 
 	@FXML
@@ -205,7 +217,7 @@ public class ControllerGestionUnidades {
 		assert textTropaMin != null : "fx:id=\"textTropaMin\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
 		assert textCgMax != null : "fx:id=\"textCgMax\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
 		assert textEliteMax != null : "fx:id=\"textEliteMax\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
-		assert TextTropaMax != null : "fx:id=\"TextTropaMax\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textTropaMax != null : "fx:id=\"TextTropaMax\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
 		assert textCgDentro != null : "fx:id=\"textCgDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
 		assert textEliteDentro != null : "fx:id=\"textEliteDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
 		assert textTropaDentro != null : "fx:id=\"TextTropaDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
@@ -227,7 +239,7 @@ public class ControllerGestionUnidades {
 		textPuntosCosteLista.setText("0");
 		textPuntosCosteLista.setFont(Font.font(40));
 		
-		labelCoste.textProperty().bind(prueba);
+		labelCoste.textProperty().bind(observableTextoCosteLista);
 		
 		try {
 
@@ -248,7 +260,7 @@ public class ControllerGestionUnidades {
 
 		// asignacion de customCell con metodo lamda
 		listaUnidadesSeleccionadas
-				.setCellFactory(unidadesListView -> new ControllerCustomCellUnidad(listaUnidadesSeleccionadas,costeLista,prueba));
+				.setCellFactory(unidadesListView -> new ControllerCustomCellUnidad(listaUnidadesSeleccionadas,costeLista,observableTextoCosteLista));
 		// asignacion de customCell a la manera clasica
 		lista.setCellFactory(new Callback<ListView<modeloVista.Unidad>, ListCell<modeloVista.Unidad>>() {
 			@Override

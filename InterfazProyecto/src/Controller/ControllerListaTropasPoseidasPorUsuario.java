@@ -8,6 +8,8 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.proyecto.destacamento.DestacamentoInterface;
+import com.proyecto.destacamento.impl.BatallonDestacamento;
 
 import data.RestClientImpl;
 import javafx.beans.value.ChangeListener;
@@ -53,6 +55,7 @@ public class ControllerListaTropasPoseidasPorUsuario {
 	@FXML
 	private ListView<Unidad> listaTropasPoseidas;
 	private List<Unidad> tropasSeleccionadas;
+	private DestacamentoInterface destacamento;
 
 	@FXML
 	void Volver(ActionEvent event) {
@@ -74,15 +77,21 @@ public class ControllerListaTropasPoseidasPorUsuario {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/PantallaSeleccionunidad.fxml"));
 			Parent root2 = (Parent) fxmlLoader.load();
 			Stage stage = (Stage) botonTodas.getScene().getWindow();
-			
+
 			stage.setScene(new Scene(root2));
 			stage.setResizable(false);
 			stage.centerOnScreen();
 			ControllerGestionUnidades controller = fxmlLoader.<ControllerGestionUnidades>getController();
-			controller.initData(tropasSeleccionadas);
+
+			controller.initData(tropasSeleccionadas, destacamento);
 		} catch (IOException ex) {
 			Logger.getLogger(ControllerListaTropasPoseidasPorUsuario.class.getName()).log(Level.SEVERE, null, ex);
 		}
+
+	}
+
+	void initData(DestacamentoInterface destacamento) {
+		this.destacamento = destacamento;
 
 	}
 

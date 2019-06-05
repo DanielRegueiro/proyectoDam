@@ -5,77 +5,83 @@ import com.proyecto.destacamento.DestacamentoInterface;
 public class BatallonDestacamento implements DestacamentoInterface {
 
 	@Override
-	public int devolverMinimoCG() {
+	public String devolverMinimoCG() {
 		
-		return 2;
+		return "2";
 	}
 
 	@Override
-	public int devolverMinimoTropas() {
+	public String devolverMinimoTropas() {
 		
-		return 3;
+		return "3";
 	}
 
 	@Override
-	public int devolverMinimoElite() {
+	public String devolverMinimoElite() {
 		
-		return 0;
+		return "0";
 	}
 
 	@Override
-	public int devolverMinimoAtaqueRapido() {
+	public String devolverMinimoAtaqueRapido() {
 		
-		return 0;
+		return "0";
 	}
 
 	@Override
-	public int devolverMinimoVoladores() {
+	public String devolverMinimoVoladores() {
 		
-		return 0;
+		return "0";
 	}
 
 	@Override
-	public int devolverMinimoApoyoPesado() {
+	public String devolverMinimoApoyoPesado() {
 		
-		return 0;
+		return "0";
 	}
 
 
 
 	@Override
-	public int devolverMaximoCG() {
+	public String devolverMaximoCG() {
 		
-		return 3;
+		return "3";
 	}
 
 	@Override
-	public int devolverMaximoTropas() {
+	public String devolverMaximoTropas() {
 		
-		return 6;
+		return "6";
 	}
 
 	@Override
-	public int devolverMaximoElite() {
+	public String devolverMaximoElite() {
 		
-		return 3;
+		return "6";
 	}
 
 	@Override
-	public int devolverMaximoAtaqueRapido() {
+	public String devolverMaximoAtaqueRapido() {
 		
-		return 3;
+		return "3";
 	}
 
 	@Override
-	public int devolverMaximoVoladores() {
+	public String devolverMaximoVoladores() {
 		
-		return 2;
+		return "2";
 	}
 
 	@Override
-	public int devolverMaximoApoyoPesado() {
+	public String devolverMaximoApoyoPesado() {
 		
-		return 3;
+		return "3";
+	}
+
+	@Override
+	public String foto() {
+		
+		return "batallon";
 	}
 
 

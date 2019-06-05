@@ -2,20 +2,20 @@ package com.proyecto.destacamento;
 
 public interface DestacamentoInterface {
 
-	public int devolverMinimoCG();
-	public int devolverMinimoTropas();
-	public int devolverMinimoElite();
-	public int devolverMinimoAtaqueRapido();
-	public int devolverMinimoVoladores();
-	public int devolverMinimoApoyoPesado();
+	public String devolverMinimoCG();
+	public String devolverMinimoTropas();
+	public String devolverMinimoElite();
+	public String devolverMinimoAtaqueRapido();
+	public String devolverMinimoVoladores();
+	public String devolverMinimoApoyoPesado();
 
 	
-	public int devolverMaximoCG();
-	public int devolverMaximoTropas();
-	public int devolverMaximoElite();
-	public int devolverMaximoAtaqueRapido();
-	public int devolverMaximoVoladores();
-	public int devolverMaximoApoyoPesado();
-
+	public String devolverMaximoCG();
+	public String devolverMaximoTropas();
+	public String devolverMaximoElite();
+	public String devolverMaximoAtaqueRapido();
+	public String devolverMaximoVoladores();
+	public String devolverMaximoApoyoPesado();
+	public String foto();
 	
 }

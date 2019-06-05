@@ -8,6 +8,10 @@ import java.util.ListIterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.proyecto.destacamento.DestacamentoInterface;
+import com.proyecto.destacamento.impl.BatallonDestacamento;
+import com.proyecto.destacamento.impl.VanguardiaDestacamento;
+
 import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -52,9 +56,11 @@ public class ControllerFXMLSeleccionTropasUsuario {
 			stage.setScene(new Scene(root2));
 			stage.setResizable(false);
 			stage.centerOnScreen();
+			ControllerListaTropasPoseidasPorUsuario controller = fxmlLoader.<ControllerListaTropasPoseidasPorUsuario>getController();
 
+			controller.initData(generarDestacamento());
 		} catch (IOException ex) {
-			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ControllerFXMLSeleccionTropasUsuario.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
 
@@ -68,10 +74,30 @@ public class ControllerFXMLSeleccionTropasUsuario {
 			stage.setScene(new Scene(root2));
 			stage.setResizable(false);
 			stage.centerOnScreen();
-
+			ControllerGestionUnidades controller = fxmlLoader.<ControllerGestionUnidades>getController();
+			controller.initData(null, generarDestacamento());
 		} catch (IOException ex) {
-			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ControllerFXMLSeleccionTropasUsuario.class.getName()).log(Level.SEVERE, null, ex);
 		}
+	}
+
+	private DestacamentoInterface generarDestacamento() {
+		
+		if (comboDestacamento.getSelectionModel().getSelectedItem().toString().equals("Batallon")) {
+			BatallonDestacamento destacamento = new BatallonDestacamento();
+		
+			return destacamento;
+		}
+		
+		if (comboDestacamento.getSelectionModel().getSelectedItem().toString().equals("Vanguardia")) {
+			VanguardiaDestacamento destacamento = new VanguardiaDestacamento();
+			
+			return destacamento;
+		}
+		
+
+		return null;
+
 	}
 
 	@FXML
@@ -82,7 +108,6 @@ public class ControllerFXMLSeleccionTropasUsuario {
 		assert botonPropias != null : "fx:id=\"botonPropias\" was not injected: check your FXML file 'VistaSeleccionTropasAUsar.fxml'.";
 		assert comboDestacamento != null : "fx:id=\"comboDestacamento\" was not injected: check your FXML file 'VistaSeleccionTropasAUsar.fxml'.";
 		ObservableList<String> data = FXCollections.observableArrayList("Batallon", "Vanguardia");
-		//comboDestacamento = new ComboBox(data);
 		comboDestacamento.setItems(data);
 
 	}

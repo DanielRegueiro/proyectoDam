@@ -38,24 +38,21 @@
       <ListView fx:id="lista" layoutX="13.0" layoutY="257.0" onMouseClicked="#abrirUnidad" opacity="0.85" prefHeight="340.0" prefWidth="383.0" />
       <ListView fx:id="listaUnidadesSeleccionadas" layoutX="406.0" layoutY="257.0" opacity="0.85" prefHeight="340.0" prefWidth="579.0" />
       <ImageView fx:id="fotoDestacamento" fitHeight="172.0" fitWidth="383.0" layoutX="13.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/batallon.jpg" />
-         </image>
          <effect>
             <DropShadow color="#561818" height="17.04" offsetX="3.0" offsetY="3.0" radius="8.02" spread="0.13" width="17.04" />
          </effect>
       </ImageView>
-      <Text fill="#fcfafa" layoutX="455.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="120.32550048828125">
+      <Text fill="#fcfafa" layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="120.32550048828125">
          <font>
             <Font size="25.0" />
          </font>
       </Text>
-      <TextField fx:id="textNombreLista" layoutX="571.0" layoutY="24.0" opacity="0.79" prefHeight="44.0" prefWidth="273.0">
+      <TextField fx:id="textNombreLista" layoutX="115.0" layoutY="21.0" opacity="0.79" prefHeight="44.0" prefWidth="283.0">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <Text fill="#fcfafa" layoutX="891.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Puntos" wrappingWidth="84.32550048828125">
+      <Text fill="#fcfafa" layoutX="685.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Puntos:" wrappingWidth="84.32550048828125">
          <font>
             <Font size="25.0" />
          </font>
@@ -90,17 +87,17 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fill="#fcfafa" layoutX="634.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="max:" wrappingWidth="62.0">
+      <Text fill="#fcfafa" layoutX="697.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="max:" wrappingWidth="62.0">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fill="#fcfafa" layoutX="634.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="max:" wrappingWidth="62.0">
+      <Text fill="#fcfafa" layoutX="697.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="max:" wrappingWidth="62.0">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fill="#fcfafa" layoutX="634.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="max:" wrappingWidth="62.0">
+      <Text fill="#fcfafa" layoutX="697.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="max:" wrappingWidth="62.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -120,17 +117,17 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fill="#fcfafa" layoutX="744.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dentro:" wrappingWidth="76.6666259765625">
+      <Text fill="#fcfafa" layoutX="802.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dentro:" wrappingWidth="76.6666259765625">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fill="#fcfafa" layoutX="744.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dentro:" wrappingWidth="76.6666259765625">
+      <Text fill="#fcfafa" layoutX="802.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dentro:" wrappingWidth="76.6666259765625">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fill="#fcfafa" layoutX="744.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dentro:" wrappingWidth="76.6666259765625">
+      <Text fill="#fcfafa" layoutX="802.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dentro:" wrappingWidth="76.6666259765625">
          <font>
             <Font size="20.0" />
          </font>
@@ -150,47 +147,47 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="textCgMin" fill="#f70505" layoutX="575.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+      <Text fx:id="textCgMin" fill="#f70505" layoutX="646.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="textEliteMin" fill="#f70505" layoutX="575.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+      <Text fx:id="textEliteMin" fill="#f70505" layoutX="646.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="textTropaMin" fill="#f70505" layoutX="575.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+      <Text fx:id="textTropaMin" fill="#f70505" layoutX="646.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="textCgMax" fill="#f70505" layoutX="691.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+      <Text fx:id="textCgMax" fill="#f70505" layoutX="747.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="textEliteMax" fill="#f70505" layoutX="691.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+      <Text fx:id="textEliteMax" fill="#f70505" layoutX="747.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="textTropaMax" fill="#f70505" layoutX="691.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+      <Text fx:id="textTropaMax" fill="#f70505" layoutX="747.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="textCgDentro" fill="#0bf507" layoutX="822.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+      <Text fx:id="textCgDentro" fill="#0bf507" layoutX="874.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="textEliteDentro" fill="#0bf507" layoutX="822.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+      <Text fx:id="textEliteDentro" fill="#0bf507" layoutX="874.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="textTropaDentro" fill="#0bf507" layoutX="822.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
+      <Text fx:id="textTropaDentro" fill="#0bf507" layoutX="874.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="36.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -240,7 +237,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Label fx:id="labelCoste" layoutX="895.0" layoutY="67.0" prefHeight="58.0" prefWidth="91.0" textFill="RED">
+      <Label fx:id="labelCoste" layoutX="782.0" layoutY="14.0" prefHeight="58.0" prefWidth="150.0" textFill="RED">
          <font>
             <Font size="40.0" />
          </font>
