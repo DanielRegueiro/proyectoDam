@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import data.ProyectoDamCliente;
+
 import data.RestClientImpl;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -63,7 +63,7 @@ public class ControllerListaTropasPoseidasPorUsuario {
 			stage.setScene(new Scene(root3));
 			stage.setResizable(false);
 		} catch (IOException ex) {
-			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ControllerListaTropasPoseidasPorUsuario.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
 
@@ -74,13 +74,14 @@ public class ControllerListaTropasPoseidasPorUsuario {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/PantallaSeleccionunidad.fxml"));
 			Parent root2 = (Parent) fxmlLoader.load();
 			Stage stage = (Stage) botonTodas.getScene().getWindow();
+			
 			stage.setScene(new Scene(root2));
 			stage.setResizable(false);
 			stage.centerOnScreen();
 			ControllerGestionUnidades controller = fxmlLoader.<ControllerGestionUnidades>getController();
 			controller.initData(tropasSeleccionadas);
 		} catch (IOException ex) {
-			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ControllerListaTropasPoseidasPorUsuario.class.getName()).log(Level.SEVERE, null, ex);
 		}
 
 	}
@@ -100,7 +101,7 @@ public class ControllerListaTropasPoseidasPorUsuario {
 			data.addAll(unidades);
 
 		} catch (IOException ex) {
-			Logger.getLogger(ProyectoDamCliente.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ControllerListaTropasPoseidasPorUsuario.class.getName()).log(Level.SEVERE, null, ex);
 		}
 
 		listaTropasPoseidas.getItems().addAll(data);

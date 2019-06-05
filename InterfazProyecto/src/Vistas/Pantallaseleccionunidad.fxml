@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
@@ -37,11 +37,6 @@
       </Button>
       <ListView fx:id="lista" layoutX="13.0" layoutY="257.0" onMouseClicked="#abrirUnidad" opacity="0.85" prefHeight="340.0" prefWidth="383.0" />
       <ListView fx:id="listaUnidadesSeleccionadas" layoutX="406.0" layoutY="257.0" opacity="0.85" prefHeight="340.0" prefWidth="579.0" />
-      <Text fill="#fcfafa" layoutX="43.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Destacamento:" wrappingWidth="212.9921875">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Text>
       <ImageView fx:id="fotoDestacamento" fitHeight="172.0" fitWidth="383.0" layoutX="13.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/batallon.jpg" />
@@ -50,13 +45,12 @@
             <DropShadow color="#561818" height="17.04" offsetX="3.0" offsetY="3.0" radius="8.02" spread="0.13" width="17.04" />
          </effect>
       </ImageView>
-      <ComboBox fx:id="comboDestacamento" layoutX="223.0" layoutY="26.0" opacity="0.8" prefHeight="33.0" prefWidth="150.0" />
       <Text fill="#fcfafa" layoutX="455.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="120.32550048828125">
          <font>
             <Font size="25.0" />
          </font>
       </Text>
-      <TextField fx:id="textNombreLista" layoutX="571.0" layoutY="24.0" opacity="0.79" prefHeight="44.0" prefWidth="297.0">
+      <TextField fx:id="textNombreLista" layoutX="571.0" layoutY="24.0" opacity="0.79" prefHeight="44.0" prefWidth="273.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -64,11 +58,6 @@
       <Text fill="#fcfafa" layoutX="891.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Puntos" wrappingWidth="84.32550048828125">
          <font>
             <Font size="25.0" />
-         </font>
-      </Text>
-      <Text fx:id="textPuntosCosteLista" fill="RED" layoutX="868.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="113.33333333333326">
-         <font>
-            <Font size="43.0" />
          </font>
       </Text>
       <Text fill="#fcfafa" layoutX="421.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Uds C.G min:" wrappingWidth="150.0">
@@ -251,5 +240,10 @@
             <Font size="20.0" />
          </font>
       </Text>
+      <Label fx:id="labelCoste" layoutX="895.0" layoutY="67.0" prefHeight="58.0" prefWidth="91.0" textFill="RED">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

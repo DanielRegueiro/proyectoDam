@@ -1,9 +1,17 @@
 package controller;
 
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javafx.beans.InvalidationListener;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,37 +25,43 @@ import javafx.stage.Stage;
 
 public class ControllerFXMLSeleccionTropasUsuario {
 
-    @FXML
-    private ImageView hielo;
+	@FXML
+	private ImageView hielo;
 
-    @FXML
-    private ImageView lobo;
-    @FXML
-    private Button botonPropias;
+	@FXML
+	private ImageView cabeza;
 
-    @FXML
-    private Button botonTodas;
+	@FXML
+	private ImageView lobo;
 
- 
+	@FXML
+	private Button botonPropias;
 
-    @FXML
-    void abrirPropias(ActionEvent event) {
-    	try {
+	@FXML
+	private Button botonTodas;
+
+	@FXML
+	private ComboBox comboDestacamento;
+
+	@FXML
+	void abrirPropias(ActionEvent event) {
+		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/VistaSeleccionTropasUsuario.fxml"));
 			Parent root2 = (Parent) fxmlLoader.load();
 			Stage stage = (Stage) botonPropias.getScene().getWindow();
 			stage.setScene(new Scene(root2));
 			stage.setResizable(false);
 			stage.centerOnScreen();
-			
+
 		} catch (IOException ex) {
 			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
 		}
-    }
+	}
 
-    @FXML
-    void abrirTodas(ActionEvent event) {
-    	try {
+	@FXML
+	void abrirTodas(ActionEvent event) {
+
+		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/PantallaSeleccionunidad.fxml"));
 			Parent root2 = (Parent) fxmlLoader.load();
 			Stage stage = (Stage) botonPropias.getScene().getWindow();
@@ -58,6 +72,18 @@ public class ControllerFXMLSeleccionTropasUsuario {
 		} catch (IOException ex) {
 			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
 		}
-    }
+	}
 
+	@FXML
+	void initialize() {
+		assert hielo != null : "fx:id=\"hielo\" was not injected: check your FXML file 'VistaSeleccionTropasAUsar.fxml'.";
+		assert cabeza != null : "fx:id=\"cabeza\" was not injected: check your FXML file 'VistaSeleccionTropasAUsar.fxml'.";
+		assert botonTodas != null : "fx:id=\"botonTodas\" was not injected: check your FXML file 'VistaSeleccionTropasAUsar.fxml'.";
+		assert botonPropias != null : "fx:id=\"botonPropias\" was not injected: check your FXML file 'VistaSeleccionTropasAUsar.fxml'.";
+		assert comboDestacamento != null : "fx:id=\"comboDestacamento\" was not injected: check your FXML file 'VistaSeleccionTropasAUsar.fxml'.";
+		ObservableList<String> data = FXCollections.observableArrayList("Batallon", "Vanguardia");
+		//comboDestacamento = new ComboBox(data);
+		comboDestacamento.setItems(data);
+
+	}
 }

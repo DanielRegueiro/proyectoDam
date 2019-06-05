@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -10,18 +11,21 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import modeloVista.Arma;
 import modeloVista.Unidad;
 
 public class ControllerCustomCellUnidad extends ListCell<modeloVista.Unidad> {
 
 private	ListView<modeloVista.Unidad> listaUnidadesSeleccionadas;
+private int costeLista;
+private StringProperty prueba;
 
 
 
-
-
-	public ControllerCustomCellUnidad(ListView<Unidad> listaUnidadesSeleccionadas) {
+	public ControllerCustomCellUnidad(ListView<Unidad> listaUnidadesSeleccionadas, int costeLista,StringProperty prueba) {
 	super();
+	this.prueba=prueba;
+	this.costeLista=costeLista;
 	this.listaUnidadesSeleccionadas = listaUnidadesSeleccionadas;
 }
 
@@ -56,6 +60,14 @@ private	ListView<modeloVista.Unidad> listaUnidadesSeleccionadas;
 				@Override
 				public void handle(ActionEvent event) {
 				listaUnidadesSeleccionadas.getItems().remove(item);
+				costeLista=Integer.parseInt(prueba.getValue())-item.getPuntos();
+
+				for (Arma i : item.getArmas()) {
+
+						costeLista -= i.getPuntos();
+
+				}
+				prueba.setValue(String.valueOf(costeLista));
 				}
 			});
 			HBox h=new HBox(imagen,p,r);
