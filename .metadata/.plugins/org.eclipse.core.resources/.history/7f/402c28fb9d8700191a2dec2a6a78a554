@@ -176,7 +176,7 @@ public class ControllerGestionUnidades {
 				Parent root1 = (Parent) fxmlLoader.load();
 				Stage stage = new Stage();
 				ControllerDialogoAlerta controller = fxmlLoader.<ControllerDialogoAlerta>getController();
-				controller.cambiarTexto("Se supera el maximo de unidades");
+				controller.cambiarTexto("La contraseña no es correcta");
 				stage.setScene(new Scene(root1));
 				stage.setResizable(false);
 				stage.initStyle(StageStyle.UNDECORATED);
@@ -193,52 +193,15 @@ public class ControllerGestionUnidades {
 	}
 
 	public Boolean comprobacionCoherenciaLista() {
-		if (cg + 1 > Integer.parseInt(destacamento.devolverMaximoCG())) {
-			return false;
+		if (cg + 1 > Integer.parseInt(destacamento.devolverMinimoCG())) {
+			return true;
 
 		}
 
-		return true;
+		return false;
 
 	}
-	public void actualizarUnidadesRestadas(Unidad unidad) {
-		String str = unidad.getTipoUnidad().getDescripcion();
-		switch (str) {
-		case "Cuartel general":
-			cg = cg - 1;
-			observableTextoCg.setValue(String.valueOf(cg));
-			textCgDentro.textProperty().bind(observableTextoCg);
-			break;
-		case "Tropas":
-			tropa = tropa - 1;
-			observableTextoTropa.setValue(String.valueOf(tropa));
-			textTropaDentro.textProperty().bind(observableTextoTropa);
-			break;
-		case "Elite":
-			elite = elite - 1;
-			observableTextoElite.setValue(String.valueOf(elite));
-			textEliteDentro.textProperty().bind(observableTextoElite);
-			break;
-		case "Ataque rapido":
-			ataqueRapido = ataqueRapido - 1;
-			observableTextoAtaqueRapido.setValue(String.valueOf(ataqueRapido));
-			textAtaqueRapidoDentro.textProperty().bind(observableTextoAtaqueRapido);
-			break;
-		case "Voladores":
-			voladores = voladores - 1;
-			observableTextoVoladoras.setValue(String.valueOf(voladores));
-			textVoladorasDentro.textProperty().bind(observableTextoVoladoras);
-			break;
-		case "Apoyo pesado":
-			apoyo = apoyo - 1;
-			observableTextoApoyo.setValue(String.valueOf(apoyo));
-			textApoyoDentro.textProperty().bind(observableTextoApoyo);
-			break;
-		default:
 
-		}
-
-	}
 	public void actualizarUnidadesDentroDeLaLista(Unidad unidad) {
 		String str = unidad.getTipoUnidad().getDescripcion();
 

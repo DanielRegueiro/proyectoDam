@@ -29,7 +29,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import modeloVista.Arma;
 import modeloVista.Unidad;
@@ -113,22 +112,16 @@ public class ControllerGestionUnidades {
 	private int costeLista;
 	private Stage stageIndividual;
 	private ControllerFXMLUnidadIndividual controller;
-
+	
 	private StringProperty observableTextoCosteLista = new SimpleStringProperty("0");
-
+	
 	private StringProperty observableTextoCg = new SimpleStringProperty("0");
 	private StringProperty observableTextoElite = new SimpleStringProperty("0");
 	private StringProperty observableTextoTropa = new SimpleStringProperty("0");
-	private StringProperty observableTextoApoyo = new SimpleStringProperty("0");
+	private StringProperty observableTextoApoyo= new SimpleStringProperty("0");
 	private StringProperty observableTextoVoladoras = new SimpleStringProperty("0");
 	private StringProperty observableTextoAtaqueRapido = new SimpleStringProperty("0");
-	private int cg;
-	private int tropa;
-	private int apoyo;
-	private int voladores;
-	private int ataqueRapido;
-	private int elite;
-	private DestacamentoInterface destacamento;
+	
 
 	@FXML
 	void abrirUnidad(MouseEvent event) {
@@ -154,129 +147,61 @@ public class ControllerGestionUnidades {
 	}
 
 	public void anadirUnidadLista(Unidad unidad) {
-		if (comprobacionCoherenciaLista()) {
-			listaUnidadesSeleccionadas.getItems().add(unidad);
-			listaUnidadesSeleccionadas.refresh();
-			costeLista = Integer.parseInt(observableTextoCosteLista.getValue());
-			costeLista = costeLista + unidad.getPuntos();
 
-			for (Arma i : unidad.getArmas()) {
+		listaUnidadesSeleccionadas.getItems().add(unidad);
 
-				costeLista += i.getPuntos();
+		listaUnidadesSeleccionadas.refresh();
+		costeLista=Integer.parseInt(observableTextoCosteLista.getValue());
+	
+		
+		costeLista = costeLista + unidad.getPuntos();
 
-			}
-
-			actualizarUnidadesDentroDeLaLista(unidad);
-			textPuntosCosteLista.setText(String.valueOf(costeLista));
-			observableTextoCosteLista.setValue(textPuntosCosteLista.getText());
-		} else {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/VistaDialogoAlerta.fxml"));
-
-			try {
-				Parent root1 = (Parent) fxmlLoader.load();
-				Stage stage = new Stage();
-				ControllerDialogoAlerta controller = fxmlLoader.<ControllerDialogoAlerta>getController();
-				controller.cambiarTexto("Se supera el maximo de unidades");
-				stage.setScene(new Scene(root1));
-				stage.setResizable(false);
-				stage.initStyle(StageStyle.UNDECORATED);
-				stage.centerOnScreen();
-				stage.show();
-
-			} catch (IOException e) {
-
-				e.printStackTrace();
-			}
-
+		for (Arma i : unidad.getArmas()) {
+		
+			costeLista += i.getPuntos();
+	
 		}
-
+		actualizarUnidadesDentroDeLaLista(unidad);
+		textPuntosCosteLista.setText(String.valueOf(costeLista));
+		observableTextoCosteLista.setValue(textPuntosCosteLista.getText());
+		
 	}
-
-	public Boolean comprobacionCoherenciaLista() {
-		if (cg + 1 > Integer.parseInt(destacamento.devolverMaximoCG())) {
-			return false;
-
-		}
-
-		return true;
-
-	}
-	public void actualizarUnidadesRestadas(Unidad unidad) {
-		String str = unidad.getTipoUnidad().getDescripcion();
-		switch (str) {
-		case "Cuartel general":
-			cg = cg - 1;
-			observableTextoCg.setValue(String.valueOf(cg));
-			textCgDentro.textProperty().bind(observableTextoCg);
-			break;
-		case "Tropas":
-			tropa = tropa - 1;
-			observableTextoTropa.setValue(String.valueOf(tropa));
-			textTropaDentro.textProperty().bind(observableTextoTropa);
-			break;
-		case "Elite":
-			elite = elite - 1;
-			observableTextoElite.setValue(String.valueOf(elite));
-			textEliteDentro.textProperty().bind(observableTextoElite);
-			break;
-		case "Ataque rapido":
-			ataqueRapido = ataqueRapido - 1;
-			observableTextoAtaqueRapido.setValue(String.valueOf(ataqueRapido));
-			textAtaqueRapidoDentro.textProperty().bind(observableTextoAtaqueRapido);
-			break;
-		case "Voladores":
-			voladores = voladores - 1;
-			observableTextoVoladoras.setValue(String.valueOf(voladores));
-			textVoladorasDentro.textProperty().bind(observableTextoVoladoras);
-			break;
-		case "Apoyo pesado":
-			apoyo = apoyo - 1;
-			observableTextoApoyo.setValue(String.valueOf(apoyo));
-			textApoyoDentro.textProperty().bind(observableTextoApoyo);
-			break;
-		default:
-
-		}
-
-	}
+	
 	public void actualizarUnidadesDentroDeLaLista(Unidad unidad) {
-		String str = unidad.getTipoUnidad().getDescripcion();
-
-		switch (str) {
-		case "Cuartel general":
-			cg = cg + 1;
-			observableTextoCg.setValue(String.valueOf(cg));
-			textCgDentro.textProperty().bind(observableTextoCg);
-			break;
-		case "Tropas":
-			tropa = tropa + 1;
-			observableTextoTropa.setValue(String.valueOf(tropa));
-			textTropaDentro.textProperty().bind(observableTextoTropa);
-			break;
-		case "Elite":
-			elite = elite + 1;
-			observableTextoElite.setValue(String.valueOf(elite));
-			textEliteDentro.textProperty().bind(observableTextoElite);
-			break;
-		case "Ataque rapido":
-			ataqueRapido = ataqueRapido + 1;
-			observableTextoAtaqueRapido.setValue(String.valueOf(ataqueRapido));
-			textAtaqueRapidoDentro.textProperty().bind(observableTextoAtaqueRapido);
-			break;
-		case "Voladores":
-			voladores = voladores + 1;
-			observableTextoVoladoras.setValue(String.valueOf(voladores));
-			textVoladorasDentro.textProperty().bind(observableTextoVoladoras);
-			break;
-		case "Apoyo pesado":
-			apoyo = apoyo + 1;
-			observableTextoApoyo.setValue(String.valueOf(apoyo));
-			textApoyoDentro.textProperty().bind(observableTextoApoyo);
-			break;
-		default:
-
-		}
-
+		 String str = unidad.getTipoUnidad().getDescripcion(); 
+	        switch(str) 
+	        { 
+	            case "Cuartel general": 
+	            	textCgDentro.setText((String.valueOf(textCgDentro.getText())+1));
+	            	observableTextoCg.setValue(textCgDentro.getText()); 
+	            	textCgDentro.textProperty().bind(observableTextoCg);
+	            
+	                break; 
+	            case "Tropas": 
+	                System.out.println("two"); 
+	                break; 
+	            case "Elite": 
+	                System.out.println("three"); 
+	                break; 
+	            case "Ataque rapido": 
+	                System.out.println("three"); 
+	                break;   
+	            case "Voladores": 
+	                System.out.println("three"); 
+	                break; 
+	            case "Apoyo pesado": 
+	                System.out.println("three"); 
+	                break; 
+	            default: 
+	                System.out.println("no match"); 
+	        } 
+//		observableTextoCg 
+//		 observableTextoElite 
+//		 observableTextoTropa 
+//		 observableTextoApoyo
+//		 observableTextoVoladoras
+//		 observableTextoAtaqueRapido
+//		
 	}
 
 	@FXML
@@ -293,9 +218,9 @@ public class ControllerGestionUnidades {
 
 	}
 
-	void initData(List unidadesUsuario, DestacamentoInterface destacamento) {
-		this.destacamento = destacamento;
-		if (unidadesUsuario != null) {
+	void initData(List unidadesUsuario,DestacamentoInterface destacamento) {
+
+		if (unidadesUsuario!=null) {
 			lista.getItems().clear();
 			ObservableList<modeloVista.Unidad> data = FXCollections.observableArrayList();
 			List<modeloVista.Unidad> unidades = unidadesUsuario;
@@ -320,7 +245,7 @@ public class ControllerGestionUnidades {
 		textEliteMin.setText(destacamento.devolverMinimoElite());
 		textVoladorasMax.setText(destacamento.devolverMaximoVoladores());
 		textVoladorasMin.setText(destacamento.devolverMinimoVoladores());
-		fotoDestacamento.setImage(new ImageView("img/" + destacamento.foto() + ".jpg").getImage());
+		fotoDestacamento.setImage(new ImageView("img/"+destacamento.foto()+".jpg").getImage());
 	}
 
 	@FXML
@@ -351,15 +276,16 @@ public class ControllerGestionUnidades {
 		assert textApoyoDentro != null : "fx:id=\"textApoyoDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
 		assert textVoladorasDentro != null : "fx:id=\"textVoladorasDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
 		assert labelCoste != null : "fx:id=\"labelCoste\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
-
+		
+	
 		RestClientImpl restClient = new RestClientImpl();
 		ObservableList<modeloVista.Unidad> data = FXCollections.observableArrayList();
-		textPuntosCosteLista = new Text();
+		textPuntosCosteLista=new Text();
 		textPuntosCosteLista.setText("0");
 		textPuntosCosteLista.setFont(Font.font(40));
-
+		
 		labelCoste.textProperty().bind(observableTextoCosteLista);
-
+		
 		try {
 
 			List<modeloVista.Unidad> unidades = restClient.getAllUnits();
@@ -379,8 +305,7 @@ public class ControllerGestionUnidades {
 
 		// asignacion de customCell con metodo lamda
 		listaUnidadesSeleccionadas
-				.setCellFactory(unidadesListView -> new ControllerCustomCellUnidad(listaUnidadesSeleccionadas,
-						costeLista, observableTextoCosteLista));
+				.setCellFactory(unidadesListView -> new ControllerCustomCellUnidad(listaUnidadesSeleccionadas,costeLista,observableTextoCosteLista));
 		// asignacion de customCell a la manera clasica
 		lista.setCellFactory(new Callback<ListView<modeloVista.Unidad>, ListCell<modeloVista.Unidad>>() {
 			@Override
@@ -415,13 +340,10 @@ public class ControllerGestionUnidades {
 
 		@Override
 		protected void updateItem(modeloVista.Unidad item, boolean empty) {
-
 			super.updateItem(item, empty);
 			if (item != null && !empty) { // <== test for null item and empty parameter
-
 				name.setText(item.getNombre());
 				tipo.setText(item.getTipoUnidad().getDescripcion());
-
 				price.setText(String.format("%d Puntos", item.getPuntos()));
 				imagen = new ImageView(item.getImagen());
 				content = new HBox(imagen, separador, new VBox(name, price, tipo));

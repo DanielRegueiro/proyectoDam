@@ -10333,3 +10333,135 @@ Caused by: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 14:24:33.356
 !MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.PhoGngsC => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.289
+!MESSAGE Boot LS startup time from start to initialized: 2810ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.313
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.DOtynfpF
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.319
+!MESSAGE subscribing to classpath changes: sts4.classpath.DOtynfpF
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.322
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.322
+!MESSAGE subsribers = [sts4.classpath.DOtynfpF]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.322
+!MESSAGE Sending initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.322
+!MESSAGE project InterfazProyecto ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.328
+!MESSAGE Preparing classpath changed notification InterfazProyecto
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.328
+!MESSAGE project LogicaProyecto ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.328
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.328
+!MESSAGE Sending initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.328
+!MESSAGE classpath=95 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.328
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.DOtynfpF => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.328
+!MESSAGE executing callback sts4.classpath.DOtynfpF InterfazProyecto false 95
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.369
+!MESSAGE executing callback sts4.classpath.DOtynfpF SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.369
+!MESSAGE Preparing classpath changed notification LogicaProyecto
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.369
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.383
+!MESSAGE classpath=101 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.383
+!MESSAGE executing callback sts4.classpath.DOtynfpF LogicaProyecto false 101
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 15:26:53.759
+!MESSAGE executing callback sts4.classpath.DOtynfpF SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:19.637
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.DOtynfpF
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:19.637
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.DOtynfpF
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:19.643
+!MESSAGE subsribers = null
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:19.643
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.DOtynfpF => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.383
+!MESSAGE Boot LS startup time from start to initialized: 3220ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.403
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.KCARkcIF
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.407
+!MESSAGE subscribing to classpath changes: sts4.classpath.KCARkcIF
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.407
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.407
+!MESSAGE subsribers = [sts4.classpath.KCARkcIF]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.413
+!MESSAGE Sending initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.413
+!MESSAGE project InterfazProyecto ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.413
+!MESSAGE Preparing classpath changed notification InterfazProyecto
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.413
+!MESSAGE project LogicaProyecto ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.413
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.413
+!MESSAGE Sending initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.413
+!MESSAGE classpath=95 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.413
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.KCARkcIF => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.413
+!MESSAGE executing callback sts4.classpath.KCARkcIF InterfazProyecto false 95
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.463
+!MESSAGE executing callback sts4.classpath.KCARkcIF SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.463
+!MESSAGE Preparing classpath changed notification LogicaProyecto
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.463
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.473
+!MESSAGE classpath=101 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.473
+!MESSAGE executing callback sts4.classpath.KCARkcIF LogicaProyecto false 101
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-06-05 16:15:25.844
+!MESSAGE executing callback sts4.classpath.KCARkcIF SUCCESS [done]
