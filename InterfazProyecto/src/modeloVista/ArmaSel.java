@@ -2,11 +2,14 @@ package modeloVista;
 
 public class ArmaSel {
 	private String id;
-	
+
 	private int numeroIdArma;
 
+	public ArmaSel() {
+	}
+
 	public ArmaSel(long id) {
-		
+
 		this.id = "";
 	}
 
@@ -25,5 +28,12 @@ public class ArmaSel {
 	public void setNumeroIdArma(int numeroIdArma) {
 		this.numeroIdArma = numeroIdArma;
 	}
+
+	@Override
+	public String toString() {
+		return "ArmaSel [id=" + id + ", numeroIdArma=" + numeroIdArma + "]";
+	}
+	
+	
 
 }

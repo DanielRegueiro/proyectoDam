@@ -46,8 +46,10 @@ public class ControllerGestionUnidades {
 
 	@FXML
 	private Button botonContinuar;
+	
 	@FXML
 	private Button botonVolver;
+	
 	@FXML
 	private ImageView fotoDestacamento;
 
@@ -115,9 +117,7 @@ public class ControllerGestionUnidades {
 	private int costeLista;
 	private Stage stageIndividual;
 	private ControllerFXMLUnidadIndividual controller;
-
 	private StringProperty observableTextoCosteLista = new SimpleStringProperty("0");
-
 	private StringProperty observableTextoCg = new SimpleStringProperty("0");
 	private StringProperty observableTextoElite = new SimpleStringProperty("0");
 	private StringProperty observableTextoTropa = new SimpleStringProperty("0");
@@ -131,8 +131,6 @@ public class ControllerGestionUnidades {
 	private int ataqueRapido;
 	private int elite;
 	private DestacamentoInterface destacamento;
-
-
 
 	@FXML
 	void abrirUnidad(MouseEvent event) {
@@ -187,7 +185,7 @@ public class ControllerGestionUnidades {
 				stage.centerOnScreen();
 				stage.show();
 
-			} catch (IOException e) { 
+			} catch (IOException e) {
 
 				e.printStackTrace();
 			}
@@ -209,8 +207,8 @@ public class ControllerGestionUnidades {
 			if (elite + 1 > Integer.parseInt(destacamento.devolverMaximoElite()))
 				return false;
 		case "Ataque rapido":
-			if(ataqueRapido +1>Integer.parseInt(destacamento.devolverMaximoAtaqueRapido()))
-			return false;
+			if (ataqueRapido + 1 > Integer.parseInt(destacamento.devolverMaximoAtaqueRapido()))
+				return false;
 		case "Voladores":
 			if (voladores + 1 > Integer.parseInt(destacamento.devolverMaximoVoladores()))
 				return false;
@@ -263,14 +261,15 @@ public class ControllerGestionUnidades {
 		habilitarBotonContinuar();
 	}
 
-    @FXML
-    void AbrirPantallaImpresion(ActionEvent event) {
-    	try {
+	@FXML
+	void AbrirPantallaImpresion(ActionEvent event) {
+			
+		try {
 			FXMLLoader fxmlLoader4 = new FXMLLoader(getClass().getResource("/Vistas/VistaAnalisisTropas.fxml"));
 			Parent root5 = (Parent) fxmlLoader4.load();
 			Stage stage = new Stage();
 			ControllerVistaGraficosLista controller2 = fxmlLoader4.<ControllerVistaGraficosLista>getController();
-			controller2.initData(listaUnidadesSeleccionadas);
+			controller2.initData(listaUnidadesSeleccionadas, textNombreLista.getText(),costeLista);
 			stage.setScene(new Scene(root5));
 			stage.initStyle(StageStyle.UNDECORATED);
 			stage.setResizable(false);
@@ -284,11 +283,12 @@ public class ControllerGestionUnidades {
 		Stage stage2 = (Stage) botonContinuar.getScene().getWindow();
 
 		stage2.close();
-    }
+	}
+
 	public void habilitarBotonContinuar() {
 
 		if (cg >= Integer.parseInt(destacamento.devolverMinimoCG())
-				&& ataqueRapido>=Integer.parseInt(destacamento.devolverMinimoAtaqueRapido())
+				&& ataqueRapido >= Integer.parseInt(destacamento.devolverMinimoAtaqueRapido())
 				&& elite >= Integer.parseInt(destacamento.devolverMinimoElite())
 				&& tropa >= Integer.parseInt(destacamento.devolverMinimoTropas())
 				&& apoyo >= Integer.parseInt(destacamento.devolverMinimoApoyoPesado())
@@ -383,6 +383,7 @@ public class ControllerGestionUnidades {
 		textVoladorasMin.setText(destacamento.devolverMinimoVoladores());
 		fotoDestacamento.setImage(new ImageView("img/" + destacamento.foto() + ".jpg").getImage());
 	}
+
 	public ListView<modeloVista.Unidad> getListaUnidadesSeleccionadas() {
 		return listaUnidadesSeleccionadas;
 	}
@@ -390,6 +391,7 @@ public class ControllerGestionUnidades {
 	public void setListaUnidadesSeleccionadas(ListView<modeloVista.Unidad> listaUnidadesSeleccionadas) {
 		this.listaUnidadesSeleccionadas = listaUnidadesSeleccionadas;
 	}
+
 	@FXML
 	void initialize() {
 		assert botonContinuar != null : "fx:id=\"botonContinuar\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
@@ -455,7 +457,7 @@ public class ControllerGestionUnidades {
 				return new CustomListCell();
 			}
 		});
-
+		textNombreLista.setText("Introduce el nombre");
 	}
 
 	private class CustomListCell extends ListCell<modeloVista.Unidad> {

@@ -51,6 +51,11 @@ public void setUnidadesSel(List<UnidadesSel> unidadesSel) {
 	this.unidadesSel = unidadesSel;
 }
 
+@Override
+public String toString() {
+	return "Lista [id=" + id + ", nombre=" + nombre + ", coste=" + coste + ", unidadesSel=" + unidadesSel + "]";
+}
+
 
 	
 	

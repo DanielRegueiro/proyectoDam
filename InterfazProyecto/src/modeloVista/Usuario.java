@@ -53,4 +53,9 @@ public class Usuario {
 		this.contasena = contasena;
 	}
 
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", contasena=" + contasena + ", listas=" + listas + "]";
+	}
+
 }

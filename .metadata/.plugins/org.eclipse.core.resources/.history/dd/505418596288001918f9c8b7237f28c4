@@ -1,0 +1,569 @@
+package controller;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import com.proyecto.destacamento.DestacamentoInterface;
+
+import data.LogicaPrincipal;
+import data.RestClientImpl;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.util.Callback;
+import modeloVista.Arma;
+import modeloVista.Unidad;
+
+public class ControllerGestionUnidades {
+
+	@FXML
+	private ListView<modeloVista.Unidad> listaUnidadesSeleccionadas;
+
+	@FXML
+	private ListView<modeloVista.Unidad> lista;
+
+	@FXML
+	private Button botonContinuar;
+	
+	@FXML
+	private Button botonVolver;
+	
+	@FXML
+	private ImageView fotoDestacamento;
+
+	@FXML
+	private TextField textNombreLista;
+
+	private Text textPuntosCosteLista;
+
+	@FXML
+	private Text textCgMin;
+
+	@FXML
+	private Text textEliteMin;
+
+	@FXML
+	private Text textTropaMin;
+
+	@FXML
+	private Text textCgMax;
+
+	@FXML
+	private Text textEliteMax;
+
+	@FXML
+	private Text textTropaMax;
+
+	@FXML
+	private Text textCgDentro;
+
+	@FXML
+	private Text textEliteDentro;
+
+	@FXML
+	private Text textTropaDentro;
+
+	@FXML
+	private Text textAtaqueRapidoMin;
+
+	@FXML
+	private Text textApoyoMin;
+
+	@FXML
+	private Text textVoladorasMin;
+
+	@FXML
+	private Text textAtaqueRapidoMax;
+
+	@FXML
+	private Text textApoyoMax;
+
+	@FXML
+	private Text textVoladorasMax;
+
+	@FXML
+	private Text textAtaqueRapidoDentro;
+
+	@FXML
+	private Text textApoyoDentro;
+
+	@FXML
+	private Label labelCoste;
+
+	@FXML
+	private Text textVoladorasDentro;
+	private int costeLista;
+	private Stage stageIndividual;
+	private ControllerFXMLUnidadIndividual controller;
+	private StringProperty observableTextoCosteLista = new SimpleStringProperty("0");
+	private StringProperty observableTextoCg = new SimpleStringProperty("0");
+	private StringProperty observableTextoElite = new SimpleStringProperty("0");
+	private StringProperty observableTextoTropa = new SimpleStringProperty("0");
+	private StringProperty observableTextoApoyo = new SimpleStringProperty("0");
+	private StringProperty observableTextoVoladoras = new SimpleStringProperty("0");
+	private StringProperty observableTextoAtaqueRapido = new SimpleStringProperty("0");
+	private int cg;
+	private int tropa;
+	private int apoyo;
+	private int voladores;
+	private int ataqueRapido;
+	private int elite;
+	private DestacamentoInterface destacamento;
+
+	@FXML
+	void abrirUnidad(MouseEvent event) {
+
+		stageIndividual = new Stage();
+		FXMLLoader root;
+		try {
+			root = new FXMLLoader(getClass().getResource("/Vistas/VistaUnidadIndividual.fxml"));
+
+			Scene sceneIndividual = new Scene(root.load());
+
+			stageIndividual.setScene(sceneIndividual);
+			controller = root.<ControllerFXMLUnidadIndividual>getController();
+			controller.initData(lista.getItems().get(lista.getSelectionModel().getSelectedIndex()), this);
+			stageIndividual.centerOnScreen();
+			stageIndividual.show();
+
+		} catch (IOException e) {
+
+			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, e);
+		}
+
+	}
+
+	public void anadirUnidadLista(Unidad unidad) {
+		if (comprobacionCoherenciaLista(unidad.getTipoUnidad().getDescripcion())) {
+			listaUnidadesSeleccionadas.getItems().add(unidad);
+			listaUnidadesSeleccionadas.refresh();
+			costeLista = Integer.parseInt(observableTextoCosteLista.getValue());
+			costeLista = costeLista + unidad.getPuntos();
+
+			for (Arma i : unidad.getArmas()) {
+
+				costeLista += i.getPuntos();
+
+			}
+
+			actualizarUnidadesDentroDeLaLista(unidad);
+			textPuntosCosteLista.setText(String.valueOf(costeLista));
+			observableTextoCosteLista.setValue(textPuntosCosteLista.getText());
+		} else {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/VistaDialogoAlerta.fxml"));
+
+			try {
+				Parent root1 = (Parent) fxmlLoader.load();
+				Stage stage = new Stage();
+				ControllerDialogoAlerta controller = fxmlLoader.<ControllerDialogoAlerta>getController();
+				controller.cambiarTexto("Se supera el maximo de unidades");
+				stage.setScene(new Scene(root1));
+				stage.setResizable(false);
+				stage.initStyle(StageStyle.UNDECORATED);
+				stage.centerOnScreen();
+				stage.show();
+
+			} catch (IOException e) {
+
+				e.printStackTrace();
+			}
+
+		}
+
+	}
+
+	public Boolean comprobacionCoherenciaLista(String tipo) {
+		switch (tipo) {
+		case "Cuartel general":
+			if (cg + 1 > Integer.parseInt(destacamento.devolverMaximoCG()))
+				return false;
+		case "Tropas":
+			if (tropa + 1 > Integer.parseInt(destacamento.devolverMaximoTropas()))
+				return false;
+
+		case "Elite":
+			if (elite + 1 > Integer.parseInt(destacamento.devolverMaximoElite()))
+				return false;
+		case "Ataque rapido":
+			if (ataqueRapido + 1 > Integer.parseInt(destacamento.devolverMaximoAtaqueRapido()))
+				return false;
+		case "Voladores":
+			if (voladores + 1 > Integer.parseInt(destacamento.devolverMaximoVoladores()))
+				return false;
+		case "Apoyo pesado":
+			if (apoyo + 1 > Integer.parseInt(destacamento.devolverMaximoApoyoPesado()))
+				return false;
+		default:
+			return true;
+
+		}
+
+	}
+
+	public void actualizarUnidadesRestadas(Unidad unidad) {
+		String str = unidad.getTipoUnidad().getDescripcion();
+		switch (str) {
+		case "Cuartel general":
+			cg = cg - 1;
+			observableTextoCg.setValue(String.valueOf(cg));
+			textCgDentro.textProperty().bind(observableTextoCg);
+			break;
+		case "Tropas":
+			tropa = tropa - 1;
+			observableTextoTropa.setValue(String.valueOf(tropa));
+			textTropaDentro.textProperty().bind(observableTextoTropa);
+			break;
+		case "Elite":
+			elite = elite - 1;
+			observableTextoElite.setValue(String.valueOf(elite));
+			textEliteDentro.textProperty().bind(observableTextoElite);
+			break;
+		case "Ataque rapido":
+			ataqueRapido = ataqueRapido - 1;
+			observableTextoAtaqueRapido.setValue(String.valueOf(ataqueRapido));
+			textAtaqueRapidoDentro.textProperty().bind(observableTextoAtaqueRapido);
+			break;
+		case "Voladores":
+			voladores = voladores - 1;
+			observableTextoVoladoras.setValue(String.valueOf(voladores));
+			textVoladorasDentro.textProperty().bind(observableTextoVoladoras);
+			break;
+		case "Apoyo pesado":
+			apoyo = apoyo - 1;
+			observableTextoApoyo.setValue(String.valueOf(apoyo));
+			textApoyoDentro.textProperty().bind(observableTextoApoyo);
+			break;
+		default:
+
+		}
+		habilitarBotonContinuar();
+	}
+
+	@FXML
+	void AbrirPantallaImpresion(ActionEvent event) {
+
+		try {
+			FXMLLoader fxmlLoader4 = new FXMLLoader(getClass().getResource("/Vistas/VistaAnalisisTropas.fxml"));
+			Parent root5 = (Parent) fxmlLoader4.load();
+			Stage stage = new Stage();
+			ControllerVistaGraficosLista controller2 = fxmlLoader4.<ControllerVistaGraficosLista>getController();
+			controller2.initData(listaUnidadesSeleccionadas, textNombreLista.getText());
+			stage.setScene(new Scene(root5));
+			stage.initStyle(StageStyle.UNDECORATED);
+			stage.setResizable(false);
+			stage.centerOnScreen();
+
+			stage.show();
+
+		} catch (IOException ex) {
+			Logger.getLogger(ControllerFXMLLogin.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		Stage stage2 = (Stage) botonContinuar.getScene().getWindow();
+
+		stage2.close();
+	}
+
+	public void habilitarBotonContinuar() {
+
+		if (cg >= Integer.parseInt(destacamento.devolverMinimoCG())
+				&& ataqueRapido >= Integer.parseInt(destacamento.devolverMinimoAtaqueRapido())
+				&& elite >= Integer.parseInt(destacamento.devolverMinimoElite())
+				&& tropa >= Integer.parseInt(destacamento.devolverMinimoTropas())
+				&& apoyo >= Integer.parseInt(destacamento.devolverMinimoApoyoPesado())
+				&& voladores >= Integer.parseInt(destacamento.devolverMinimoVoladores())) {
+			botonContinuar.setDisable(false);
+		} else {
+			botonContinuar.setDisable(true);
+		}
+
+	}
+
+	public void actualizarUnidadesDentroDeLaLista(Unidad unidad) {
+		String str = unidad.getTipoUnidad().getDescripcion();
+
+		switch (str) {
+		case "Cuartel general":
+			cg = cg + 1;
+			observableTextoCg.setValue(String.valueOf(cg));
+			textCgDentro.textProperty().bind(observableTextoCg);
+			break;
+		case "Tropas":
+			tropa = tropa + 1;
+			observableTextoTropa.setValue(String.valueOf(tropa));
+			textTropaDentro.textProperty().bind(observableTextoTropa);
+			break;
+		case "Elite":
+			elite = elite + 1;
+			observableTextoElite.setValue(String.valueOf(elite));
+			textEliteDentro.textProperty().bind(observableTextoElite);
+			break;
+		case "Ataque rapido":
+			ataqueRapido = ataqueRapido + 1;
+			observableTextoAtaqueRapido.setValue(String.valueOf(ataqueRapido));
+			textAtaqueRapidoDentro.textProperty().bind(observableTextoAtaqueRapido);
+			break;
+		case "Voladores":
+			voladores = voladores + 1;
+			observableTextoVoladoras.setValue(String.valueOf(voladores));
+			textVoladorasDentro.textProperty().bind(observableTextoVoladoras);
+			break;
+		case "Apoyo pesado":
+			apoyo = apoyo + 1;
+			observableTextoApoyo.setValue(String.valueOf(apoyo));
+			textApoyoDentro.textProperty().bind(observableTextoApoyo);
+			break;
+		default:
+
+		}
+		habilitarBotonContinuar();
+	}
+
+	@FXML
+	void volver(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/VistaListasAVisualizar.fxml"));
+			Parent root3 = (Parent) fxmlLoader.load();
+			Stage stage = (Stage) botonVolver.getScene().getWindow();
+			stage.setScene(new Scene(root3));
+			stage.setResizable(false);
+		} catch (IOException ex) {
+			Logger.getLogger(ControllerFXMLSeleccionEjercito.class.getName()).log(Level.SEVERE, null, ex);
+		}
+
+	}
+
+	void initData(List unidadesUsuario, DestacamentoInterface destacamento) {
+		this.destacamento = destacamento;
+		if (unidadesUsuario != null) {
+			lista.getItems().clear();
+			ObservableList<modeloVista.Unidad> data = FXCollections.observableArrayList();
+			List<modeloVista.Unidad> unidades = unidadesUsuario;
+			for (modeloVista.Unidad ud : unidades) {
+				String imagen = "/img/iconos/";
+				String extension = ".png";
+				ud.setImagen(imagen + String.valueOf(ud.getTipoUnidad().getIdTipoUnidad()) + extension);
+				data.add(ud);
+
+			}
+			lista.getItems().addAll(data);
+		}
+		textApoyoMax.setText(destacamento.devolverMaximoApoyoPesado());
+		textApoyoMin.setText(destacamento.devolverMinimoApoyoPesado());
+		textCgMax.setText(destacamento.devolverMaximoCG());
+		textCgMin.setText(destacamento.devolverMinimoCG());
+		textAtaqueRapidoMax.setText(destacamento.devolverMaximoAtaqueRapido());
+		textAtaqueRapidoMin.setText(destacamento.devolverMinimoAtaqueRapido());
+		textTropaMax.setText(destacamento.devolverMaximoTropas());
+		textTropaMin.setText(destacamento.devolverMinimoTropas());
+		textEliteMax.setText(destacamento.devolverMaximoElite());
+		textEliteMin.setText(destacamento.devolverMinimoElite());
+		textVoladorasMax.setText(destacamento.devolverMaximoVoladores());
+		textVoladorasMin.setText(destacamento.devolverMinimoVoladores());
+		fotoDestacamento.setImage(new ImageView("img/" + destacamento.foto() + ".jpg").getImage());
+	}
+
+	public ListView<modeloVista.Unidad> getListaUnidadesSeleccionadas() {
+		return listaUnidadesSeleccionadas;
+	}
+
+	public void setListaUnidadesSeleccionadas(ListView<modeloVista.Unidad> listaUnidadesSeleccionadas) {
+		this.listaUnidadesSeleccionadas = listaUnidadesSeleccionadas;
+	}
+
+	@FXML
+	void initialize() {
+		assert botonContinuar != null : "fx:id=\"botonContinuar\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert botonVolver != null : "fx:id=\"botonVolver\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert lista != null : "fx:id=\"lista\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert listaUnidadesSeleccionadas != null : "fx:id=\"listaUnidadesSeleccionadas\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert fotoDestacamento != null : "fx:id=\"fotoDestacamento\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textNombreLista != null : "fx:id=\"textNombreLista\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textPuntosCosteLista != null : "fx:id=\"TextPuntosCosteLista\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textCgMin != null : "fx:id=\"textCgMin\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textEliteMin != null : "fx:id=\"textEliteMin\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textTropaMin != null : "fx:id=\"textTropaMin\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textCgMax != null : "fx:id=\"textCgMax\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textEliteMax != null : "fx:id=\"textEliteMax\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textTropaMax != null : "fx:id=\"TextTropaMax\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textCgDentro != null : "fx:id=\"textCgDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textEliteDentro != null : "fx:id=\"textEliteDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textTropaDentro != null : "fx:id=\"TextTropaDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textAtaqueRapidoMin != null : "fx:id=\"textAtaqueRapidoMin\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textApoyoMin != null : "fx:id=\"TextApoyoMin\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textVoladorasMin != null : "fx:id=\"TextVoladorasMin\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textAtaqueRapidoMax != null : "fx:id=\"textAtaqueRapidoMax\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textApoyoMax != null : "fx:id=\"textApoyoMax\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textVoladorasMax != null : "fx:id=\"textVoladorasMax\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textAtaqueRapidoDentro != null : "fx:id=\"TextAtaqueRapidoDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textApoyoDentro != null : "fx:id=\"textApoyoDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert textVoladorasDentro != null : "fx:id=\"textVoladorasDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		assert labelCoste != null : "fx:id=\"labelCoste\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
+		botonContinuar.setDisable(true);
+		RestClientImpl restClient = new RestClientImpl();
+		ObservableList<modeloVista.Unidad> data = FXCollections.observableArrayList();
+		textPuntosCosteLista = new Text();
+		textPuntosCosteLista.setText("0");
+		textPuntosCosteLista.setFont(Font.font(40));
+
+		labelCoste.textProperty().bind(observableTextoCosteLista);
+
+		try {
+
+			List<modeloVista.Unidad> unidades = restClient.getAllUnits();
+			for (modeloVista.Unidad ud : unidades) {
+				String imagen = "/img/iconos/";
+				String extension = ".png";
+				ud.setImagen(imagen + String.valueOf(ud.getTipoUnidad().getIdTipoUnidad()) + extension);
+				data.add(ud);
+
+			}
+
+		} catch (IOException ex) {
+			Logger.getLogger(ControllerGestionUnidades.class.getName()).log(Level.SEVERE, null, ex);
+		}
+
+		lista.getItems().addAll(data);
+
+		// asignacion de customCell con metodo lamda
+		listaUnidadesSeleccionadas
+				.setCellFactory(unidadesListView -> new ControllerCustomCellUnidad(listaUnidadesSeleccionadas,
+						costeLista, observableTextoCosteLista));
+		// asignacion de customCell a la manera clasica
+		lista.setCellFactory(new Callback<ListView<modeloVista.Unidad>, ListCell<modeloVista.Unidad>>() {
+			@Override
+			public ListCell<modeloVista.Unidad> call(ListView<modeloVista.Unidad> listView) {
+				return new CustomListCell();
+			}
+		});
+		textNombreLista.setText("Introduce el nombre");
+	}
+
+	private class CustomListCell extends ListCell<modeloVista.Unidad> {
+		private HBox content;
+		private Text name;
+		private Text price;
+		private Text tipo;
+		private ImageView imagen;
+		private Text separador;
+
+		public CustomListCell() {
+			super();
+			name = new Text();
+			price = new Text();
+			tipo = new Text();
+			separador = new Text("      ");
+
+			imagen = new ImageView();
+			VBox vBox = new VBox(name, price, tipo);
+			VBox vbox2 = new VBox(separador);
+			content = new HBox(imagen, vbox2, vBox);
+			content.setSpacing(100);
+		}
+
+		@Override
+		protected void updateItem(modeloVista.Unidad item, boolean empty) {
+
+			super.updateItem(item, empty);
+			if (item != null && !empty) { // <== test for null item and empty parameter
+
+				name.setText(item.getNombre());
+				tipo.setText(item.getTipoUnidad().getDescripcion());
+
+				price.setText(String.format("%d Puntos", item.getPuntos()));
+				imagen = new ImageView(item.getImagen());
+				content = new HBox(imagen, separador, new VBox(name, price, tipo));
+				setGraphic(content);
+			} else {
+				setGraphic(null);
+			}
+		}
+	}
+
+	private class ControllerCustomCellUnidad extends ListCell<modeloVista.Unidad> {
+
+		private ListView<modeloVista.Unidad> listaUnidadesSeleccionadas;
+		private int costeLista;
+		private StringProperty prueba;
+
+		public ControllerCustomCellUnidad(ListView<Unidad> listaUnidadesSeleccionadas, int costeLista,
+				StringProperty prueba) {
+			super();
+			this.prueba = prueba;
+			this.costeLista = costeLista;
+			this.listaUnidadesSeleccionadas = listaUnidadesSeleccionadas;
+		}
+
+		@Override
+		protected void updateItem(modeloVista.Unidad item, boolean empty) {
+			super.updateItem(item, empty);
+
+			if (item != null && !empty) {
+
+				ImageView imagen = new ImageView(item.getImagen());
+				Text nombreUnidad = new Text(item.getNombre());
+				nombreUnidad.setFont(Font.font(20));
+				Text tipoUnidad = new Text(item.getTipoUnidad().getDescripcion());
+				tipoUnidad.setFont(Font.font(16));
+				Text puntos = new Text(String.valueOf(item.getPuntos()) + " Puntos");
+				puntos.setFont(Font.font(25));
+				Button botonEliminar = new Button("Eliminar");
+
+				VBox v = new VBox(nombreUnidad, tipoUnidad);
+				v.setSpacing(10);
+				HBox p = new HBox(v);
+				p.setSpacing(10);
+
+				VBox r = new VBox(puntos, botonEliminar);
+				botonEliminar.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						listaUnidadesSeleccionadas.getItems().remove(item);
+						costeLista = Integer.parseInt(prueba.getValue()) - item.getPuntos();
+						actualizarUnidadesRestadas(item);
+						for (Arma i : item.getArmas()) {
+
+							costeLista -= i.getPuntos();
+
+						}
+						prueba.setValue(String.valueOf(costeLista));
+					}
+
+				});
+				HBox h = new HBox(imagen, p, r);
+
+				h.setSpacing(20);
+
+				setText(null);
+				setGraphic(h);
+
+			} else {
+				setText(null);
+				setGraphic(null);
+			}
+		}
+
+	}
+
+}

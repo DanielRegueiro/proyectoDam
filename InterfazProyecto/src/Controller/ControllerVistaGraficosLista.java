@@ -1,12 +1,13 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import data.LogicaPrincipal;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.PieChart;
@@ -14,13 +15,12 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
-import javafx.stage.Stage;
+import modeloVista.Arma;
+import modeloVista.ArmaSel;
+import modeloVista.Lista;
 import modeloVista.Unidad;
+import modeloVista.UnidadesSel;
+import modeloVista.Usuario;
 
 public class ControllerVistaGraficosLista {
 	ListView<Unidad> listaUnidades;
@@ -29,13 +29,15 @@ public class ControllerVistaGraficosLista {
 
 	@FXML
 	private AnchorPane panelPestana;
+	
 	@FXML
 	private PieChart graficoQuesito;
-    @FXML
-    private Button botonInformeUno;
+	
+	@FXML
+	private Button botonInformeUno;
 
-    @FXML
-    private Button botonInformeDos;
+	@FXML
+	private Button botonInformeDos;
 	@FXML
 	private CategoryAxis fuerza;
 
@@ -46,14 +48,35 @@ public class ControllerVistaGraficosLista {
 	private BarChart<String, Integer> graficoBarras;
 
 	private ObservableList<String> estadisticasUnidades = FXCollections.observableArrayList();
-
+	private String nombreLista;
+	private int costeLista;
 
 	@FXML
 	void crearLista(ActionEvent event) {
-
+			Usuario usuario= LogicaPrincipal.getInstance().getUser();
+			Lista lista=new Lista();
+			lista.setNombre(nombreLista);
+			lista.setCoste(costeLista);
+			List<ArmaSel> armas=new ArrayList<ArmaSel>();
+			for (Unidad unidad : listaUnidades.getItems()) {
+				UnidadesSel unidadSel=new UnidadesSel();
+				unidadSel.setIdUnidad(unidad.getIdUnidad());
+				for (Arma arma : unidad.getArmas()) {
+					ArmaSel armaSel=new ArmaSel();
+					armaSel.setNumeroIdArma(arma.getIdArma());
+					armas.add(armaSel);
+					unidadSel.setArmasSel(armas);
+				}
+				lista.getUnidadesSel().add(unidadSel);
+				
+			}
+			usuario.getListas().add(lista);
+	//TODO aqui hay que llamar al metodo de grabar el usuario
 	}
 
-	void initData(ListView<Unidad> listaUnidades) {
+	void initData(ListView<Unidad> listaUnidades,String nombre, int coste) {
+		nombreLista=nombre;
+		costeLista=coste;
 		this.listaUnidades = listaUnidades;
 		rellenarGraficoBarrasFuerza();
 		rellenarGraficoQuesito();
@@ -65,7 +88,7 @@ public class ControllerVistaGraficosLista {
 		int cg = 0;
 		int elite = 0;
 		int linea = 0;
-		int ataquer = 0;
+		int ataqueRapido = 0;
 		int apoyo = 0;
 		int voladoras = 0;
 
@@ -82,7 +105,7 @@ public class ControllerVistaGraficosLista {
 				elite = elite + 1;
 				break;
 			case 4:
-				ataquer = ataquer + 1;
+				ataqueRapido = ataqueRapido + 1;
 				break;
 			case 5:
 				voladoras = voladoras + 1;
@@ -96,7 +119,7 @@ public class ControllerVistaGraficosLista {
 		}
 
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(new PieChart.Data("C.G", cg),
-				new PieChart.Data("Elite", elite), new PieChart.Data("Ataque Rapido", ataquer),
+				new PieChart.Data("Elite", elite), new PieChart.Data("Ataque Rapido", ataqueRapido),
 				new PieChart.Data("Linea", linea), new PieChart.Data("Apoyo pesado", apoyo),
 				new PieChart.Data("Voladoras", voladoras));
 		graficoQuesito.setData(pieChartData);
@@ -126,13 +149,13 @@ public class ControllerVistaGraficosLista {
 				mayor200++;
 			}
 		}
-		
-		
+
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
 				new PieChart.Data("Menor de 100", menor100), new PieChart.Data("Entre 100 y 149", entre100150),
 				new PieChart.Data("Entre 150 y 199", mayor150), new PieChart.Data("Mayor de 200", mayor200));
 		graficoQuesitoCoste.setData(pieChartData);
 		graficoQuesitoCoste.setTitle("Costes");
+
 		graficoQuesitoCoste.setAnimated(true);
 
 	}
@@ -185,18 +208,18 @@ public class ControllerVistaGraficosLista {
 
 	@FXML
 	void initialize() {
-	    assert botonImprimir != null : "fx:id=\"botonImprimir\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
-        assert graficoBarras != null : "fx:id=\"graficoBarras\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
-        assert fuerza != null : "fx:id=\"fuerza\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
-        assert graficoQuesito != null : "fx:id=\"graficoQuesito\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
-        assert graficoQuesitoCoste != null : "fx:id=\"graficoQuesitoCoste\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
-        assert panelPestana != null : "fx:id=\"panelPestana\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
-        assert botonInformeUno != null : "fx:id=\"botonInformeUno\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
-        assert botonInformeDos != null : "fx:id=\"botonInformeDos\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
+		assert botonImprimir != null : "fx:id=\"botonImprimir\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
+		assert graficoBarras != null : "fx:id=\"graficoBarras\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
+		assert fuerza != null : "fx:id=\"fuerza\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
+		assert graficoQuesito != null : "fx:id=\"graficoQuesito\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
+		assert graficoQuesitoCoste != null : "fx:id=\"graficoQuesitoCoste\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
+		assert panelPestana != null : "fx:id=\"panelPestana\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
+		assert botonInformeUno != null : "fx:id=\"botonInformeUno\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
+		assert botonInformeDos != null : "fx:id=\"botonInformeDos\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
 
 		estadisticasUnidades.addAll("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
 		fuerza.setCategories(estadisticasUnidades);
-		
+
 	}
 
 }

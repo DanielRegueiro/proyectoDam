@@ -42,5 +42,11 @@ private long id;
 	public void setArmasSel(List<ArmaSel> armasSel) {
 		this.armasSel = armasSel;
 	}
+
+
+	@Override
+	public String toString() {
+		return "UnidadesSel [id=" + id + ", idUnidad=" + idUnidad + ", armasSel=" + armasSel + "]";
+	}
 	
 }

@@ -1,24 +1,24 @@
 
 package data;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-
-import modeloVista.Arma;
-import modeloVista.Habilidad;
-import modeloVista.Reliquia;
-import modeloVista.TipoArma;
-import modeloVista.TipoUnidad;
-import modeloVista.Unidad;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.logging.Logger;
+//import com.google.gson.JsonArray;
+//import com.google.gson.JsonDeserializationContext;
+//import com.google.gson.JsonDeserializer;
+//import com.google.gson.JsonElement;
+//import com.google.gson.JsonObject;
+//import com.google.gson.JsonParseException;
+//
+//import modeloVista.Arma;
+//import modeloVista.Habilidad;
+//import modeloVista.Reliquia;
+//import modeloVista.TipoArma;
+//import modeloVista.TipoUnidad;
+//import modeloVista.Unidad;
+//
+//import java.lang.reflect.Type;
+//import java.util.ArrayList;
+//import java.util.Iterator;
+//import java.util.logging.Logger;
 
 
 

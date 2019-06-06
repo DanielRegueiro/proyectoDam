@@ -64,8 +64,24 @@
               <content>
                 <AnchorPane fx:id="panelPestana" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="botonInformeUno" layoutX="31.0" layoutY="37.0" mnemonicParsing="false" prefHeight="243.0" prefWidth="177.0" style="-fx-background-image: &quot;/img/lobos.png/&quot;;" />
-                        <Button fx:id="botonInformeDos" layoutX="330.0" layoutY="54.0" mnemonicParsing="false" prefHeight="243.0" prefWidth="177.0" text="Button" />
+                        <Button fx:id="botonInformeUno" layoutX="95.0" layoutY="34.0" mnemonicParsing="false" prefHeight="243.0" prefWidth="177.0" style="-fx-background-image: &quot;/img/lobos.png/&quot;;">
+                           <graphic>
+                              <ImageView fitHeight="281.0" fitWidth="278.0">
+                                 <image>
+                                    <Image url="@../img/lobos.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="botonInformeDos" layoutX="525.0" layoutY="34.0" mnemonicParsing="false" prefHeight="290.0" prefWidth="274.0">
+                           <graphic>
+                              <ImageView fitHeight="236.0" fitWidth="206.0">
+                                 <image>
+                                    <Image url="@../img/cabeza.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </AnchorPane>
               </content>
