@@ -13,6 +13,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -130,6 +131,8 @@ public class ControllerGestionUnidades {
 	private int elite;
 	private DestacamentoInterface destacamento;
 
+
+
 	@FXML
 	void abrirUnidad(MouseEvent event) {
 
@@ -154,7 +157,7 @@ public class ControllerGestionUnidades {
 	}
 
 	public void anadirUnidadLista(Unidad unidad) {
-		if (comprobacionCoherenciaLista()) {
+		if (comprobacionCoherenciaLista(unidad.getTipoUnidad().getDescripcion())) {
 			listaUnidadesSeleccionadas.getItems().add(unidad);
 			listaUnidadesSeleccionadas.refresh();
 			costeLista = Integer.parseInt(observableTextoCosteLista.getValue());
@@ -183,7 +186,7 @@ public class ControllerGestionUnidades {
 				stage.centerOnScreen();
 				stage.show();
 
-			} catch (IOException e) {
+			} catch (IOException e) { 
 
 				e.printStackTrace();
 			}
@@ -192,15 +195,34 @@ public class ControllerGestionUnidades {
 
 	}
 
-	public Boolean comprobacionCoherenciaLista() {
-		if (cg + 1 > Integer.parseInt(destacamento.devolverMaximoCG())) {
+	public Boolean comprobacionCoherenciaLista(String tipo) {
+		switch (tipo) {
+		case "Cuartel general":
+			if (cg + 1 > Integer.parseInt(destacamento.devolverMaximoCG()))
+				return false;
+		case "Tropas":
+			if (tropa + 1 > Integer.parseInt(destacamento.devolverMaximoTropas()))
+				return false;
+
+		case "Elite":
+			if (elite + 1 > Integer.parseInt(destacamento.devolverMaximoElite()))
+				return false;
+		case "Ataque rapido":
+			if(ataqueRapido +1>Integer.parseInt(destacamento.devolverMaximoAtaqueRapido()))
 			return false;
+		case "Voladores":
+			if (voladores + 1 > Integer.parseInt(destacamento.devolverMaximoVoladores()))
+				return false;
+		case "Apoyo pesado":
+			if (apoyo + 1 > Integer.parseInt(destacamento.devolverMaximoApoyoPesado()))
+				return false;
+		default:
+			return true;
 
 		}
 
-		return true;
-
 	}
+
 	public void actualizarUnidadesRestadas(Unidad unidad) {
 		String str = unidad.getTipoUnidad().getDescripcion();
 		switch (str) {
@@ -237,8 +259,24 @@ public class ControllerGestionUnidades {
 		default:
 
 		}
+		habilitarBotonContinuar();
+	}
+
+	public void habilitarBotonContinuar() {
+
+		if (cg >= Integer.parseInt(destacamento.devolverMinimoCG())
+				&& ataqueRapido>=Integer.parseInt(destacamento.devolverMinimoAtaqueRapido())
+				&& elite >= Integer.parseInt(destacamento.devolverMinimoElite())
+				&& tropa >= Integer.parseInt(destacamento.devolverMinimoTropas())
+				&& apoyo >= Integer.parseInt(destacamento.devolverMinimoApoyoPesado())
+				&& voladores >= Integer.parseInt(destacamento.devolverMinimoVoladores())) {
+			botonContinuar.setDisable(false);
+		} else {
+			botonContinuar.setDisable(true);
+		}
 
 	}
+
 	public void actualizarUnidadesDentroDeLaLista(Unidad unidad) {
 		String str = unidad.getTipoUnidad().getDescripcion();
 
@@ -276,7 +314,7 @@ public class ControllerGestionUnidades {
 		default:
 
 		}
-
+		habilitarBotonContinuar();
 	}
 
 	@FXML
@@ -322,7 +360,13 @@ public class ControllerGestionUnidades {
 		textVoladorasMin.setText(destacamento.devolverMinimoVoladores());
 		fotoDestacamento.setImage(new ImageView("img/" + destacamento.foto() + ".jpg").getImage());
 	}
+	public ListView<modeloVista.Unidad> getListaUnidadesSeleccionadas() {
+		return listaUnidadesSeleccionadas;
+	}
 
+	public void setListaUnidadesSeleccionadas(ListView<modeloVista.Unidad> listaUnidadesSeleccionadas) {
+		this.listaUnidadesSeleccionadas = listaUnidadesSeleccionadas;
+	}
 	@FXML
 	void initialize() {
 		assert botonContinuar != null : "fx:id=\"botonContinuar\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
@@ -351,7 +395,7 @@ public class ControllerGestionUnidades {
 		assert textApoyoDentro != null : "fx:id=\"textApoyoDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
 		assert textVoladorasDentro != null : "fx:id=\"textVoladorasDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
 		assert labelCoste != null : "fx:id=\"labelCoste\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
-
+		botonContinuar.setDisable(true);
 		RestClientImpl restClient = new RestClientImpl();
 		ObservableList<modeloVista.Unidad> data = FXCollections.observableArrayList();
 		textPuntosCosteLista = new Text();
@@ -430,6 +474,71 @@ public class ControllerGestionUnidades {
 				setGraphic(null);
 			}
 		}
+	}
+
+	private class ControllerCustomCellUnidad extends ListCell<modeloVista.Unidad> {
+
+		private ListView<modeloVista.Unidad> listaUnidadesSeleccionadas;
+		private int costeLista;
+		private StringProperty prueba;
+
+		public ControllerCustomCellUnidad(ListView<Unidad> listaUnidadesSeleccionadas, int costeLista,
+				StringProperty prueba) {
+			super();
+			this.prueba = prueba;
+			this.costeLista = costeLista;
+			this.listaUnidadesSeleccionadas = listaUnidadesSeleccionadas;
+		}
+
+		@Override
+		protected void updateItem(modeloVista.Unidad item, boolean empty) {
+			super.updateItem(item, empty);
+
+			if (item != null && !empty) {
+
+				ImageView imagen = new ImageView(item.getImagen());
+				Text nombreUnidad = new Text(item.getNombre());
+				nombreUnidad.setFont(Font.font(20));
+				Text tipoUnidad = new Text(item.getTipoUnidad().getDescripcion());
+				tipoUnidad.setFont(Font.font(16));
+				Text puntos = new Text(String.valueOf(item.getPuntos()) + " Puntos");
+				puntos.setFont(Font.font(25));
+				Button botonEliminar = new Button("Eliminar");
+
+				VBox v = new VBox(nombreUnidad, tipoUnidad);
+				v.setSpacing(10);
+				HBox p = new HBox(v);
+				p.setSpacing(10);
+
+				VBox r = new VBox(puntos, botonEliminar);
+				botonEliminar.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						listaUnidadesSeleccionadas.getItems().remove(item);
+						costeLista = Integer.parseInt(prueba.getValue()) - item.getPuntos();
+						actualizarUnidadesRestadas(item);
+						for (Arma i : item.getArmas()) {
+
+							costeLista -= i.getPuntos();
+
+						}
+						prueba.setValue(String.valueOf(costeLista));
+					}
+
+				});
+				HBox h = new HBox(imagen, p, r);
+
+				h.setSpacing(20);
+
+				setText(null);
+				setGraphic(h);
+
+			} else {
+				setText(null);
+				setGraphic(null);
+			}
+		}
+
 	}
 
 }

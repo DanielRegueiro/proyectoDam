@@ -79,9 +79,10 @@ public class ControllerFXMLUnidadIndividual {
 
 	private Unidad unidadLocal;
 	private ControllerGestionUnidades controllerLocal;
+
 	void initData(Unidad unidad, ControllerGestionUnidades controller) {
 		unidadLocal = unidad;
-		controllerLocal=controller;
+		controllerLocal = controller;
 		textMovimiento.setText(String.valueOf(unidad.getMovimiento()));
 		textHabilidadAtaque.setText(String.valueOf(unidad.getHabilidad_ataque()));
 		textHabilidadProyectiles.setText(String.valueOf(unidad.getHabilidad_proyectiles()));
@@ -114,17 +115,29 @@ public class ControllerFXMLUnidadIndividual {
 				return new CustomListCellReliquia();
 			}
 		});
-		fotoUnidad.setImage(new ImageView("img/unidad/"+unidad.getIdUnidad()+".png").getImage());
+		fotoUnidad.setImage(new ImageView("img/unidad/" + unidad.getIdUnidad() + ".png").getImage());
 
 	}
+
 	@FXML
 	void anadirUnidad(ActionEvent event) {
-	
-		controllerLocal.anadirUnidadLista(unidadLocal);	
+
+		controllerLocal.anadirUnidadLista(unidadLocal);
 		Stage stage = (Stage) anadir.getScene().getWindow();
 		stage.close();
 	}
-	
+
+	private Boolean comprobarNombreUnico() {
+		Boolean existe = false;
+		String nombre = unidadLocal.getNombre();
+		for (Unidad unidad : controllerLocal.getListaUnidadesSeleccionadas().getItems()) {
+//			if (unidad.getNombre().equals(nombre)&&unidad.) {
+//			}
+		}
+
+		return existe;
+	}
+
 	@FXML
 	void initialize() {
 		assert panelDatos != null : "fx:id=\"panelDatos\" was not injected: check your FXML file 'VistaUnidadIndividual.fxml'.";
@@ -157,8 +170,6 @@ public class ControllerFXMLUnidadIndividual {
 			content = new HBox(name, price, tipo);
 			content.setSpacing(20);
 		}
-
-	
 
 		@Override
 		protected void updateItem(modeloVista.Arma item, boolean empty) {
