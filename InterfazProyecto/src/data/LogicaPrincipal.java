@@ -20,13 +20,11 @@ import modeloVista.Usuario;
 public class LogicaPrincipal {
 	private static LogicaPrincipal gestor;
 	private Usuario usuario;
-	private RestClientImpl restClient;
 	private List<modeloVista.Unidad> unidades;
 	private ArrayList<Unidad> unidadesMostrar;
 	private List<Lista>listas;
 
 	private LogicaPrincipal() {
-		restClient = new RestClientImpl();
 		this.usuario = new Usuario();
 
 	}
@@ -47,7 +45,7 @@ public class LogicaPrincipal {
 	public void recuperarUsuario(String nombre) {
 
 		try {
-			this.usuario = restClient.getUsuario(nombre);
+			this.usuario = RestClient.getUsuario(nombre);
 		} catch (IOException e) {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/VistaDialogoAlerta.fxml"));
 
@@ -76,10 +74,9 @@ public class LogicaPrincipal {
 	}
 
 	public  List<modeloVista.Unidad> listaTropas() {
-		restClient = new RestClientImpl();
 		ObservableList<modeloVista.Unidad> data = FXCollections.observableArrayList();
 		try {
-			unidades = restClient.getAllUnits();
+			unidades = RestClient.getAllUnits();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -102,7 +99,7 @@ public class LogicaPrincipal {
 	}
 	public List<Lista>recuperarListas(){
 		try {
-			listas=restClient.getListas();
+			listas = RestClient.getListas();
 			return listas;
 		} catch (IOException e) {
 			

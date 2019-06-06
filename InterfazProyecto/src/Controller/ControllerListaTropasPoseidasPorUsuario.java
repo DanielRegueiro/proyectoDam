@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import com.proyecto.destacamento.DestacamentoInterface;
 import com.proyecto.destacamento.impl.BatallonDestacamento;
 
-import data.RestClientImpl;
+import data.RestClient;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -102,12 +102,11 @@ public class ControllerListaTropasPoseidasPorUsuario {
 		assert botonTodas != null : "fx:id=\"botonTodas\" was not injected: check your FXML file 'VistaSeleccionTropasUsuario.fxml'.";
 		assert botonSeleccionar != null : "fx:id=\"botonSeleccionar\" was not injected: check your FXML file 'VistaSeleccionTropasUsuario.fxml'.";
 		assert listaTropasPoseidas != null : "fx:id=\"listaTropasPoseidas\" was not injected: check your FXML file 'VistaSeleccionTropasUsuario.fxml'.";
-		RestClientImpl restClient = new RestClientImpl();
 		tropasSeleccionadas = new ArrayList<Unidad>();
 		ObservableList<modeloVista.Unidad> data = FXCollections.observableArrayList();
 		try {
 
-			List<modeloVista.Unidad> unidades = restClient.getAllUnits();
+			List<modeloVista.Unidad> unidades = RestClient.getAllUnits();
 			data.addAll(unidades);
 
 		} catch (IOException ex) {

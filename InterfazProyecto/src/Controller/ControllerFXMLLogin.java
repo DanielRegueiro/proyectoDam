@@ -13,8 +13,8 @@ import java.util.logging.Logger;
 
 import controller.ControllerFXMLLogin;
 import data.LogicaPrincipal;
+import data.IRestClient;
 import data.RestClient;
-import data.RestClientImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -85,7 +85,8 @@ public class ControllerFXMLLogin implements Initializable {
 
 		LogicaPrincipal.getInstance().recuperarUsuario(textUsuario.getText());
 		usuario = LogicaPrincipal.getInstance().getUser();
-
+		//TODO aqui recuperas el usuario, puedes llamar aqui al metodo para guardarlo
+		
 		if (usuario.getNombre().equals(textUsuario.getText())
 				&& usuario.getContasena().equals(textContrasena.getText())) {
 			try {
@@ -130,5 +131,8 @@ public class ControllerFXMLLogin implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 		// TODO
 	}
+	
+	
+	
 
 }

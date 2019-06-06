@@ -1,8 +1,8 @@
 package modeloVista;
 
 public class ArmaSel {
+	
 	private String id;
-
 	private int numeroIdArma;
 
 	public ArmaSel() {
@@ -33,7 +33,5 @@ public class ArmaSel {
 	public String toString() {
 		return "ArmaSel [id=" + id + ", numeroIdArma=" + numeroIdArma + "]";
 	}
-	
-	
 
 }

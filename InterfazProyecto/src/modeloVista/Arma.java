@@ -6,14 +6,11 @@ import com.google.gson.annotations.SerializedName;
 
 import modeloVista.TipoArma;
 
-
-
-
 public class Arma implements Serializable {
+
 	@SerializedName("id_arma")
 	private int idArma;
 	private String descripcion;
-
 	private TipoArma tipoArma;
 	private int puntos;
 
@@ -59,5 +56,4 @@ public class Arma implements Serializable {
 
 	}
 
-	
 }

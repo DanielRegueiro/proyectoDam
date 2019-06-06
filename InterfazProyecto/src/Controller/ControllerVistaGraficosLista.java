@@ -1,9 +1,12 @@
 package controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import data.LogicaPrincipal;
+import data.ReportHelper;
+import data.RestClient;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,16 +26,17 @@ import modeloVista.UnidadesSel;
 import modeloVista.Usuario;
 
 public class ControllerVistaGraficosLista {
+
 	ListView<Unidad> listaUnidades;
 	@FXML
 	private Button botonImprimir;
 
 	@FXML
 	private AnchorPane panelPestana;
-	
+
 	@FXML
 	private PieChart graficoQuesito;
-	
+
 	@FXML
 	private Button botonInformeUno;
 
@@ -53,30 +57,45 @@ public class ControllerVistaGraficosLista {
 
 	@FXML
 	void crearLista(ActionEvent event) {
-			Usuario usuario= LogicaPrincipal.getInstance().getUser();
-			Lista lista=new Lista();
-			lista.setNombre(nombreLista);
-			lista.setCoste(costeLista);
-			List<ArmaSel> armas=new ArrayList<ArmaSel>();
-			for (Unidad unidad : listaUnidades.getItems()) {
-				UnidadesSel unidadSel=new UnidadesSel();
-				unidadSel.setIdUnidad(unidad.getIdUnidad());
-				for (Arma arma : unidad.getArmas()) {
-					ArmaSel armaSel=new ArmaSel();
-					armaSel.setNumeroIdArma(arma.getIdArma());
-					armas.add(armaSel);
-					unidadSel.setArmasSel(armas);
-				}
-				lista.getUnidadesSel().add(unidadSel);
-				
+		Usuario usuario = LogicaPrincipal.getInstance().getUser();
+		Lista lista = new Lista();
+		lista.setNombre(nombreLista);
+		lista.setCoste(costeLista);
+		List<ArmaSel> armas = new ArrayList<ArmaSel>();
+		for (Unidad unidad : listaUnidades.getItems()) {
+			UnidadesSel unidadSel = new UnidadesSel();
+			unidadSel.setIdUnidad(unidad.getIdUnidad());
+			for (Arma arma : unidad.getArmas()) {
+				ArmaSel armaSel = new ArmaSel();
+				armaSel.setNumeroIdArma(arma.getIdArma());
+				armas.add(armaSel);
+				unidadSel.setArmasSel(armas);
 			}
-			usuario.getListas().add(lista);
-	//TODO aqui hay que llamar al metodo de grabar el usuario
+			lista.getUnidadesSel().add(unidadSel);
+
+		}
+		usuario.getListas().add(lista);
+
+		try {
+			RestClient.postUsuario(usuario);
+
+		} catch (IOException e) {
+			System.out.println("Guardando usuario en base de datos");
+		}
+		System.out.println("Usuario guardado correctamente");
+
+		generarInforme();
+	}
+	
+	void generarInforme() {
+		
+		ReportHelper.printInformeUnidadesPdf("reports/InformeUnidades.pdf");
+		
 	}
 
-	void initData(ListView<Unidad> listaUnidades,String nombre, int coste) {
-		nombreLista=nombre;
-		costeLista=coste;
+	void initData(ListView<Unidad> listaUnidades, String nombre, int coste) {
+		nombreLista = nombre;
+		costeLista = coste;
 		this.listaUnidades = listaUnidades;
 		rellenarGraficoBarrasFuerza();
 		rellenarGraficoQuesito();

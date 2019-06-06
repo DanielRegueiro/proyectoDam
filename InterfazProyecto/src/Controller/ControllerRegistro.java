@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import data.RestClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import modeloVista.Usuario;
 
 public class ControllerRegistro {
 
@@ -41,22 +43,63 @@ public class ControllerRegistro {
 
 	@FXML
 	void cambioPantalla(ActionEvent event) {
+
+		Usuario usuario;
+		boolean registroOk = false;
+
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/Pantallalogos.fxml"));
-			Parent root1 = (Parent) fxmlLoader.load();
-			Stage stage = new Stage();
-			stage.setScene(new Scene(root1));
-			stage.initStyle(StageStyle.UNDECORATED);
-			stage.setResizable(false);
-			stage.centerOnScreen();
-			stage.show();
+			// Buscamos el usuario en la base de datos para comprobar si existe
+			usuario = RestClient.getUsuario(textUsuario.getText());
+			if (usuario != null) {
+				System.out.println("El usuario ya existe en la base de datos: " + usuario.getNombre());
+				registroOk = false;
+			}
 
-		} catch (IOException ex) {
-			Logger.getLogger(ControllerFXMLLogin.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (IOException e) {
+
+			// Si el usuario no existe va a entrar en el catch (porque intenta parsear un
+			// null y no sabe)
+
+			usuario = new Usuario();
+			usuario.setNombre(textUsuario.getText());
+			usuario.setContasena(textContrasena.getText());
+
+			try {
+				// Guardamos el usuario en la base de datos
+				RestClient.postUsuario(usuario);
+				registroOk = true;
+
+			} catch (IOException e1) {
+				System.out.println("Error en post usuario en registro");
+			}
+
+			if (!registroOk) {
+				System.out.println("No se ha podido realizar el registro");
+
+			} else {
+				System.out.println("Usuario registrado correctamente en la base de datos");
+
+				// Cambiar de pantalla
+				try {
+					FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/Pantallalogos.fxml"));
+					Parent root1 = (Parent) fxmlLoader.load();
+					Stage stage = new Stage();
+					stage.setScene(new Scene(root1));
+					stage.initStyle(StageStyle.UNDECORATED);
+					stage.setResizable(false);
+					stage.centerOnScreen();
+					stage.show();
+
+				} catch (IOException ex) {
+					Logger.getLogger(ControllerFXMLLogin.class.getName()).log(Level.SEVERE, null, ex);
+				}
+				Stage stage2 = (Stage) buttonRegistrarse.getScene().getWindow();
+
+				stage2.close();
+
+			}
+
 		}
-		Stage stage2 = (Stage) buttonRegistrarse.getScene().getWindow();
-
-		stage2.close();
 
 	}
 
@@ -73,4 +116,5 @@ public class ControllerRegistro {
 	void volver(ActionEvent event) {
 
 	}
+
 }

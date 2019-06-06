@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 import com.proyecto.destacamento.DestacamentoInterface;
 
 import data.LogicaPrincipal;
-import data.RestClientImpl;
+import data.RestClient;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -421,7 +421,6 @@ public class ControllerGestionUnidades {
 		assert textVoladorasDentro != null : "fx:id=\"textVoladorasDentro\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
 		assert labelCoste != null : "fx:id=\"labelCoste\" was not injected: check your FXML file 'Pantallaseleccionunidad.fxml'.";
 		botonContinuar.setDisable(true);
-		RestClientImpl restClient = new RestClientImpl();
 		ObservableList<modeloVista.Unidad> data = FXCollections.observableArrayList();
 		textPuntosCosteLista = new Text();
 		textPuntosCosteLista.setText("0");
@@ -431,7 +430,7 @@ public class ControllerGestionUnidades {
 
 		try {
 
-			List<modeloVista.Unidad> unidades = restClient.getAllUnits();
+			List<modeloVista.Unidad> unidades = RestClient.getAllUnits();
 			for (modeloVista.Unidad ud : unidades) {
 				String imagen = "/img/iconos/";
 				String extension = ".png";

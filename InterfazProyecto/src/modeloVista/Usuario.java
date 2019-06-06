@@ -7,18 +7,22 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Usuario {
+
 	private String id;
+
 	@SerializedName("nombre")
 	@Expose
 	private String nombre;
+
 	@SerializedName("contasena")
 	@Expose
 	private String contasena;
+
 	private List<Lista> listas;
 
 	public Usuario() {
-	this.id="";
-	this.listas=new ArrayList<Lista>();
+		this.id = "";
+		this.listas = new ArrayList<Lista>();
 	}
 
 	public String getId() {

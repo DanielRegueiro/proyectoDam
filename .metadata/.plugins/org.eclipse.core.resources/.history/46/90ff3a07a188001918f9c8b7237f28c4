@@ -1,0 +1,63 @@
+package data;
+
+import java.io.File;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+
+public class ReportHelper {
+
+	private static final String DDBB_DRIVER = "com.mysql.cj.jdbc.Driver";
+	private static final String DDBB_URL = "jdbc:mysql://localhost:3306/proyectodam";
+	private static final String DDBB_NAME = "root";
+	private static final String DDBB_PWD = "santi2010"; 
+	
+	private static final String RUTA_INFORME_UNIDADES = "reports/util/InformeUnidades.jasper"; 
+	
+
+	public static void printInformeUnidadesPdf(String rutaPdf) {
+
+		try {
+
+			// Compile jrxml file
+			//JasperReport jasperReport = JasperCompileManager.compileReport(RUTA_INFORME_UNIDADES);
+			
+			// DataSource
+			Class.forName(DDBB_DRIVER);
+			Connection conn = DriverManager.getConnection(DDBB_URL, DDBB_NAME, DDBB_PWD);
+
+			// Create arguments
+			Map params = new HashMap();
+
+			// Generate jasper print
+			//JasperPrint jasperPrint = (JasperPrint) JasperFillManager.fillReport(jasperReport, params, conn);
+			JasperPrint jasperPrint = (JasperPrint) JasperFillManager.fillReport(RUTA_INFORME_UNIDADES, params, conn);
+			   
+			// Export to PDF.
+		       JasperExportManager.exportReportToPdfFile(jasperPrint, rutaPdf);
+		       
+		       
+		} catch (JRException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}

@@ -11,3 +11,5 @@
 1559745548466	Delete element
 1559811878570	Rename field 'fuerzaUnidades'
 1559827446077	Rename local variable 'ataquer'
+1559848555185	Rename type 'RestClient'
+1559848601460	Rename type 'RestClientImpl'

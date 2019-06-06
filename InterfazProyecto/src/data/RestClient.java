@@ -1,39 +1,77 @@
 
 package data;
 
-import data.NetKeys;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import modeloVista.Lista;
 import modeloVista.Unidad;
 import modeloVista.Usuario;
 
+import java.io.IOException;
 import java.util.List;
-
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.PUT;
-import retrofit2.http.Query;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
+public class RestClient {
 
-public interface RestClient {
-    
-    @GET(NetKeys.Paths.GET_ALL)
-    Call<List<Unidad>> getAllUnits();
-    
-    @GET(NetKeys.Paths.GET_LISTAS)
-    Call<List<Lista>> getlistas();
-    
-    @GET(NetKeys.Paths.GET_UNIT)
-    Call<Unidad> getUnit(@Query(NetKeys.QueriesParams.ID) String idUnidad);
-    
-    @GET(NetKeys.Paths.GET_USUARIO)
-    Call<Usuario> getUsuario(@Query(NetKeys.QueriesParams.NOMBRE) String nombre);
-    
-    @POST(NetKeys.Paths.POST_USUARIO)
-    Call<Usuario> postUsuario(@Body Usuario usuario);
+	private static final IRestClient RESTCLIENT;
+	private static final Gson GSON;
 
-    @PUT(NetKeys.Paths.POST_USUARIO)
-    Call<String> postUsuarioString(@Body String usuario);
+	public RestClient() {}
+	
+	static {
+		GSON = new GsonBuilder()
+				.setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+				.serializeNulls()
+				.create();
+
+		Retrofit retrofit = new Retrofit.Builder()
+				.baseUrl(NetKeys.Paths.BASE_URL)
+				.addConverterFactory(GsonConverterFactory.create(GSON))
+				.build();
+		RESTCLIENT = retrofit.create(IRestClient.class);
+	}
+	
+	public static List<Lista> getListas() throws IOException {
+        Call<List<Lista>> call = RESTCLIENT.getlistas();
+        return call.execute().body();
+    }
+
+	public static List<Unidad> getAllUnits() throws IOException {
+		Call<List<Unidad>> call = RESTCLIENT.getAllUnits();
+		return call.execute().body();
+	}
+
+	public static Unidad getUnit(String idUnidad) throws IOException {
+		Call<Unidad> call = RESTCLIENT.getUnit(idUnidad);
+		return call.execute().body();
+	}
+
+	public static Usuario getUsuario(String nombre) throws IOException {
+		System.out.println("dentro de retrofit, antes de hacer la llamada");
+		Call<Usuario> call = RESTCLIENT.getUsuario(nombre);
+		System.out.println("dentro de retrofit, despues de hacer la llamada");
+		return call.execute().body();
+	}
+
+	public static boolean postUsuario(Usuario usuario) throws IOException {
+		String jsonUsuario = GSON.toJson(usuario);
+		System.out.println("Usuario json: " + jsonUsuario);
+
+		Call<Usuario> call = RESTCLIENT.postUsuario(usuario);
+		
+		// No pasa de aqui (hay que pulsar el boton otra vez)
+		System.out.println("Metodo post - Despues de hacer la request");
+		Usuario u = call.execute().body();
+		if (u == null) {
+			System.out.println( "Metodo post - Usuario insertado correctamente");
+			return true;
+		}else {
+			System.out.println( "Metodo post - Usuario no insertado (sale rebotado de la base de datos)");
+			return false;
+		}
+	}
+
 }
