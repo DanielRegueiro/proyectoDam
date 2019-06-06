@@ -60,6 +60,16 @@
                   </AnchorPane>
             </content>
           </Tab>
+            <Tab text="Informes">
+              <content>
+                <AnchorPane fx:id="panelPestana" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="botonInformeUno" layoutX="31.0" layoutY="37.0" mnemonicParsing="false" prefHeight="243.0" prefWidth="177.0" style="-fx-background-image: &quot;/img/lobos.png/&quot;;" />
+                        <Button fx:id="botonInformeDos" layoutX="330.0" layoutY="54.0" mnemonicParsing="false" prefHeight="243.0" prefWidth="177.0" text="Button" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
    </children>

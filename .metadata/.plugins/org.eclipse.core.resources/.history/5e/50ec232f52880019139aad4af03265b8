@@ -126,14 +126,12 @@ public class ControllerVistaGraficosLista {
 				mayor200++;
 			}
 		}
-		
-		
+
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
 				new PieChart.Data("Menor de 100", menor100), new PieChart.Data("Entre 100 y 149", entre100150),
 				new PieChart.Data("Entre 150 y 199", mayor150), new PieChart.Data("Mayor de 200", mayor200));
 		graficoQuesitoCoste.setData(pieChartData);
 		graficoQuesitoCoste.setTitle("Costes");
-		graficoQuesitoCoste.setAnimated(true);
 
 	}
 

@@ -96,7 +96,7 @@ public class ControllerVistaGraficosLista {
 		}
 
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(new PieChart.Data("C.G", cg),
-				new PieChart.Data("Elite", elite), new PieChart.Data("Ataque Rapido", ataquer),
+				new PieChart.Data("Elite", elite), new PieChart.Data("Ataque Rapido", 10),
 				new PieChart.Data("Linea", linea), new PieChart.Data("Apoyo pesado", apoyo),
 				new PieChart.Data("Voladoras", voladoras));
 		graficoQuesito.setData(pieChartData);
@@ -126,14 +126,12 @@ public class ControllerVistaGraficosLista {
 				mayor200++;
 			}
 		}
-		
-		
+
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
 				new PieChart.Data("Menor de 100", menor100), new PieChart.Data("Entre 100 y 149", entre100150),
 				new PieChart.Data("Entre 150 y 199", mayor150), new PieChart.Data("Mayor de 200", mayor200));
 		graficoQuesitoCoste.setData(pieChartData);
 		graficoQuesitoCoste.setTitle("Costes");
-		graficoQuesitoCoste.setAnimated(true);
 
 	}
 
@@ -185,14 +183,13 @@ public class ControllerVistaGraficosLista {
 
 	@FXML
 	void initialize() {
-	    assert botonImprimir != null : "fx:id=\"botonImprimir\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
-        assert graficoBarras != null : "fx:id=\"graficoBarras\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
-        assert fuerza != null : "fx:id=\"fuerza\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
-        assert graficoQuesito != null : "fx:id=\"graficoQuesito\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
-        assert graficoQuesitoCoste != null : "fx:id=\"graficoQuesitoCoste\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
-        assert panelPestana != null : "fx:id=\"panelPestana\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
-        assert botonInformeUno != null : "fx:id=\"botonInformeUno\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
-        assert botonInformeDos != null : "fx:id=\"botonInformeDos\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
+		assert botonImprimir != null : "fx:id=\"botonImprimir\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
+		assert graficoBarras != null : "fx:id=\"graficoBarras\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
+		assert fuerza != null : "fx:id=\"fuerza\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
+		assert graficoQuesito != null : "fx:id=\"graficoQuesito\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
+		assert graficoQuesitoCoste != null : "fx:id=\"graficoQuesitoCoste\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
+		assert panelPestana != null : "fx:id=\"panelPestana\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
+		assert media != null : "fx:id=\"media\" was not injected: check your FXML file 'VistaAnalisisTropas.fxml'.";
 
 		estadisticasUnidades.addAll("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
 		fuerza.setCategories(estadisticasUnidades);

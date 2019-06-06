@@ -1,7 +1,0 @@
-package com.proyecto.service;
-
-import org.springframework.data.repository.CrudRepository;
-
-public class UsuarioService implements CrudRepository<T, ID> {
-
-}
