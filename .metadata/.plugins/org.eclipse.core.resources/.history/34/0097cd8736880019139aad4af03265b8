@@ -1,0 +1,21 @@
+package controller;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart;
+import javafx.scene.control.Button;
+
+public class ControllerVistaGraficosLista {
+
+    @FXML
+    private Button botonImprimir;
+
+    @FXML
+    private PieChart graficoQuesitos;
+
+    @FXML
+    void crearLista(ActionEvent event) {
+
+    }
+
+}

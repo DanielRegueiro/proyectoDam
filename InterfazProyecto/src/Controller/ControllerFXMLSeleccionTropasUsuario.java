@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 import com.proyecto.destacamento.DestacamentoInterface;
 import com.proyecto.destacamento.impl.BatallonDestacamento;
+import com.proyecto.destacamento.impl.LibreDestacamento;
 import com.proyecto.destacamento.impl.PuntaDeLanzaDestacamento;
 import com.proyecto.destacamento.impl.VanguardiaDestacamento;
 
@@ -100,6 +101,10 @@ public class ControllerFXMLSeleccionTropasUsuario {
 			PuntaDeLanzaDestacamento destacamento3 = new PuntaDeLanzaDestacamento();
 
 			return destacamento3;
+		case "Lista libre":
+			LibreDestacamento destacamento4 = new LibreDestacamento();
+
+			return destacamento4;
 		default:
 
 		}
@@ -117,7 +122,7 @@ public class ControllerFXMLSeleccionTropasUsuario {
 		assert botonTodas != null : "fx:id=\"botonTodas\" was not injected: check your FXML file 'VistaSeleccionTropasAUsar.fxml'.";
 		assert botonPropias != null : "fx:id=\"botonPropias\" was not injected: check your FXML file 'VistaSeleccionTropasAUsar.fxml'.";
 		assert comboDestacamento != null : "fx:id=\"comboDestacamento\" was not injected: check your FXML file 'VistaSeleccionTropasAUsar.fxml'.";
-		ObservableList<String> data = FXCollections.observableArrayList("Batallon", "Vanguardia", "Punta de lanza");
+		ObservableList<String> data = FXCollections.observableArrayList("Batallon", "Vanguardia", "Punta de lanza","Lista libre");
 		comboDestacamento.setItems(data);
 		comboDestacamento.getSelectionModel().selectFirst();
 	}

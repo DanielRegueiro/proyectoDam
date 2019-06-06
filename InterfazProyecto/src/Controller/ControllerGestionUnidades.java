@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 import com.proyecto.destacamento.DestacamentoInterface;
 
+import data.LogicaPrincipal;
 import data.RestClientImpl;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -262,6 +263,28 @@ public class ControllerGestionUnidades {
 		habilitarBotonContinuar();
 	}
 
+    @FXML
+    void AbrirPantallaImpresion(ActionEvent event) {
+    	try {
+			FXMLLoader fxmlLoader4 = new FXMLLoader(getClass().getResource("/Vistas/VistaAnalisisTropas.fxml"));
+			Parent root5 = (Parent) fxmlLoader4.load();
+			Stage stage = new Stage();
+			ControllerVistaGraficosLista controller2 = fxmlLoader4.<ControllerVistaGraficosLista>getController();
+			controller2.initData(listaUnidadesSeleccionadas);
+			stage.setScene(new Scene(root5));
+			stage.initStyle(StageStyle.UNDECORATED);
+			stage.setResizable(false);
+			stage.centerOnScreen();
+
+			stage.show();
+
+		} catch (IOException ex) {
+			Logger.getLogger(ControllerFXMLLogin.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		Stage stage2 = (Stage) botonContinuar.getScene().getWindow();
+
+		stage2.close();
+    }
 	public void habilitarBotonContinuar() {
 
 		if (cg >= Integer.parseInt(destacamento.devolverMinimoCG())

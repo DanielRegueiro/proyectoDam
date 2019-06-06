@@ -57,7 +57,8 @@ public class Unidad {
 	private int puntos;
 	@Column(name="poder")
 	private int poder;
-
+	@Column(name="unico")
+	private Boolean unico;
 	@ManyToOne
 	@JoinColumn(name = "id_tipo_unidad")
 	private TipoUnidad tipoUnidad;
@@ -77,7 +78,15 @@ public class Unidad {
 	inverseJoinColumns = @JoinColumn(name = "id_reliquias", referencedColumnName = "id_reliquia"))
 	private List<Reliquia> reliquias=new ArrayList<Reliquia>();
 
+	
 
+	public Boolean getUnico() {
+		return unico;
+	}
+
+	public void setUnico(Boolean unico) {
+		this.unico = unico;
+	}
 
 	public Long getId_unidad() {
 		return id_unidad;

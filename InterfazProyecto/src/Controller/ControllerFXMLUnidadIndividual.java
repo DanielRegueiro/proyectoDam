@@ -1,11 +1,15 @@
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -15,6 +19,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import modeloVista.Arma;
 import modeloVista.Habilidad;
@@ -121,18 +126,39 @@ public class ControllerFXMLUnidadIndividual {
 
 	@FXML
 	void anadirUnidad(ActionEvent event) {
+		if (!comprobarNombreUnico()) {
+			controllerLocal.anadirUnidadLista(unidadLocal);
+			Stage stage = (Stage) anadir.getScene().getWindow();
+			stage.close();
+		} else {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vistas/VistaDialogoAlerta.fxml"));
 
-		controllerLocal.anadirUnidadLista(unidadLocal);
-		Stage stage = (Stage) anadir.getScene().getWindow();
-		stage.close();
+			try {
+				Parent root1 = (Parent) fxmlLoader.load();
+				Stage stage = new Stage();
+				ControllerDialogoAlerta controller = fxmlLoader.<ControllerDialogoAlerta>getController();
+				controller.cambiarTexto("No se puede añadir 2 veces una unidad unica");
+				stage.setScene(new Scene(root1));
+				stage.setResizable(false);
+				stage.initStyle(StageStyle.UNDECORATED);
+				stage.centerOnScreen();
+				stage.show();
+
+			} catch (IOException e) {
+
+				e.printStackTrace();
+			}
+
+		}
 	}
 
 	private Boolean comprobarNombreUnico() {
 		Boolean existe = false;
 		String nombre = unidadLocal.getNombre();
 		for (Unidad unidad : controllerLocal.getListaUnidadesSeleccionadas().getItems()) {
-//			if (unidad.getNombre().equals(nombre)&&unidad.) {
-//			}
+			if (unidad.getNombre().equals(nombre) && unidad.getUnico()) {
+				existe = true;
+			}
 		}
 
 		return existe;

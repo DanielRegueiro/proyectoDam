@@ -19,7 +19,7 @@
             <Image url="@../img/fondo2.jpg" />
          </image>
       </ImageView>
-      <Button id="botonContinuar" fx:id="botonContinuar" layoutX="872.0" layoutY="611.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" text="Continuar">
+      <Button id="botonContinuar" fx:id="botonContinuar" layoutX="872.0" layoutY="611.0" mnemonicParsing="false" onAction="#AbrirPantallaImpresion" prefHeight="37.0" prefWidth="113.0" text="Continuar">
          <effect>
             <Reflection />
          </effect>
@@ -82,7 +82,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fill="#fcfafa" layoutX="421.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Uds Tropa min:" wrappingWidth="150.0">
+      <Text fill="#fcfafa" layoutX="421.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Uds Linea min:" wrappingWidth="150.0">
          <font>
             <Font size="20.0" />
          </font>

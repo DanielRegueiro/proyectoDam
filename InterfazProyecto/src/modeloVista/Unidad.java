@@ -1,7 +1,5 @@
 package modeloVista;
 
-
-
 import modeloVista.Arma;
 import modeloVista.Habilidad;
 import modeloVista.Reliquia;
@@ -9,12 +7,11 @@ import modeloVista.TipoUnidad;
 
 import java.util.List;
 
+
+
 import com.google.gson.annotations.SerializedName;
 
-
-
-
-public class Unidad  {
+public class Unidad {
 	@SerializedName("id_unidad")
 	private int idUnidad;
 	private String nombre;
@@ -31,7 +28,7 @@ public class Unidad  {
 	private int poder;
 	private String imagen;
 	private String imagenUnidad;
-	
+	private Boolean unico;
 
 	private TipoUnidad tipoUnidad;
 	@SerializedName("listaArmas")
@@ -40,7 +37,15 @@ public class Unidad  {
 	private List<Habilidad> habilidades;
 
 	private List<Reliquia> reliquias;
-	
+
+	public Boolean getUnico() {
+		return unico;
+	}
+
+	public void setUnico(Boolean unico) {
+		this.unico = unico;
+	}
+
 	public String getImagenUnidad() {
 		return imagenUnidad;
 	}
@@ -208,8 +213,6 @@ public class Unidad  {
 	public void setReliquias(List<Reliquia> reliquias) {
 		this.reliquias = reliquias;
 	}
-
-	
 
 	@Override
 	public String toString() {
